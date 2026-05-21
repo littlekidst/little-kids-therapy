@@ -1036,11 +1036,11 @@ button[disabled] { opacity: .72; cursor: wait; transform: none !important; }
         <ul>
           <li><a href="#why">Why us</a></li>
           <li><a href="#services">Services</a></li>
-          <li><a href="#openings">Open cases</a></li>
           <li><a href="#process">How it works</a></li>
           <li><a href="#locations">Locations</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#careers">Careers</a></li>
+          <li><a href="#openings">Open cases</a></li>
         </ul>
       </nav>
       <div class="header-cta">
@@ -1068,11 +1068,11 @@ button[disabled] { opacity: .72; cursor: wait; transform: none !important; }
   <ul>
     <li><a href="#why" class="mobile-link">Why us</a></li>
     <li><a href="#services" class="mobile-link">Services</a></li>
-    <li><a href="#openings" class="mobile-link">Open cases</a></li>
     <li><a href="#process" class="mobile-link">How it works</a></li>
     <li><a href="#locations" class="mobile-link">Locations</a></li>
     <li><a href="#faq" class="mobile-link">FAQ</a></li>
     <li><a href="#careers" class="mobile-link">Careers</a></li>
+    <li><a href="#openings" class="mobile-link">Open cases</a></li>
   </ul>
   <div class="mobile-nav-cta">
     <a href="#contact" class="btn btn-primary btn-lg mobile-link">Free consultation</a>
@@ -1347,7 +1347,7 @@ button[disabled] { opacity: .72; cursor: wait; transform: none !important; }
 
       <div>
         <div class="openings-grid" id="openingsGrid" aria-live="polite"></div>
-        <div class="openings-empty" id="openingsEmpty">No openings match this filter right now.</div>
+        <div class="openings-empty" id="openingsEmpty">No openings match this filter right now. If you just updated openings.json, refresh the page in a minute.</div>
       </div>
     </div>
   </div>
@@ -1771,9 +1771,9 @@ button[disabled] { opacity: .72; cursor: wait; transform: none !important; }
         <ul>
           <li><a href="#services">In-home therapy</a></li>
           <li><a href="#services">Clinic-based</a></li>
-          <li><a href="#openings">Open provider cases</a></li>
           <li><a href="#services">Parent training</a></li>
           <li><a href="#services">School consultation</a></li>
+          <li><a href="#openings">Open provider cases</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1897,7 +1897,7 @@ window.addEventListener('pointermove', (e) => {
     glow.style.left = e.clientX + 'px';
     glow.style.top = e.clientY + 'px';
   }
-  document.querySelectorAll('.why-card, .service-card, .testimonial, .location-card, .opening-card').forEach(card => {
+  document.querySelectorAll('.why-card, .service-card, .testimonial, .location-card, .opening-card, .opening-card').forEach(card => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -1908,7 +1908,7 @@ window.addEventListener('pointermove', (e) => {
   });
 }, { passive: true });
 
-document.querySelectorAll('.why-card, .service-card, .testimonial, .location-card, .opening-card').forEach(card => {
+document.querySelectorAll('.why-card, .service-card, .testimonial, .location-card, .opening-card, .opening-card').forEach(card => {
   card.addEventListener('pointermove', (e) => {
     if (window.matchMedia('(max-width: 800px)').matches) return;
     const r = card.getBoundingClientRect();
@@ -1931,56 +1931,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // HIPAA-safe open cases list. Edit openings.json to update public openings without touching the page code.
-const defaultOpenings = [
-  {
-    initials: 'A.M.',
-    age: '4',
-    area: 'Fort Pierce',
-    setting: 'In-home',
-    services: ['RBT', 'BCBA'],
-    session: 'Afternoon',
-    days: 'Mon–Fri preferred',
-    hours: '3:00pm–6:00pm',
-    priority: 'Ready now',
-    notes: 'Early learner. Family prefers a consistent weekly team.'
-  },
-  {
-    initials: 'J.R.',
-    age: '6',
-    area: 'Port St. Lucie',
-    setting: 'In-home',
-    services: ['RBT'],
-    session: 'Morning',
-    days: '3–5 days/week',
-    hours: '8:30am–12:00pm',
-    priority: 'New opening',
-    notes: 'Great fit for an RBT who enjoys early intervention routines.'
-  },
-  {
-    initials: 'L.S.',
-    age: '8',
-    area: 'Vero Beach',
-    setting: 'Clinic / Hybrid',
-    services: ['SLP'],
-    session: 'After school',
-    days: '2 days/week',
-    hours: 'After 3:30pm',
-    priority: 'SLP needed',
-    notes: 'Speech opening. No private clinical details are posted publicly.'
-  },
-  {
-    initials: 'N.T.',
-    age: '5',
-    area: 'Stuart / Jensen Beach',
-    setting: 'In-home',
-    services: ['BCBA'],
-    session: 'Flexible',
-    days: 'Assessment / supervision',
-    hours: 'Flexible schedule',
-    priority: 'BCBA review',
-    notes: 'Clinical supervision opportunity for a BCBA in the Treasure Coast area.'
-  }
-];
+const defaultOpenings = [];
 let openingsData = [];
 let activeOpeningFilter = 'ALL';
 function escapeHtml(value) {
@@ -2043,12 +1994,12 @@ function renderOpenings() {
 }
 async function loadOpenings() {
   try {
-    const response = await fetch('openings.json', { cache: 'no-store' });
+    const response = await fetch('openings.json?v=' + Date.now(), { cache: 'no-store' });
     if (!response.ok) throw new Error('openings.json not found');
     const json = await response.json();
-    openingsData = Array.isArray(json) ? json : defaultOpenings;
+    openingsData = Array.isArray(json) ? json : [];
   } catch (error) {
-    openingsData = defaultOpenings;
+    openingsData = [];
   }
   renderOpenings();
 }
