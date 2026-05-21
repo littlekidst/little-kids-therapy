@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Kids Therapy — Pediatric ABA Therapy in Fort Pierce, FL</title>
+<meta name="description" content="Compassionate pediatric ABA therapy for children with autism. Serving Fort Pierce, Port St. Lucie, and the Treasure Coast — in your home or our clinic.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #fffcf5;
+  --cream-deep: #fff1d6;
+  --ink: #1a2d4d;
+  --ink-soft: #4f5d7a;
+  --ink-muted: #8590a8;
+  --forest: #3bafd6;
+  --forest-deep: #2589b0;
+  --forest-soft: #8edceb;
+  --terra: #ff7b6b;
+  --terra-deep: #e85a4a;
+  --sand: #ffd86b;
+  --mint: #5dc9a8;
+  --footer-bg: #1a2d4d;
+  --line: rgba(26, 45, 77, 0.12);
+  --line-soft: rgba(26, 45, 77, 0.06);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  font-weight: 400;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Subtle paper texture */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container { max-width: 1240px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 500; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); font-variation-settings: 'opsz' 96, 'SOFT' 50; }
+
+.kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terra);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.kicker::before { content: ''; width: 24px; height: 1px; background: var(--terra); }
+
+/* ============ HEADER ============ */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(250, 246, 238, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line-soft);
+  z-index: 100;
+}
+
+.header-top {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 13px;
+  padding: 8px 0;
+}
+.header-top .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.header-top-contacts { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.header-top-contacts a { color: var(--cream); text-decoration: none; display: flex; align-items: center; gap: 6px; opacity: 0.9; transition: opacity 0.2s; }
+.header-top-contacts a:hover { opacity: 1; }
+.header-top-contacts svg { width: 14px; height: 14px; }
+.header-top-hours { opacity: 0.7; font-size: 12px; }
+
+.header-main { padding: 18px 0; }
+.header-main .container { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.logo-mark {
+  width: 40px; height: 40px;
+  background: var(--forest);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--cream);
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 18px;
+  font-style: italic;
+}
+.logo-text { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; }
+.logo-text span { color: var(--forest-soft); font-style: italic; font-weight: 400; }
+
+nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+nav a { color: var(--ink-soft); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.2s; position: relative; }
+nav a:hover { color: var(--forest); }
+nav a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--forest); transition: width 0.3s; }
+nav a:hover::after { width: 100%; }
+
+.header-cta { display: flex; gap: 12px; align-items: center; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--terra); color: var(--cream); }
+.btn-primary:hover { background: var(--terra-deep); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255, 123, 107, 0.35); }
+.btn-ghost { background: transparent; color: var(--forest); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--forest); background: var(--cream-deep); }
+.btn-dark { background: var(--forest); color: var(--cream); }
+.btn-dark:hover { background: var(--forest-deep); }
+.btn-lg { padding: 16px 30px; font-size: 15px; }
+.btn svg { width: 16px; height: 16px; }
+
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.mobile-toggle svg { width: 24px; height: 24px; color: var(--ink); }
+
+/* ============ HERO ============ */
+.hero { padding: 80px 0 100px; position: relative; overflow: hidden; }
+.hero .container { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+.hero-content { position: relative; }
+
+.psl-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream-deep);
+  border: 1px solid var(--line);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 28px;
+}
+.psl-pill .dot {
+  width: 8px; height: 8px; background: var(--terra); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.hero h1 {
+  font-size: clamp(40px, 5.4vw, 72px);
+  margin-bottom: 28px;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+.hero h1 em { font-style: italic; color: var(--forest); font-weight: 500; font-variation-settings: 'opsz' 96, 'SOFT' 100; }
+
+.hero-desc {
+  font-size: 19px;
+  color: var(--ink-soft);
+  max-width: 540px;
+  margin-bottom: 36px;
+  line-height: 1.55;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+
+.hero-stats { display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+.stat-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 500; color: var(--forest); line-height: 1; margin-bottom: 6px; letter-spacing: -0.02em; }
+.stat-label { font-size: 13px; color: var(--ink-muted); letter-spacing: -0.005em; }
+
+/* Hero illustration */
+.hero-art {
+  position: relative;
+  aspect-ratio: 1 / 1.05;
+  max-width: 520px;
+  justify-self: end;
+  width: 100%;
+}
+.hero-art-bg {
+  position: absolute;
+  inset: 0;
+  background: #3bafd6;
+  border-radius: 50% 50% 48% 52% / 60% 55% 45% 40%;
+  overflow: hidden;
+}
+.hero-art-bg::before {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 65%; height: 65%;
+  background: radial-gradient(circle, rgba(255, 216, 107, 0.55) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero-art-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -15%; left: -10%;
+  width: 70%; height: 70%;
+  background: radial-gradient(circle, rgba(255, 123, 107, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-card {
+  position: absolute;
+  background: var(--cream);
+  padding: 18px 22px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px -15px rgba(28, 32, 36, 0.15);
+  border: 1px solid var(--line-soft);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-card-1 { top: 12%; left: -8%; }
+.hero-card-2 { bottom: 12%; right: -10%; }
+.hero-card-icon {
+  width: 42px; height: 42px;
+  background: var(--cream-deep);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+  flex-shrink: 0;
+}
+.hero-card-icon svg { width: 22px; height: 22px; }
+.hero-card-title { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.2; margin-bottom: 2px; }
+.hero-card-sub { font-size: 12px; color: var(--ink-muted); }
+
+.hero-emoji-circle {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: #b5e6f2;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.hero-illustration {
+  width: 75%; height: 75%;
+}
+
+/* ============ TRUST BAR ============ */
+.trust-bar { padding: 36px 0; background: var(--cream-deep); border-block: 1px solid var(--line-soft); }
+.trust-bar .container { display: flex; align-items: center; gap: 48px; flex-wrap: wrap; justify-content: center; }
+.trust-label { font-size: 13px; font-weight: 500; color: var(--ink-muted); letter-spacing: -0.005em; }
+.trust-items { display: flex; gap: 36px; flex-wrap: wrap; align-items: center; }
+.trust-item {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--forest);
+  letter-spacing: -0.015em;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* ============ SECTION BASICS ============ */
+section { padding: 100px 0; position: relative; }
+.section-head { max-width: 700px; margin-bottom: 64px; }
+.section-head h2 { font-size: clamp(34px, 4.2vw, 54px); margin-top: 16px; margin-bottom: 20px; letter-spacing: -0.03em; font-weight: 400; }
+.section-head h2 em { font-style: italic; color: var(--forest); font-weight: 500; }
+.section-head p { font-size: 18px; color: var(--ink-soft); line-height: 1.55; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head.center .kicker { justify-content: center; }
+
+/* ============ WHY US ============ */
+.why { background: var(--cream); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.why-card {
+  padding: 36px 28px;
+  background: var(--cream-deep);
+  border-radius: 20px;
+  border: 1px solid var(--line-soft);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.why-card:hover { transform: translateY(-4px); border-color: var(--forest); }
+.why-card-icon {
+  width: 52px; height: 52px;
+  background: var(--cream);
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+  color: var(--forest);
+}
+.why-card-icon svg { width: 26px; height: 26px; }
+.why-card h3 { font-size: 22px; margin-bottom: 12px; font-weight: 500; }
+.why-card p { font-size: 15px; color: var(--ink-soft); line-height: 1.55; }
+
+/* ============ PROCESS ============ */
+.process { background: var(--forest); color: var(--cream); }
+.process .kicker { color: var(--sand); }
+.process .kicker::before { background: var(--sand); }
+.process h2 { color: var(--cream); }
+.process h2 em { color: var(--sand); }
+.process .section-head p { color: rgba(250, 246, 238, 0.8); }
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  background: rgba(250, 246, 238, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 4px;
+}
+.process-step {
+  padding: 36px 32px;
+  background: var(--forest);
+  position: relative;
+  transition: background 0.3s ease;
+}
+.process-step:hover { background: var(--forest-deep); }
+.step-num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--sand);
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+.process-step h3 { color: var(--cream); font-size: 22px; margin-bottom: 12px; font-weight: 500; }
+.process-step p { color: rgba(250, 246, 238, 0.7); font-size: 14px; line-height: 1.6; }
+
+/* ============ SERVICES ============ */
+.services { background: var(--cream); }
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.service-card {
+  padding: 40px;
+  background: var(--cream-deep);
+  border-radius: 24px;
+  border: 1px solid var(--line-soft);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.service-card:nth-child(2) { background: var(--forest); color: var(--cream); }
+.service-card:nth-child(2) h3 { color: var(--cream); }
+.service-card:nth-child(2) .service-desc { color: rgba(250, 246, 238, 0.75); }
+.service-card:nth-child(2) .service-tag { background: rgba(250, 246, 238, 0.1); color: var(--sand); border-color: rgba(250, 246, 238, 0.2); }
+.service-card:nth-child(2) .service-link { color: var(--sand); }
+.service-card:nth-child(3) { background: var(--terra); color: var(--cream); }
+.service-card:nth-child(3) h3 { color: var(--cream); }
+.service-card:nth-child(3) .service-desc { color: rgba(250, 246, 238, 0.85); }
+.service-card:nth-child(3) .service-tag { background: rgba(250, 246, 238, 0.15); color: var(--cream); border-color: rgba(250, 246, 238, 0.25); }
+.service-card:nth-child(3) .service-link { color: var(--cream); }
+.service-card:nth-child(4) { background: var(--mint); color: var(--ink); }
+.service-card:nth-child(4) h3 { color: var(--ink); }
+.service-card:nth-child(4) .service-desc { color: rgba(26, 45, 77, 0.78); }
+.service-card:nth-child(4) .service-tag { background: rgba(255, 252, 245, 0.6); color: var(--ink); border-color: rgba(26, 45, 77, 0.15); }
+.service-card:nth-child(4) .service-link { color: var(--ink); }
+
+.service-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--forest);
+  border: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.service-card h3 { font-size: 28px; margin-bottom: 16px; font-weight: 500; }
+.service-desc { font-size: 16px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; }
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--forest);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: gap 0.2s;
+}
+.service-link:hover { gap: 12px; }
+
+/* ============ LOCATIONS ============ */
+.locations { background: var(--cream-deep); }
+.locations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.location-card {
+  background: var(--cream);
+  border-radius: 24px;
+  padding: 40px;
+  border: 1px solid var(--line-soft);
+  position: relative;
+}
+.location-badge {
+  position: absolute;
+  top: 24px; right: 24px;
+  background: var(--terra);
+  color: var(--cream);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+.location-card h3 { font-size: 30px; margin-bottom: 8px; font-weight: 500; }
+.location-region { font-size: 14px; color: var(--ink-muted); margin-bottom: 24px; font-style: italic; }
+.location-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; font-size: 14px; color: var(--ink-soft); }
+.location-detail svg { width: 18px; height: 18px; color: var(--forest); flex-shrink: 0; margin-top: 2px; }
+.location-cities { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
+.location-cities-label { font-size: 12px; color: var(--ink-muted); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
+.location-cities-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.city-chip { background: var(--cream-deep); padding: 6px 12px; border-radius: 999px; font-size: 13px; color: var(--ink-soft); border: 1px solid var(--line-soft); }
+
+/* ============ TESTIMONIALS ============ */
+.testimonials { background: var(--cream); position: relative; }
+.testimonials-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 24px; }
+.testimonial {
+  padding: 36px 32px;
+  background: var(--cream-deep);
+  border-radius: 20px;
+  border: 1px solid var(--line-soft);
+}
+.testimonial.featured { background: var(--forest); color: var(--cream); }
+.testimonial.featured .quote-text { color: var(--cream); }
+.testimonial.featured .reviewer-name { color: var(--cream); }
+.testimonial.featured .reviewer-meta { color: rgba(250, 246, 238, 0.7); }
+.testimonial.featured .quote-mark { color: var(--sand); }
+
+.quote-mark { font-family: 'Fraunces', serif; font-size: 64px; line-height: 0.7; color: var(--forest); font-style: italic; margin-bottom: 12px; }
+.quote-text { font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.5; color: var(--ink); margin-bottom: 28px; font-weight: 400; letter-spacing: -0.01em; }
+.testimonial.featured .quote-text { font-size: 22px; }
+
+.reviewer { display: flex; align-items: center; gap: 14px; }
+.reviewer-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--terra); color: var(--cream); display: grid; place-items: center; font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; }
+.testimonial:nth-child(2) .reviewer-avatar { background: var(--forest-soft); }
+.testimonial:nth-child(3) .reviewer-avatar { background: var(--sand); color: var(--ink); }
+.reviewer-name { font-size: 15px; font-weight: 500; color: var(--ink); }
+.reviewer-meta { font-size: 13px; color: var(--ink-muted); }
+
+.google-bar { display: flex; align-items: center; gap: 16px; margin-top: 48px; padding: 20px 28px; background: var(--cream-deep); border-radius: 16px; border: 1px solid var(--line-soft); justify-content: center; flex-wrap: wrap; }
+.google-bar-stars { display: flex; gap: 2px; }
+.google-bar-stars svg { width: 18px; height: 18px; color: #f4b400; }
+.google-bar-text { font-size: 14px; color: var(--ink-soft); }
+.google-bar-text strong { color: var(--ink); font-weight: 500; }
+
+/* ============ CAREERS ============ */
+.careers { background: var(--terra); color: var(--cream); position: relative; overflow: hidden; }
+.careers::before {
+  content: '';
+  position: absolute;
+  top: -40%; right: -10%;
+  width: 60%; height: 180%;
+  background: radial-gradient(circle, rgba(250, 246, 238, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.careers .kicker { color: var(--sand); }
+.careers .kicker::before { background: var(--sand); }
+.careers .container { position: relative; z-index: 2; }
+.careers-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
+.careers h2 { color: var(--cream); font-size: clamp(34px, 4.2vw, 52px); margin-bottom: 24px; font-weight: 400; }
+.careers h2 em { color: var(--sand); font-style: italic; font-weight: 500; }
+.careers-desc { font-size: 18px; color: rgba(250, 246, 238, 0.88); margin-bottom: 32px; line-height: 1.6; max-width: 520px; }
+.careers-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 36px; max-width: 520px; }
+.benefit { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--cream); }
+.benefit svg { width: 18px; height: 18px; color: var(--sand); flex-shrink: 0; }
+
+.careers-form {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.2);
+}
+.careers-form h3 { font-size: 24px; margin-bottom: 6px; font-weight: 500; }
+.careers-form-sub { font-size: 14px; color: var(--ink-muted); margin-bottom: 24px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-field { margin-bottom: 14px; }
+.form-field label { display: block; font-size: 13px; font-weight: 500; color: var(--ink-soft); margin-bottom: 6px; letter-spacing: -0.005em; }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  transition: all 0.2s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline: none; border-color: var(--forest); background: white; }
+.form-field textarea { resize: vertical; min-height: 90px; font-family: 'DM Sans', sans-serif; }
+.form-file {
+  border: 1.5px dashed var(--line);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--cream-deep);
+}
+.form-file:hover { border-color: var(--forest); background: var(--cream); }
+.form-file svg { width: 24px; height: 24px; color: var(--forest); margin-bottom: 8px; }
+.form-file-text { font-size: 13px; color: var(--ink-soft); }
+.form-file-text strong { color: var(--forest); }
+.form-file input { display: none; }
+.form-file-name { font-size: 12px; color: var(--terra); margin-top: 8px; font-weight: 500; }
+
+.form-success {
+  background: var(--forest);
+  color: var(--cream);
+  padding: 32px;
+  border-radius: 16px;
+  text-align: center;
+  display: none;
+}
+.form-success.show { display: block; }
+.form-success svg { width: 40px; height: 40px; color: var(--sand); margin-bottom: 12px; }
+.form-success h3 { color: var(--cream); margin-bottom: 8px; }
+.form-success p { color: rgba(250, 246, 238, 0.85); font-size: 14px; }
+
+/* ============ FAQ ============ */
+.faq { background: var(--cream); }
+.faq-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-q {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 24px 0;
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--forest); }
+.faq-q-icon {
+  width: 28px; height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+.faq-q-icon svg { width: 14px; height: 14px; color: var(--ink-soft); transition: transform 0.3s; }
+.faq-item.open .faq-q-icon { background: var(--forest); border-color: var(--forest); }
+.faq-item.open .faq-q-icon svg { color: var(--cream); transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-a-inner { padding-bottom: 24px; font-size: 16px; color: var(--ink-soft); line-height: 1.65; max-width: 600px; }
+.faq-item.open .faq-a { max-height: 400px; }
+
+/* ============ CONTACT ============ */
+.contact { background: var(--forest); color: var(--cream); padding: 100px 0; }
+.contact .kicker { color: var(--sand); }
+.contact .kicker::before { background: var(--sand); }
+.contact h2 { color: var(--cream); font-size: clamp(34px, 4.5vw, 56px); margin-bottom: 24px; font-weight: 400; }
+.contact h2 em { color: var(--sand); font-style: italic; font-weight: 500; }
+.contact .section-head p { color: rgba(250, 246, 238, 0.8); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-info { padding-top: 16px; }
+.contact-block { margin-bottom: 32px; }
+.contact-block-label { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sand); margin-bottom: 10px; font-weight: 500; }
+.contact-block-value { font-family: 'Fraunces', serif; font-size: 24px; color: var(--cream); margin-bottom: 4px; font-weight: 500; }
+.contact-block-value a { color: inherit; text-decoration: none; transition: color 0.2s; }
+.contact-block-value a:hover { color: var(--sand); }
+.contact-block-meta { font-size: 13px; color: rgba(250, 246, 238, 0.6); }
+
+.contact-form-wrap {
+  background: var(--cream);
+  color: var(--ink);
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.3);
+}
+.contact-form-wrap h3 { font-size: 26px; margin-bottom: 6px; font-weight: 500; }
+.contact-form-sub { font-size: 14px; color: var(--ink-muted); margin-bottom: 24px; }
+.contact-disclaimer { font-size: 12px; color: var(--ink-muted); margin-top: 14px; padding: 12px 14px; background: var(--cream-deep); border-radius: 8px; line-height: 1.5; }
+
+/* ============ FOOTER ============ */
+footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+.footer-brand { max-width: 360px; }
+.footer-brand .logo { color: var(--cream); margin-bottom: 20px; }
+.footer-brand .logo-mark { background: var(--cream); color: var(--forest-deep); }
+.footer-brand p { color: rgba(250, 246, 238, 0.65); font-size: 14px; line-height: 1.65; margin-bottom: 24px; }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a { width: 36px; height: 36px; border-radius: 50%; background: rgba(250, 246, 238, 0.08); display: grid; place-items: center; color: var(--cream); transition: background 0.2s; text-decoration: none; }
+.footer-social a:hover { background: var(--terra); }
+.footer-social svg { width: 16px; height: 16px; }
+
+.footer-col h4 { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sand); margin-bottom: 18px; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { color: rgba(250, 246, 238, 0.7); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--cream); }
+
+.footer-bottom { border-top: 1px solid rgba(250, 246, 238, 0.1); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: rgba(250, 246, 238, 0.5); }
+.footer-bottom-links { display: flex; gap: 24px; }
+.footer-bottom-links a { color: rgba(250, 246, 238, 0.5); text-decoration: none; transition: color 0.2s; }
+.footer-bottom-links a:hover { color: var(--cream); }
+
+/* ============ SCROLL REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; gap: 56px; }
+  .hero-art { max-width: 420px; margin: 0 auto; justify-self: center; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr 1fr; }
+  .testimonial.featured { grid-column: span 2; }
+  .careers-grid { grid-template-columns: 1fr; gap: 48px; }
+  .faq-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  nav, .header-cta .btn-ghost { display: none; }
+  .mobile-toggle { display: block; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  section { padding: 72px 0; }
+  .header-top { display: none; }
+  .hero { padding: 56px 0 72px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .hero-card-1 { left: -4%; top: 4%; }
+  .hero-card-2 { right: -4%; bottom: 4%; }
+  .why-grid { grid-template-columns: 1fr; }
+  .process-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .testimonial.featured { grid-column: span 1; }
+  .locations-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .careers-form, .contact-form-wrap { padding: 28px 24px; }
+  .careers-benefits { grid-template-columns: 1fr; }
+  .section-head { margin-bottom: 48px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ============ MOBILE NAV ============ */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  background: var(--forest);
+  z-index: 200;
+  padding: 32px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-nav.open { transform: translateX(0); }
+.mobile-nav-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+.mobile-nav-top .logo { color: var(--cream); }
+.mobile-nav-top .logo-mark { background: var(--cream); color: var(--forest); }
+.mobile-nav-close { background: rgba(250,246,238,0.1); border: none; width: 40px; height: 40px; border-radius: 50%; color: var(--cream); cursor: pointer; display: grid; place-items: center; }
+.mobile-nav-close svg { width: 20px; height: 20px; }
+.mobile-nav ul { list-style: none; }
+.mobile-nav li { margin-bottom: 8px; }
+.mobile-nav a { font-family: 'Fraunces', serif; font-size: 32px; color: var(--cream); text-decoration: none; font-weight: 400; }
+.mobile-nav-cta { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-top">
+    <div class="container">
+      <div class="header-top-contacts">
+        <a href="tel:+15612700220"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg> (561) 270-0220</a>
+        <a href="sms:+15612700220"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg> Text us</a>
+        <a href="mailto:info@littlekids.care"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg> info@littlekids.care</a>
+      </div>
+      <div class="header-top-hours">Mon–Fri 8:30am–5:30pm EST</div>
+    </div>
+  </div>
+  <div class="header-main">
+    <div class="container">
+      <a href="#" class="logo">
+        <div class="logo-mark">L</div>
+        <div class="logo-text">Little Kids<span> therapy</span></div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">How it works</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta">
+        <a href="#careers" class="btn btn-ghost">Join our team</a>
+        <a href="#contact" class="btn btn-primary">Free consultation</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE NAV ============ -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-top">
+    <a href="#" class="logo">
+      <div class="logo-mark">L</div>
+      <div class="logo-text">Little Kids<span> therapy</span></div>
+    </a>
+    <button class="mobile-nav-close" id="mobileClose" aria-label="Close menu">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <ul>
+    <li><a href="#why" class="mobile-link">Why us</a></li>
+    <li><a href="#services" class="mobile-link">Services</a></li>
+    <li><a href="#process" class="mobile-link">How it works</a></li>
+    <li><a href="#locations" class="mobile-link">Locations</a></li>
+    <li><a href="#faq" class="mobile-link">FAQ</a></li>
+    <li><a href="#careers" class="mobile-link">Careers</a></li>
+  </ul>
+  <div class="mobile-nav-cta">
+    <a href="#contact" class="btn btn-primary btn-lg mobile-link">Free consultation</a>
+    <a href="#careers" class="btn btn-ghost btn-lg mobile-link" style="border-color: rgba(250,246,238,0.3); color: var(--cream);">Join our team</a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="psl-pill">
+        <span class="dot"></span>
+        Now accepting families in Fort Pierce — no waitlist
+      </div>
+      <h1>Compassionate ABA therapy that helps your child <em>truly thrive.</em></h1>
+      <p class="hero-desc">Personalized, evidence-based ABA for children with autism — in your home or our clinic. Caring for families across Fort Pierce, Port St. Lucie, and the Treasure Coast.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg">Schedule a free consultation
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
+        <a href="#process" class="btn btn-ghost btn-lg">How it works</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">150+</div>
+          <div class="stat-label">Families served</div>
+        </div>
+        <div>
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years in practice</div>
+        </div>
+        <div>
+          <div class="stat-num">4.9</div>
+          <div class="stat-label">Google rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-art-bg">
+        <div class="hero-emoji-circle">
+          <svg class="hero-illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sun -->
+            <circle cx="200" cy="140" r="42" fill="#ffd86b"/>
+            <circle cx="200" cy="140" r="28" fill="#ff7b6b"/>
+            <!-- Sun rays -->
+            <g stroke="#ffd86b" stroke-width="3" stroke-linecap="round">
+              <line x1="200" y1="80" x2="200" y2="92"/>
+              <line x1="140" y1="140" x2="152" y2="140"/>
+              <line x1="248" y1="140" x2="260" y2="140"/>
+              <line x1="158" y1="98" x2="166" y2="106"/>
+              <line x1="234" y1="106" x2="242" y2="98"/>
+              <line x1="158" y1="182" x2="166" y2="174"/>
+              <line x1="234" y1="174" x2="242" y2="182"/>
+            </g>
+            <!-- Rolling hills -->
+            <path d="M0 280 Q100 230 200 260 T400 250 L400 400 L0 400 Z" fill="#5dc9a8"/>
+            <path d="M0 320 Q120 280 240 310 T400 300 L400 400 L0 400 Z" fill="#3da889"/>
+            <!-- Tree silhouettes -->
+            <circle cx="80" cy="270" r="22" fill="#1a2d4d"/>
+            <rect x="76" y="280" width="8" height="20" fill="#1a2d4d"/>
+            <circle cx="330" cy="275" r="18" fill="#1a2d4d"/>
+            <rect x="326" y="285" width="8" height="16" fill="#1a2d4d"/>
+            <!-- Small figures (parent and child holding hands) -->
+            <circle cx="190" cy="295" r="10" fill="#fffcf5"/>
+            <rect x="184" y="303" width="12" height="22" rx="3" fill="#ff7b6b"/>
+            <circle cx="215" cy="305" r="7" fill="#fffcf5"/>
+            <rect x="211" y="310" width="8" height="16" rx="2" fill="#ffd86b"/>
+            <line x1="196" y1="320" x2="211" y2="320" stroke="#fffcf5" stroke-width="2" stroke-linecap="round"/>
+            <!-- Stars -->
+            <circle cx="100" cy="100" r="2.5" fill="#ffd86b"/>
+            <circle cx="320" cy="80" r="3" fill="#ffd86b"/>
+            <circle cx="280" cy="200" r="2" fill="#ff7b6b" opacity="0.8"/>
+            <circle cx="130" cy="200" r="2" fill="#ff7b6b" opacity="0.8"/>
+            <!-- Small clouds -->
+            <ellipse cx="90" cy="160" rx="18" ry="6" fill="#fffcf5" opacity="0.85"/>
+            <ellipse cx="310" cy="180" rx="20" ry="7" fill="#fffcf5" opacity="0.85"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-card hero-card-1">
+        <div class="hero-card-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-title">In-home & clinic</div>
+          <div class="hero-card-sub">Whatever fits your family</div>
+        </div>
+      </div>
+      <div class="hero-card hero-card-2">
+        <div class="hero-card-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Most insurance accepted</div>
+          <div class="hero-card-sub">BCBS, Aetna, Cigna, UHC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-label">Accepted insurance:</div>
+    <div class="trust-items">
+      <div class="trust-item">Blue Cross Blue Shield</div>
+      <div class="trust-item">Aetna</div>
+      <div class="trust-item">Cigna</div>
+      <div class="trust-item">UnitedHealthcare</div>
+      <div class="trust-item">Florida Medicaid</div>
+      <div class="trust-item">Tricare</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WHY US ============ -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Why families choose us</div>
+      <h2>Care built around <em>your child</em>, not a template.</h2>
+      <p>We're a small enough team that every family knows their BCBA by name — and big enough to offer real flexibility in how and where therapy happens.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        </div>
+        <h3>In-home or clinic</h3>
+        <p>Therapy that meets your child where they're most comfortable — and most ready to learn.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        </div>
+        <h3>Family-first approach</h3>
+        <p>Parents are partners. We train you in the strategies that work so progress carries home.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Flexible scheduling</h3>
+        <p>Mornings, afternoons, evenings. Sessions that fit your work schedule and your child's energy.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        </div>
+        <h3>Licensed BCBA-led</h3>
+        <p>Every program is designed and supervised by a Board Certified Behavior Analyst — never an afterthought.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">How it works</div>
+      <h2>From your first call to your child's <em>first breakthrough.</em></h2>
+      <p>A simple, transparent process. No insurance confusion, no surprises — just real guidance at every step.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <h3>Initial call</h3>
+        <p>Tell us about your child. We'll listen, answer questions, verify your insurance, and walk through what to expect — no commitment.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <h3>BCBA assessment</h3>
+        <p>Our BCBA does a comprehensive evaluation to understand your child's strengths and target the right goals for the next 6 months.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <h3>Insurance approval</h3>
+        <p>We handle the paperwork. Once your hours are approved, we lock in a schedule that actually works for your life.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <h3>Therapy begins</h3>
+        <p>Your child's RBT begins regular sessions at home, in our clinic, or both — with weekly BCBA supervision built in.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">05</div>
+        <h3>Parent partnership</h3>
+        <p>We meet with you regularly to share progress, train you on strategies, and adjust the plan as your child grows.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">06</div>
+        <h3>Ongoing growth</h3>
+        <p>As skills generalize and goals are met, we celebrate every win — and prepare your child for what's next.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">What we offer</div>
+      <h2>Four ways we support <em>your family.</em></h2>
+      <p>Every service is BCBA-designed, data-driven, and centered on real progress — not just hours logged.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-tag">Most popular</div>
+        <h3>In-home ABA therapy</h3>
+        <p class="service-desc">One-on-one therapy in the comfort of your home, where your child feels safe and skills can generalize naturally to daily routines.</p>
+        <a href="#contact" class="service-link">Learn more <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-tag">Center-based</div>
+        <h3>Clinic-based therapy</h3>
+        <p class="service-desc">A dedicated learning environment with peers, ideal for kids who benefit from structured social practice and routine.</p>
+        <a href="#contact" class="service-link">Learn more <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-tag">For caregivers</div>
+        <h3>Parent training</h3>
+        <p class="service-desc">Hands-on coaching so the strategies that work in session keep working at the dinner table, at bedtime, and on the weekend.</p>
+        <a href="#contact" class="service-link">Learn more <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-tag">School support</div>
+        <h3>School consultation & IEP</h3>
+        <p class="service-desc">We collaborate with teachers, attend IEP meetings, and help advocate for the supports your child needs to succeed at school.</p>
+        <a href="#contact" class="service-link">Learn more <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATIONS ============ -->
+<section class="locations" id="locations">
+  <div class="container">
+    <div class="section-head reveal center">
+      <div class="kicker">Where we serve</div>
+      <h2>Based in Fort Pierce, <em>across the Treasure Coast.</em></h2>
+      <p>In-clinic sessions at our Fort Pierce location, plus in-home services throughout St. Lucie, Martin, and Indian River counties.</p>
+    </div>
+    <div class="locations-grid">
+      <div class="location-card reveal">
+        <div class="location-badge">Now open</div>
+        <h3>Fort Pierce</h3>
+        <div class="location-region">Treasure Coast · Now accepting new families</div>
+        <div class="location-detail">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          <span>130 S Indian River Dr, Fort Pierce, FL 34950</span>
+        </div>
+        <div class="location-detail">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+          <span>(561) 270-0220</span>
+        </div>
+        <div class="location-detail">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <span>info@littlekids.care</span>
+        </div>
+        <div class="location-cities">
+          <div class="location-cities-label">In-home service area</div>
+          <div class="location-cities-list">
+            <span class="city-chip">Fort Pierce</span>
+            <span class="city-chip">Port St. Lucie</span>
+            <span class="city-chip">Stuart</span>
+            <span class="city-chip">Jensen Beach</span>
+            <span class="city-chip">Vero Beach</span>
+            <span class="city-chip">Palm City</span>
+            <span class="city-chip">Hobe Sound</span>
+            <span class="city-chip">+ more</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">What parents say</div>
+      <h2>Real progress, in <em>real families.</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial featured reveal">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">From the first call, I knew we were in good hands. Our BCBA Patty has become family to us — patient, kind, and deeply invested in our son's growth. The progress in six months has been more than I dared hope for.</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">MR</div>
+          <div>
+            <div class="reviewer-name">Maria R.</div>
+            <div class="reviewer-meta">Mom · Fort Pierce, FL</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">We've tried other ABA programs. This team is different — they actually treat my son like an individual, not a checklist.</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">JA</div>
+          <div>
+            <div class="reviewer-name">Jordan A.</div>
+            <div class="reviewer-meta">Dad · Port St. Lucie, FL</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">Communication has been incredible. I always know what's being worked on and exactly how to carry it through at home.</div>
+        <div class="reviewer">
+          <div class="reviewer-avatar">SL</div>
+          <div>
+            <div class="reviewer-name">Sarah L.</div>
+            <div class="reviewer-meta">Mom · Stuart, FL</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="google-bar reveal">
+      <div class="google-bar-stars">
+        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <svg fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+      </div>
+      <div class="google-bar-text"><strong>4.9 out of 5</strong> based on 47 Google reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAREERS ============ -->
+<section class="careers" id="careers">
+  <div class="container">
+    <div class="careers-grid">
+      <div class="reveal">
+        <div class="kicker">Careers</div>
+        <h2>Join a team that <em>actually treats you like a person.</em></h2>
+        <p class="careers-desc">We're hiring BCBAs, RBTs, and admin staff across Fort Pierce and the Treasure Coast. If you care about doing this work well — and want a workplace that respects your time and growth — we'd love to meet you.</p>
+        <div class="careers-benefits">
+          <div class="benefit">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span>Competitive pay</span>
+          </div>
+          <div class="benefit">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span>BCBA supervision hours</span>
+          </div>
+          <div class="benefit">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span>Flexible scheduling</span>
+          </div>
+          <div class="benefit">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span>Paid time off</span>
+          </div>
+          <div class="benefit">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span>Ongoing CEU support</span>
+          </div>
+          <div class="benefit">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span>Small, supportive team</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="careers-form reveal" id="careersForm">
+        <h3>Apply now</h3>
+        <p class="careers-form-sub">RBTs, BCBAs, and admin — all welcome.</p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="c-first">First name</label>
+            <input type="text" id="c-first" required>
+          </div>
+          <div class="form-field">
+            <label for="c-last">Last name</label>
+            <input type="text" id="c-last" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" required>
+          </div>
+          <div class="form-field">
+            <label for="c-phone">Phone</label>
+            <input type="tel" id="c-phone" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="c-position">Position</label>
+            <select id="c-position" required>
+              <option value="">Select…</option>
+              <option>RBT (Registered Behavior Technician)</option>
+              <option>BCBA (Board Certified Behavior Analyst)</option>
+              <option>Administrative Coordinator</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="c-exp">Years of experience</label>
+            <select id="c-exp" required>
+              <option value="">Select…</option>
+              <option>0–1 years</option>
+              <option>2–4 years</option>
+              <option>5–9 years</option>
+              <option>10+ years</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="c-cert">FL certification number (RBT or BCBA, if applicable)</label>
+          <input type="text" id="c-cert" placeholder="Optional">
+        </div>
+
+        <div class="form-field">
+          <label>Resume (PDF or DOC, max 5MB)</label>
+          <label class="form-file" for="c-resume">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25"/></svg>
+            <div class="form-file-text"><strong>Click to upload</strong> or drag and drop</div>
+            <div class="form-file-name" id="c-resume-name"></div>
+            <input type="file" id="c-resume" accept=".pdf,.doc,.docx" required>
+          </label>
+        </div>
+
+        <div class="form-field">
+          <label for="c-note">Why us? (brief)</label>
+          <textarea id="c-note" placeholder="Tell us a bit about what you're looking for…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-dark btn-lg" style="width: 100%;">Submit application
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </button>
+
+        <div class="form-success" id="careersSuccess">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3>Application received</h3>
+          <p>Thanks! We'll review your application and get back to you within 3 business days.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="reveal">
+        <div class="kicker">FAQ</div>
+        <h2 style="font-size: 38px; margin-top: 16px;">Common questions, <em>honest answers.</em></h2>
+        <p style="font-size: 16px; color: var(--ink-soft); margin-top: 16px;">Don't see your question? <a href="#contact" style="color: var(--terra); font-weight: 500;">Get in touch</a> — we'll respond within one business day.</p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">Does my child need an autism diagnosis to start ABA?
+            <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">In most cases, yes — insurance typically requires a formal autism diagnosis to authorize ABA. If you don't have one yet, we can refer you to local providers who do diagnostic evaluations. Call us and we'll walk you through it.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How many hours of therapy will my child need?
+            <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">It depends on your child's age, needs, and the assessment results. Most children receive 15–40 hours per week. Your BCBA will recommend a plan based on the comprehensive evaluation, and we work with your insurance to authorize the right hours.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which insurance plans do you accept?
+            <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We accept Blue Cross Blue Shield, Aetna, Cigna, UnitedHealthcare, Florida Medicaid, and Tricare. We're happy to verify your benefits before you commit — no obligation.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you offer therapy at home or only at the clinic?
+            <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Both. Many families choose a hybrid — some sessions at home (where skills naturally generalize) and some at the clinic (where peer interaction is built in). We'll help you decide what works best for your child.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How long is the waitlist?
+            <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Right now we have no waitlist — we're actively enrolling new families across Fort Pierce, Port St. Lucie, and the rest of the Treasure Coast. Call us and we'll give you a real timeline based on hours needed and insurance.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What ages do you work with?
+            <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We serve children ages 2 through 18. Early intervention (ages 2–6) is especially impactful, but ABA can help at any age — we tailor the approach to where your child is in their development.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="kicker">Get in touch</div>
+        <h2>Let's talk about <em>your child.</em></h2>
+        <p style="font-size: 17px; color: rgba(250, 246, 238, 0.8); margin-bottom: 40px; line-height: 1.6;">A real person will respond within one business day. No pressure, no sales pitch — just a conversation about how we can help.</p>
+
+        <div class="contact-block">
+          <div class="contact-block-label">Call or text</div>
+          <div class="contact-block-value"><a href="tel:+15612700220">(561) 270-0220</a></div>
+          <div class="contact-block-meta">Mon–Fri 8:30am–5:30pm · Text anytime</div>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-block-label">Email</div>
+          <div class="contact-block-value"><a href="mailto:info@littlekids.care">info@littlekids.care</a></div>
+          <div class="contact-block-meta">For new families and general inquiries</div>
+        </div>
+
+        <div class="contact-block">
+          <div class="contact-block-label">Visit us</div>
+          <div class="contact-block-value">130 S Indian River Dr</div>
+          <div class="contact-block-meta">Fort Pierce, FL 34950</div>
+        </div>
+      </div>
+
+      <form class="contact-form-wrap reveal" id="contactForm">
+        <h3>Request a free consultation</h3>
+        <p class="contact-form-sub">A real person will respond within one business day.</p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="ct-first">First name</label>
+            <input type="text" id="ct-first" required>
+          </div>
+          <div class="form-field">
+            <label for="ct-last">Last name</label>
+            <input type="text" id="ct-last" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="ct-email">Email</label>
+            <input type="email" id="ct-email" required>
+          </div>
+          <div class="form-field">
+            <label for="ct-phone">Phone</label>
+            <input type="tel" id="ct-phone" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="ct-age">Child's age</label>
+            <select id="ct-age" required>
+              <option value="">Select…</option>
+              <option>Under 3</option>
+              <option>3 to 6</option>
+              <option>7 to 12</option>
+              <option>13 to 18</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="ct-area">Service area</label>
+            <select id="ct-area" required>
+              <option value="">Select…</option>
+              <option>Fort Pierce</option>
+              <option>Port St. Lucie</option>
+              <option>Stuart / Jensen Beach</option>
+              <option>Vero Beach</option>
+              <option>Other Treasure Coast</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="ct-time">Best time to call you</label>
+          <select id="ct-time">
+            <option>Anytime during business hours</option>
+            <option>Morning (8:30am–noon)</option>
+            <option>Afternoon (noon–5pm)</option>
+            <option>I prefer text or email</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="ct-msg">Anything else we should know? (optional)</label>
+          <textarea id="ct-msg" placeholder="A few sentences are plenty — we'll go deeper on the call."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Request consultation
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </button>
+
+        <div class="contact-disclaimer">
+          Please don't share clinical details, diagnoses, insurance numbers, or medical history in this form — we'll cover that securely on the phone or in our intake software.
+        </div>
+
+        <div class="form-success" id="contactSuccess">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <h3>Got it — thank you!</h3>
+          <p>A real person will reach out within one business day.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-mark">L</div>
+          <div class="logo-text">Little Kids<span> therapy</span></div>
+        </a>
+        <p>Compassionate, evidence-based ABA therapy for children with autism. Based in Fort Pierce, serving families across the Treasure Coast.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">In-home therapy</a></li>
+          <li><a href="#services">Clinic-based</a></li>
+          <li><a href="#services">Parent training</a></li>
+          <li><a href="#services">School consultation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#process">How it works</a></li>
+          <li><a href="#locations">Locations</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+15612700220">(561) 270-0220</a></li>
+          <li><a href="sms:+15612700220">Text us</a></li>
+          <li><a href="mailto:info@littlekids.care">info@littlekids.care</a></li>
+          <li>130 S Indian River Dr, Fort Pierce, FL 34950</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Little Kids Therapy · All rights reserved</div>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Mobile nav
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileNav = document.getElementById('mobileNav');
+const mobileClose = document.getElementById('mobileClose');
+mobileToggle?.addEventListener('click', () => mobileNav.classList.add('open'));
+mobileClose?.addEventListener('click', () => mobileNav.classList.remove('open'));
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => mobileNav.classList.remove('open'));
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    item.classList.toggle('open');
+  });
+});
+
+// File upload display
+const resumeInput = document.getElementById('c-resume');
+const resumeName = document.getElementById('c-resume-name');
+resumeInput?.addEventListener('change', (e) => {
+  if (e.target.files[0]) resumeName.textContent = e.target.files[0].name;
+});
+
+// Form submissions (mockup - shows success message)
+document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('contactSuccess').classList.add('show');
+  setTimeout(() => { document.getElementById('contactSuccess').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);
+});
+
+document.getElementById('careersForm')?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('careersSuccess').classList.add('show');
+  setTimeout(() => { document.getElementById('careersSuccess').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
