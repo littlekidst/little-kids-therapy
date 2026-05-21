@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Little Kids Therapy — Pediatric ABA Therapy in Fort Pierce, FL</title>
-<meta name="description" content="Compassionate pediatric ABA therapy for children with autism. Serving Fort Pierce, Port St. Lucie, and the Treasure Coast — in your home or our clinic.">
+<title>Little Kids Therapy — Pediatric ABA & Speech Support in Fort Pierce, FL</title>
+<meta name="description" content="Modern pediatric ABA and speech-support services for families across Fort Pierce, Port St. Lucie, and the Treasure Coast — start with a simple call or text.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -723,9 +723,80 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
 .mobile-nav li { margin-bottom: 8px; }
 .mobile-nav a { font-family: 'Fraunces', serif; font-size: 32px; color: var(--cream); text-decoration: none; font-weight: 400; }
 .mobile-nav-cta { margin-top: auto; display: flex; flex-direction: column; gap: 12px; }
+
+
+/* ============ 2030 MOTION / INTERACTION LAYER ============ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+.scroll-progress {
+  position: fixed; top: 0; left: 0; width: 0%; height: 3px;
+  background: linear-gradient(90deg, var(--terra), var(--sand), var(--forest-soft));
+  z-index: 9999; box-shadow: 0 0 18px rgba(255,123,107,.55);
+}
+.mouse-glow {
+  position: fixed; width: 280px; height: 280px; border-radius: 999px;
+  pointer-events: none; z-index: 0; opacity: .22; filter: blur(28px);
+  background: radial-gradient(circle, rgba(142,220,235,.75), transparent 65%);
+  transform: translate(-50%, -50%); transition: opacity .25s ease;
+}
+.ambient { position: fixed; z-index: 0; pointer-events: none; filter: blur(2px); opacity: .28; }
+.ambient-1 { width: 380px; height: 380px; top: 14%; left: -160px; border-radius: 44% 56% 61% 39%; background: radial-gradient(circle, rgba(93,201,168,.55), transparent 68%); animation: drift 16s ease-in-out infinite alternate; }
+.ambient-2 { width: 420px; height: 420px; right: -190px; top: 42%; border-radius: 65% 35% 42% 58%; background: radial-gradient(circle, rgba(255,123,107,.34), transparent 70%); animation: drift 20s ease-in-out infinite alternate-reverse; }
+.ambient-3 { width: 300px; height: 300px; left: 45%; bottom: -150px; border-radius: 50%; background: radial-gradient(circle, rgba(255,216,107,.42), transparent 70%); animation: floaty 10s ease-in-out infinite; }
+@keyframes drift { from { transform: translate3d(0,0,0) rotate(0deg); } to { transform: translate3d(45px, -30px, 0) rotate(18deg); } }
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-22px); } }
+header { box-shadow: 0 8px 28px rgba(26,45,77,.04); }
+.psl-pill { position: relative; overflow: hidden; }
+.psl-pill::after { content:''; position:absolute; inset:-2px; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.8) 50%, transparent 100%); transform: translateX(-120%); animation: shine 4s ease-in-out infinite; }
+@keyframes shine { 0%, 45% { transform: translateX(-120%); } 70%, 100% { transform: translateX(120%); } }
+.hero-art { animation: heroFloat 7s ease-in-out infinite; transform-style: preserve-3d; }
+@keyframes heroFloat { 0%, 100% { transform: translateY(0) rotate(.25deg); } 50% { transform: translateY(-14px) rotate(-.25deg); } }
+.hero-card { backdrop-filter: blur(18px); background: rgba(255,252,245,.86); animation: cardFloat 5.5s ease-in-out infinite; }
+.hero-card-2 { animation-delay: 1.1s; }
+@keyframes cardFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.btn { position: relative; overflow: hidden; }
+.btn::before { content:''; position:absolute; inset:0; background: linear-gradient(120deg, transparent, rgba(255,255,255,.32), transparent); transform: translateX(-130%); transition: transform .65s ease; }
+.btn:hover::before { transform: translateX(130%); }
+.family-path .trust-items { gap: 16px; }
+.family-path .trust-item { background: rgba(255,252,245,.72); border: 1px solid var(--line-soft); border-radius: 999px; padding: 10px 16px; box-shadow: 0 8px 24px rgba(26,45,77,.04); transition: transform .25s ease, background .25s ease; }
+.family-path .trust-item:hover { transform: translateY(-3px); background: white; }
+.why-card, .service-card, .testimonial, .location-card, .contact-form-wrap, .careers-form, .process-step { will-change: transform; transform-style: preserve-3d; }
+.why-card:hover, .service-card:hover, .testimonial:hover, .location-card:hover { box-shadow: 0 28px 70px -34px rgba(26,45,77,.45); }
+.service-card::after, .why-card::after, .testimonial::after, .location-card::after {
+  content:''; position:absolute; inset:0; border-radius: inherit; pointer-events:none;
+  background: radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,.32), transparent 42%);
+  opacity:0; transition: opacity .25s ease;
+}
+.service-card:hover::after, .why-card:hover::after, .testimonial:hover::after, .location-card:hover::after { opacity:1; }
+.form-field input, .form-field select, .form-field textarea { box-shadow: inset 0 0 0 0 rgba(59,175,214,.18); }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { box-shadow: 0 0 0 4px rgba(59,175,214,.12); transform: translateY(-1px); }
+.smart-form { position: relative; overflow: hidden; }
+.smart-form::before { content:''; position:absolute; inset:0; pointer-events:none; background: radial-gradient(600px circle at 12% 0%, rgba(142,220,235,.18), transparent 44%); }
+.smart-form > * { position: relative; }
+.form-error { display:none; margin-top: 14px; padding: 14px 16px; background: #fff1f0; color: #9f2a20; border: 1px solid rgba(232,90,74,.22); border-radius: 12px; font-size: 13px; line-height: 1.45; }
+.form-error.show { display:block; }
+button[disabled] { opacity: .72; cursor: wait; transform: none !important; }
+.cta-float {
+  position: fixed; right: 22px; bottom: 22px; z-index: 80;
+  display: flex; gap: 10px; align-items: center;
+  background: rgba(255,252,245,.86); border: 1px solid var(--line-soft); border-radius: 999px; padding: 8px;
+  box-shadow: 0 22px 55px rgba(26,45,77,.18); backdrop-filter: blur(20px);
+  transform: translateY(140%); transition: transform .35s ease;
+}
+.cta-float.show { transform: translateY(0); }
+.cta-float a { text-decoration:none; }
+.cta-float .call-now { color: var(--ink); font-weight: 700; font-size: 13px; padding: 0 8px; }
+@media (max-width: 640px) { .mouse-glow, .ambient { display:none; } .cta-float { left: 16px; right: 16px; justify-content: space-between; } }
+
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="mouse-glow" id="mouseGlow"></div>
+<div class="ambient ambient-1"></div>
+<div class="ambient ambient-2"></div>
+<div class="ambient ambient-3"></div>
 
 <!-- ============ HEADER ============ -->
 <header>
@@ -878,25 +949,23 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
         </div>
         <div>
-          <div class="hero-card-title">Most insurance accepted</div>
-          <div class="hero-card-sub">BCBS, Aetna, Cigna, UHC</div>
+          <div class="hero-card-title">Start with a call</div>
+          <div class="hero-card-sub">Questions first, paperwork later</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TRUST BAR ============ -->
-<div class="trust-bar">
+<!-- ============ FAMILY PATH BAR ============ -->
+<div class="trust-bar family-path">
   <div class="container">
-    <div class="trust-label">Accepted insurance:</div>
+    <div class="trust-label">Quick family path:</div>
     <div class="trust-items">
-      <div class="trust-item">Blue Cross Blue Shield</div>
-      <div class="trust-item">Aetna</div>
-      <div class="trust-item">Cigna</div>
-      <div class="trust-item">UnitedHealthcare</div>
-      <div class="trust-item">Florida Medicaid</div>
-      <div class="trust-item">Tricare</div>
+      <div class="trust-item">Call or text first</div>
+      <div class="trust-item">Speak with a real person</div>
+      <div class="trust-item">Choose home or clinic</div>
+      <div class="trust-item">Plan the next step together</div>
     </div>
   </div>
 </div>
@@ -948,13 +1017,13 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
     <div class="section-head reveal">
       <div class="kicker">How it works</div>
       <h2>From your first call to your child's <em>first breakthrough.</em></h2>
-      <p>A simple, transparent process. No insurance confusion, no surprises — just real guidance at every step.</p>
+      <p>A simple, transparent process. No confusing forms to start — just a friendly conversation, clear next steps, and support from a real person.</p>
     </div>
     <div class="process-grid">
       <div class="process-step reveal">
         <div class="step-num">01</div>
         <h3>Initial call</h3>
-        <p>Tell us about your child. We'll listen, answer questions, verify your insurance, and walk through what to expect — no commitment.</p>
+        <p>Tell us about your child. We'll listen, answer questions, and walk through what to expect — no pressure and no sensitive details needed in the web form.</p>
       </div>
       <div class="process-step reveal">
         <div class="step-num">02</div>
@@ -963,8 +1032,8 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
       </div>
       <div class="process-step reveal">
         <div class="step-num">03</div>
-        <h3>Insurance approval</h3>
-        <p>We handle the paperwork. Once your hours are approved, we lock in a schedule that actually works for your life.</p>
+        <h3>Plan the next step</h3>
+        <p>After the call, we guide you through the safest way to share documents and decide whether home, clinic, or a hybrid schedule fits best.</p>
       </div>
       <div class="process-step reveal">
         <div class="step-num">04</div>
@@ -1156,36 +1225,40 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
         </div>
       </div>
 
-      <form class="careers-form reveal" id="careersForm">
+      <form class="careers-form reveal smart-form" id="careersForm" action="https://formsubmit.co/ajax/info@littlekids.care" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_subject" value="New Little Kids career application">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <h3>Apply now</h3>
         <p class="careers-form-sub">RBTs, BCBAs, and admin — all welcome.</p>
 
         <div class="form-row">
           <div class="form-field">
             <label for="c-first">First name</label>
-            <input type="text" id="c-first" required>
+            <input type="text" id="c-first" name="applicant_first_name" autocomplete="given-name" required>
           </div>
           <div class="form-field">
             <label for="c-last">Last name</label>
-            <input type="text" id="c-last" required>
+            <input type="text" id="c-last" name="applicant_last_name" autocomplete="family-name" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
             <label for="c-email">Email</label>
-            <input type="email" id="c-email" required>
+            <input type="email" id="c-email" name="applicant_email" autocomplete="email" required>
           </div>
           <div class="form-field">
             <label for="c-phone">Phone</label>
-            <input type="tel" id="c-phone" required>
+            <input type="tel" id="c-phone" name="applicant_phone" autocomplete="tel" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
             <label for="c-position">Position</label>
-            <select id="c-position" required>
+            <select id="c-position" name="position" required>
               <option value="">Select…</option>
               <option>RBT (Registered Behavior Technician)</option>
               <option>BCBA (Board Certified Behavior Analyst)</option>
@@ -1195,7 +1268,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
           </div>
           <div class="form-field">
             <label for="c-exp">Years of experience</label>
-            <select id="c-exp" required>
+            <select id="c-exp" name="years_experience" required>
               <option value="">Select…</option>
               <option>0–1 years</option>
               <option>2–4 years</option>
@@ -1207,7 +1280,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
 
         <div class="form-field">
           <label for="c-cert">FL certification number (RBT or BCBA, if applicable)</label>
-          <input type="text" id="c-cert" placeholder="Optional">
+          <input type="text" id="c-cert" name="certification_number" placeholder="Optional">
         </div>
 
         <div class="form-field">
@@ -1216,13 +1289,13 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25"/></svg>
             <div class="form-file-text"><strong>Click to upload</strong> or drag and drop</div>
             <div class="form-file-name" id="c-resume-name"></div>
-            <input type="file" id="c-resume" accept=".pdf,.doc,.docx" required>
+            <input type="file" id="c-resume" name="resume" accept=".pdf,.doc,.docx" required>
           </label>
         </div>
 
         <div class="form-field">
           <label for="c-note">Why us? (brief)</label>
-          <textarea id="c-note" placeholder="Tell us a bit about what you're looking for…"></textarea>
+          <textarea id="c-note" name="why_us" placeholder="Tell us a bit about what you're looking for…"></textarea>
         </div>
 
         <button type="submit" class="btn btn-dark btn-lg" style="width: 100%;">Submit application
@@ -1234,6 +1307,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
           <h3>Application received</h3>
           <p>Thanks! We'll review your application and get back to you within 3 business days.</p>
         </div>
+        <div class="form-error" id="careersError">The form could not send. Please email your information to info@littlekids.care.</div>
       </form>
     </div>
   </div>
@@ -1250,22 +1324,22 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
       </div>
       <div class="faq-list reveal">
         <div class="faq-item">
-          <button class="faq-q">Does my child need an autism diagnosis to start ABA?
+          <button class="faq-q">Can I ask questions before sharing documents?
             <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">In most cases, yes — insurance typically requires a formal autism diagnosis to authorize ABA. If you don't have one yet, we can refer you to local providers who do diagnostic evaluations. Call us and we'll walk you through it.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. The first conversation is for questions, comfort, and next steps. You do not need to put private medical details into this website form.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">How many hours of therapy will my child need?
             <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">It depends on your child's age, needs, and the assessment results. Most children receive 15–40 hours per week. Your BCBA will recommend a plan based on the comprehensive evaluation, and we work with your insurance to authorize the right hours.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">It depends on your child's age, needs, and the assessment results. Most children receive 15–40 hours per week. Your BCBA will recommend a plan based on the comprehensive evaluation, and our team will explain the next steps clearly.</div></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">Which insurance plans do you accept?
+          <button class="faq-q">Can we talk about payment questions by phone?
             <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">We accept Blue Cross Blue Shield, Aetna, Cigna, UnitedHealthcare, Florida Medicaid, and Tricare. We're happy to verify your benefits before you commit — no obligation.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. For privacy, payment and coverage questions are handled directly by phone with a real person instead of through the public website form.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Do you offer therapy at home or only at the clinic?
@@ -1277,7 +1351,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
           <button class="faq-q">How long is the waitlist?
             <span class="faq-q-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg></span>
           </button>
-          <div class="faq-a"><div class="faq-a-inner">Right now we have no waitlist — we're actively enrolling new families across Fort Pierce, Port St. Lucie, and the rest of the Treasure Coast. Call us and we'll give you a real timeline based on hours needed and insurance.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Right now we have no waitlist — we're actively enrolling new families across Fort Pierce, Port St. Lucie, and the rest of the Treasure Coast. Call us and we'll give you a real timeline based on your child’s needs and availability.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">What ages do you work with?
@@ -1318,36 +1392,40 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
         </div>
       </div>
 
-      <form class="contact-form-wrap reveal" id="contactForm">
+      <form class="contact-form-wrap reveal smart-form" id="contactForm" action="https://formsubmit.co/ajax/info@littlekids.care" method="POST">
+        <input type="hidden" name="_subject" value="New Little Kids consultation request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <h3>Request a free consultation</h3>
         <p class="contact-form-sub">A real person will respond within one business day.</p>
 
         <div class="form-row">
           <div class="form-field">
             <label for="ct-first">First name</label>
-            <input type="text" id="ct-first" required>
+            <input type="text" id="ct-first" name="parent_first_name" autocomplete="given-name" required>
           </div>
           <div class="form-field">
             <label for="ct-last">Last name</label>
-            <input type="text" id="ct-last" required>
+            <input type="text" id="ct-last" name="parent_last_name" autocomplete="family-name" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
             <label for="ct-email">Email</label>
-            <input type="email" id="ct-email" required>
+            <input type="email" id="ct-email" name="parent_email" autocomplete="email" required>
           </div>
           <div class="form-field">
             <label for="ct-phone">Phone</label>
-            <input type="tel" id="ct-phone" required>
+            <input type="tel" id="ct-phone" name="parent_phone" autocomplete="tel" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
             <label for="ct-age">Child's age</label>
-            <select id="ct-age" required>
+            <select id="ct-age" name="child_age" required>
               <option value="">Select…</option>
               <option>Under 3</option>
               <option>3 to 6</option>
@@ -1357,7 +1435,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
           </div>
           <div class="form-field">
             <label for="ct-area">Service area</label>
-            <select id="ct-area" required>
+            <select id="ct-area" name="service_area" required>
               <option value="">Select…</option>
               <option>Fort Pierce</option>
               <option>Port St. Lucie</option>
@@ -1370,7 +1448,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
 
         <div class="form-field">
           <label for="ct-time">Best time to call you</label>
-          <select id="ct-time">
+          <select id="ct-time" name="best_time_to_call">
             <option>Anytime during business hours</option>
             <option>Morning (8:30am–noon)</option>
             <option>Afternoon (noon–5pm)</option>
@@ -1380,7 +1458,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
 
         <div class="form-field">
           <label for="ct-msg">Anything else we should know? (optional)</label>
-          <textarea id="ct-msg" placeholder="A few sentences are plenty — we'll go deeper on the call."></textarea>
+          <textarea id="ct-msg" name="message" placeholder="A few sentences are plenty — we'll go deeper on the call."></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Request consultation
@@ -1388,7 +1466,7 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
         </button>
 
         <div class="contact-disclaimer">
-          Please don't share clinical details, diagnoses, insurance numbers, or medical history in this form — we'll cover that securely on the phone or in our intake software.
+          Please do not share clinical details, diagnoses, medical history, or sensitive private information in this form — we will talk securely by phone or in our intake software.
         </div>
 
         <div class="form-success" id="contactSuccess">
@@ -1396,10 +1474,16 @@ footer { background: var(--footer-bg); color: var(--cream); padding: 80px 0 40px
           <h3>Got it — thank you!</h3>
           <p>A real person will reach out within one business day.</p>
         </div>
+        <div class="form-error" id="contactError">The form could not send. Please call or text (561) 270-0220, or email info@littlekids.care directly.</div>
       </form>
     </div>
   </div>
 </section>
+
+<div class="cta-float" id="ctaFloat">
+  <a class="call-now" href="tel:+15612700220">Call now: (561) 270-0220</a>
+  <a href="#contact" class="btn btn-primary">Request call</a>
+</div>
 
 <!-- ============ FOOTER ============ -->
 <footer>
@@ -1482,17 +1566,91 @@ resumeInput?.addEventListener('change', (e) => {
   if (e.target.files[0]) resumeName.textContent = e.target.files[0].name;
 });
 
-// Form submissions (mockup - shows success message)
+// Real email form submissions through FormSubmit.co AJAX.
+// IMPORTANT: FormSubmit sends a one-time confirmation email to info@littlekids.care.
+// After you confirm it once, new form requests will arrive in that inbox.
+async function submitEmailForm(form, successId, errorId) {
+  const success = document.getElementById(successId);
+  const error = document.getElementById(errorId);
+  const button = form.querySelector('button[type="submit"]');
+  const originalButton = button?.innerHTML;
+  success?.classList.remove('show');
+  error?.classList.remove('show');
+  if (button) {
+    button.disabled = true;
+    button.innerHTML = 'Sending…';
+  }
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!response.ok) throw new Error('Form service returned an error');
+    form.reset();
+    if (resumeName) resumeName.textContent = '';
+    success?.classList.add('show');
+    setTimeout(() => { success?.scrollIntoView({behavior: 'smooth', block: 'center'}); }, 120);
+  } catch (err) {
+    console.warn(err);
+    error?.classList.add('show');
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.innerHTML = originalButton;
+    }
+  }
+}
+
 document.getElementById('contactForm')?.addEventListener('submit', (e) => {
   e.preventDefault();
-  document.getElementById('contactSuccess').classList.add('show');
-  setTimeout(() => { document.getElementById('contactSuccess').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);
+  submitEmailForm(e.currentTarget, 'contactSuccess', 'contactError');
 });
 
 document.getElementById('careersForm')?.addEventListener('submit', (e) => {
   e.preventDefault();
-  document.getElementById('careersSuccess').classList.add('show');
-  setTimeout(() => { document.getElementById('careersSuccess').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);
+  submitEmailForm(e.currentTarget, 'careersSuccess', 'careersError');
+});
+
+
+
+// 2030-style motion: scroll progress, glow, floating CTA, card light tracking, gentle tilt.
+const progress = document.getElementById('scrollProgress');
+const glow = document.getElementById('mouseGlow');
+const ctaFloat = document.getElementById('ctaFloat');
+function updatePageMotion() {
+  const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  const pct = Math.min(100, (window.scrollY / max) * 100);
+  if (progress) progress.style.width = pct + '%';
+  if (ctaFloat) ctaFloat.classList.toggle('show', window.scrollY > 680);
+}
+window.addEventListener('scroll', updatePageMotion, { passive: true });
+updatePageMotion();
+window.addEventListener('pointermove', (e) => {
+  if (glow) {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  }
+  document.querySelectorAll('.why-card, .service-card, .testimonial, .location-card').forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    if (x >= 0 && y >= 0 && x <= rect.width && y <= rect.height) {
+      card.style.setProperty('--mx', x + 'px');
+      card.style.setProperty('--my', y + 'px');
+    }
+  });
+}, { passive: true });
+
+document.querySelectorAll('.why-card, .service-card, .testimonial, .location-card').forEach(card => {
+  card.addEventListener('pointermove', (e) => {
+    if (window.matchMedia('(max-width: 800px)').matches) return;
+    const r = card.getBoundingClientRect();
+    const rotateY = ((e.clientX - r.left) / r.width - .5) * 5;
+    const rotateX = -((e.clientY - r.top) / r.height - .5) * 5;
+    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+  });
+  card.addEventListener('pointerleave', () => { card.style.transform = ''; });
 });
 
 // Scroll reveal
