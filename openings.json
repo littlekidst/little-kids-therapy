@@ -1,0 +1,59 @@
+[
+  {
+    "initials": "A.M.",
+    "age": "4",
+    "area": "Fort Pierce",
+    "setting": "In-home",
+    "services": [
+      "RBT",
+      "BCBA"
+    ],
+    "session": "Afternoon",
+    "days": "Mon-Fri preferred",
+    "hours": "3:00pm-6:00pm",
+    "priority": "Ready now",
+    "notes": "Early learner. Family prefers a consistent weekly team."
+  },
+  {
+    "initials": "J.R.",
+    "age": "6",
+    "area": "Port St. Lucie",
+    "setting": "In-home",
+    "services": [
+      "RBT"
+    ],
+    "session": "Morning",
+    "days": "3-5 days/week",
+    "hours": "8:30am-12:00pm",
+    "priority": "New opening",
+    "notes": "Great fit for an RBT who enjoys early intervention routines."
+  },
+  {
+    "initials": "L.S.",
+    "age": "8",
+    "area": "Vero Beach",
+    "setting": "Clinic / Hybrid",
+    "services": [
+      "SLP"
+    ],
+    "session": "After school",
+    "days": "2 days/week",
+    "hours": "After 3:30pm",
+    "priority": "SLP needed",
+    "notes": "Speech opening. No private clinical details are posted publicly."
+  },
+  {
+    "initials": "N.T.",
+    "age": "5",
+    "area": "Stuart / Jensen Beach",
+    "setting": "In-home",
+    "services": [
+      "BCBA"
+    ],
+    "session": "Flexible",
+    "days": "Assessment / supervision",
+    "hours": "Flexible schedule",
+    "priority": "BCBA review",
+    "notes": "Clinical supervision opportunity for a BCBA in the Treasure Coast area."
+  }
+]
