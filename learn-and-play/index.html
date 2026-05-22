@@ -1,25 +1,142 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learn & Play — Little Kids Therapy</title>
-    <meta name="description" content="Little Kids Therapy Learn & Play activity portal" />
-    <meta name="author" content="Lovable" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Learn & Play — Little Kids Therapy</title>
+  <meta name="description" content="A free kid-friendly Learn & Play arcade with ABA-inspired games. No login, no names, no private information.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="motion-bg" aria-hidden="true">
+    <span class="blob blob-one"></span>
+    <span class="blob blob-two"></span>
+    <span class="blob blob-three"></span>
+  </div>
 
-    <meta property="og:title" content="Learn & Play — Little Kids Therapy" />
-    <meta property="og:description" content="Little Kids Therapy Learn & Play activity portal" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="Back to Little Kids Therapy home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 96 96" role="img">
+          <path d="M24 52c2 22 43 22 47 0" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/>
+          <circle cx="35" cy="39" r="5" fill="#132a4e"/>
+          <circle cx="60" cy="39" r="5" fill="#132a4e"/>
+          <path d="M27 25l-6-13M42 20l-1-14M58 21l5-14M72 27l11-9" stroke-linecap="round" stroke-width="8"/>
+          <path d="M27 25l-6-13" stroke="#6bd68b"/>
+          <path d="M42 20l-1-14" stroke="#ff6b6b"/>
+          <path d="M58 21l5-14" stroke="#4dabf7"/>
+          <path d="M72 27l11-9" stroke="#ffd43b"/>
+        </svg>
+      </span>
+      <span>
+        <strong>Little Kids</strong>
+        <em>Learn & Play</em>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="Learn and Play navigation">
+      <a href="#games">Games</a>
+      <a href="#progress">Stars</a>
+      <a href="#safety">Safety</a>
+      <a class="home-link" href="../">Main site</a>
+    </nav>
+  </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@littlekidstherapy" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-    <script type="module" crossorigin src="./assets/index-Dl6oTSnQ.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-0jHmFZ0X.css">
-  </head>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="pill"><span></span> No login · No names · Just play</div>
+        <h1>ABA-inspired games kids can play right in the browser.</h1>
+        <p>Practice emotions, directions, routines, categories, communication, and calm-down skills with simple interactive games. Built to run fully on GitHub Pages.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#games">Start playing</a>
+          <button class="btn soft" id="resetProgressBtn" type="button">Reset stars</button>
+        </div>
+      </div>
+      <div class="hero-stage" aria-hidden="true">
+        <div class="kid-orbit">
+          <div class="sun-face">
+            <span class="eye left"></span>
+            <span class="eye right"></span>
+            <span class="smile"></span>
+          </div>
+          <span class="planet p1">⭐</span>
+          <span class="planet p2">🧩</span>
+          <span class="planet p3">💬</span>
+          <span class="planet p4">🎈</span>
+        </div>
+      </div>
+    </section>
 
-  <body>
-    <div id="root"></div>
-  </body>
+    <section class="stats-strip" id="progress" aria-label="Progress on this device">
+      <div>
+        <span class="stat-num" id="totalStars">0</span>
+        <span class="stat-label">stars earned on this device</span>
+      </div>
+      <div>
+        <span class="stat-num" id="gamesPlayed">0</span>
+        <span class="stat-label">games played</span>
+      </div>
+      <div>
+        <span class="stat-num">0</span>
+        <span class="stat-label">names or logins collected</span>
+      </div>
+    </section>
+
+    <section class="section" id="games">
+      <div class="section-head">
+        <span class="kicker">Choose a game</span>
+        <h2>Simple, visual, and kid-friendly.</h2>
+        <p>Pick a skill area. Stars save only on this browser/device using local storage. No private child data is collected.</p>
+      </div>
+
+      <div class="filters" role="tablist" aria-label="Game filters">
+        <button class="filter active" data-filter="All" type="button">All</button>
+        <button class="filter" data-filter="Social Skills" type="button">Social Skills</button>
+        <button class="filter" data-filter="Language" type="button">Language</button>
+        <button class="filter" data-filter="Listening" type="button">Listening</button>
+        <button class="filter" data-filter="Routine" type="button">Routine</button>
+        <button class="filter" data-filter="Regulation" type="button">Regulation</button>
+      </div>
+
+      <div class="game-grid" id="gameGrid"></div>
+    </section>
+
+    <section class="play-panel" id="playPanel" hidden>
+      <div class="play-shell">
+        <div class="play-top">
+          <div>
+            <span class="kicker" id="gameCategory">Game</span>
+            <h2 id="gameTitle">Game title</h2>
+            <p id="gameGoal">Goal</p>
+          </div>
+          <button class="icon-btn" id="closeGameBtn" type="button" aria-label="Close game">×</button>
+        </div>
+        <div class="game-area" id="gameArea"></div>
+      </div>
+    </section>
+
+    <section class="section safety" id="safety">
+      <div class="safety-card">
+        <div>
+          <span class="kicker">Privacy-first</span>
+          <h2>Built for public play, not private records.</h2>
+          <p>This page does not use Supabase, login, passwords, chat, uploads, microphone, camera, location, or child profiles. Keep it as a public game area only.</p>
+        </div>
+        <ul>
+          <li>No full names</li>
+          <li>No DOB</li>
+          <li>No diagnosis</li>
+          <li>No insurance</li>
+          <li>No medical notes</li>
+          <li>No account needed</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="games.js"></script>
+</body>
 </html>

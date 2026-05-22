@@ -1,0 +1,82 @@
+[
+  {
+    "id": "emotion-match",
+    "title": "Emotion Match",
+    "category": "Social Skills",
+    "age": "3+",
+    "goal": "Identify emotions and match facial expressions to words.",
+    "enabled": true
+  },
+  {
+    "id": "follow-directions",
+    "title": "Follow Directions",
+    "category": "Listening",
+    "age": "3+",
+    "goal": "Practice one-step directions with color, shape, and position words.",
+    "enabled": true
+  },
+  {
+    "id": "token-board",
+    "title": "Token Board",
+    "category": "Reinforcement",
+    "age": "2+",
+    "goal": "Earn five tokens and celebrate a completed task.",
+    "enabled": true
+  },
+  {
+    "id": "category-sort",
+    "title": "Category Sort",
+    "category": "Language",
+    "age": "4+",
+    "goal": "Sort items into animals, foods, toys, and clothes.",
+    "enabled": true
+  },
+  {
+    "id": "first-then",
+    "title": "First / Then Builder",
+    "category": "Routine",
+    "age": "2+",
+    "goal": "Practice simple first-then language and transitions.",
+    "enabled": true
+  },
+  {
+    "id": "breathing-bubble",
+    "title": "Calm Breathing Bubble",
+    "category": "Regulation",
+    "age": "3+",
+    "goal": "Follow a visual breathing cue to calm the body.",
+    "enabled": true
+  },
+  {
+    "id": "aac-board",
+    "title": "AAC Choice Board",
+    "category": "Communication",
+    "age": "2+",
+    "goal": "Practice functional phrases like I want, help, more, and all done.",
+    "enabled": true
+  },
+  {
+    "id": "routine-sequence",
+    "title": "Routine Sequence",
+    "category": "Daily Living",
+    "age": "4+",
+    "goal": "Put everyday routine steps in order.",
+    "enabled": true
+  },
+  {
+    "id": "social-choices",
+    "title": "Social Choices",
+    "category": "Social Skills",
+    "age": "5+",
+    "goal": "Choose friendly responses in common social situations.",
+    "enabled": true
+  },
+  {
+    "id": "imitation-cards",
+    "title": "Imitation Cards",
+    "category": "Motor Imitation",
+    "age": "2+",
+    "goal": "Practice simple gross-motor imitation actions.",
+    "enabled": true
+  }
+]
