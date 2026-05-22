@@ -4,7 +4,7 @@
     "title": "Emotion Match",
     "category": "Social Skills",
     "age": "3+",
-    "goal": "Identify emotions and match facial expressions to words.",
+    "goal": "Identify emotions and match facial expressions to feeling words.",
     "enabled": true
   },
   {
@@ -36,7 +36,7 @@
     "title": "First / Then Builder",
     "category": "Routine",
     "age": "2+",
-    "goal": "Practice simple first-then language and transitions.",
+    "goal": "Practice first/then language and transitions.",
     "enabled": true
   },
   {
@@ -77,6 +77,94 @@
     "category": "Motor Imitation",
     "age": "2+",
     "goal": "Practice simple gross-motor imitation actions.",
+    "enabled": true
+  },
+  {
+    "id": "conversation-builder",
+    "title": "Conversation Builder",
+    "category": "Communication",
+    "age": "5+",
+    "goal": "Practice greetings, questions, comments, and ending conversations politely.",
+    "enabled": true
+  },
+  {
+    "id": "expected-unexpected",
+    "title": "Expected / Unexpected",
+    "category": "Social Skills",
+    "age": "6+",
+    "goal": "Learn which behaviors fit different places and situations.",
+    "enabled": true
+  },
+  {
+    "id": "safety-signs",
+    "title": "Safety Signs",
+    "category": "Safety",
+    "age": "6+",
+    "goal": "Recognize common community safety signs and what they mean.",
+    "enabled": true
+  },
+  {
+    "id": "coping-match",
+    "title": "Coping Strategy Match",
+    "category": "Regulation",
+    "age": "6+",
+    "goal": "Choose a helpful coping strategy for common feelings and problems.",
+    "enabled": true
+  },
+  {
+    "id": "time-schedule",
+    "title": "Time & Schedule",
+    "category": "Executive Function",
+    "age": "7+",
+    "goal": "Practice reading simple schedules and choosing what happens next.",
+    "enabled": true
+  },
+  {
+    "id": "hygiene-helper",
+    "title": "Hygiene Helper",
+    "category": "Daily Living",
+    "age": "6+",
+    "goal": "Match daily hygiene tasks with the right tools and steps.",
+    "enabled": true
+  },
+  {
+    "id": "problem-solving",
+    "title": "Problem Solving Steps",
+    "category": "Executive Function",
+    "age": "8+",
+    "goal": "Practice stop-think-choose skills for everyday problems.",
+    "enabled": true
+  },
+  {
+    "id": "money-store",
+    "title": "Money Store",
+    "category": "Life Skills",
+    "age": "8+",
+    "goal": "Practice paying for small items and comparing prices.",
+    "enabled": true
+  },
+  {
+    "id": "perspective-detective",
+    "title": "Perspective Detective",
+    "category": "Social Skills",
+    "age": "9+",
+    "goal": "Think about what another person may feel, think, or need.",
+    "enabled": true
+  },
+  {
+    "id": "goal-planner",
+    "title": "Goal Planner",
+    "category": "Executive Function",
+    "age": "10+",
+    "goal": "Break a bigger goal into small action steps.",
+    "enabled": true
+  },
+  {
+    "id": "workplace-choices",
+    "title": "Workplace Choices",
+    "category": "Vocational",
+    "age": "12-21",
+    "goal": "Practice safe, respectful choices for jobs, volunteering, and community work.",
     "enabled": true
   }
 ]
