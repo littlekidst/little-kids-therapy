@@ -37,6 +37,7 @@
     <nav class="top-actions" aria-label="Learn and Play actions">
       <button class="pill-btn daily-pill" id="dailyCheckinBtn" type="button">Daily Check-In</button>
       <button class="pill-btn reward-pill" id="rewardRoomBtn" type="button">⭐ Reward Room</button>
+      <button class="pill-btn print-pill" id="printStudioBtn" type="button">🖍️ Printable Studio</button>
       <button class="pill-btn" id="grownupBtn" type="button">Grown-up Mode</button>
       <button class="pill-btn" id="settingsBtn" type="button">Settings</button>
       <a class="pill-btn" href="../">Main Website</a>
@@ -52,6 +53,7 @@
         <div class="hero-actions">
           <a href="#skillMap" class="primary-action">Start playing</a>
           <a href="#rewardRoom" class="secondary-action store-link">Reward Room</a>
+          <a href="#printableStudio" class="secondary-action print-link">Printable Studio</a>
           <button type="button" class="secondary-action" id="resetProgress">Reset local stars</button>
         </div>
       </div>
@@ -150,6 +152,85 @@
           </div>
           <button class="secondary-action full soft-danger" id="resetRewardData" type="button">Reset Reward Room only</button>
         </aside>
+      </div>
+    </section>
+
+    <section class="printable-studio" id="printableStudio" aria-label="Printable Activity Studio">
+      <div class="studio-hero">
+        <div>
+          <span class="eyebrow">No AI · no login · print at home</span>
+          <h2>Printable Activity Studio</h2>
+          <p>Create coloring pages, tracing sheets, token boards, certificates, and home-practice worksheets right in the browser. Nothing is uploaded or saved online.</p>
+        </div>
+        <div class="studio-mini-card" aria-label="Printable pack summary">
+          <div class="studio-icon">🖍️</div>
+          <strong>Today’s Printable Pack</strong>
+          <span>Certificate + coloring page + home practice sheet</span>
+        </div>
+      </div>
+
+      <div class="studio-layout">
+        <aside class="studio-builder" aria-label="Printable builder controls">
+          <span class="eyebrow">Build a printable</span>
+          <h3>Choose what to make</h3>
+          <label class="field-label" for="printType">Printable type</label>
+          <select id="printType" class="studio-input">
+            <option value="coloring">Coloring page</option>
+            <option value="tracing">Tracing sheet</option>
+            <option value="token">Token board</option>
+            <option value="worksheet">Skill worksheet</option>
+            <option value="certificate">Certificate / badge</option>
+            <option value="pack">Today’s printable pack</option>
+          </select>
+
+          <label class="field-label" for="printSkill">Skill area</label>
+          <select id="printSkill" class="studio-input">
+            <option value="social">Social skills</option>
+            <option value="communication">Communication / AAC</option>
+            <option value="calm">Calm body / coping</option>
+            <option value="daily">Daily living</option>
+            <option value="safety">Safety</option>
+            <option value="money">Money & community</option>
+            <option value="vocational">Job skills</option>
+          </select>
+
+          <label class="field-label" for="printAge">Learning level</label>
+          <select id="printAge" class="studio-input">
+            <option value="3-5">Ages 3–5</option>
+            <option value="6-9">Ages 6–9</option>
+            <option value="10-13">Ages 10–13</option>
+            <option value="14-21">Ages 14–21</option>
+          </select>
+
+          <label class="field-label" for="printTheme">Theme</label>
+          <select id="printTheme" class="studio-input">
+            <option value="stars">Stars & smile</option>
+            <option value="island">Skill island</option>
+            <option value="rocket">Rocket learner</option>
+            <option value="animals">Friendly animals</option>
+            <option value="calm">Calm clouds</option>
+          </select>
+
+          <label class="field-label" for="printName">Nickname/initials (optional)</label>
+          <input id="printName" class="studio-input" maxlength="18" placeholder="Leave blank or use initials only">
+
+          <div class="studio-actions">
+            <button class="primary-action full" id="generatePrintable" type="button">Generate preview</button>
+            <button class="secondary-action full" id="printStudioPage" type="button">Print this printable</button>
+          </div>
+          <p class="studio-privacy"><strong>Privacy-safe:</strong> use initials/nickname only. No full name, DOB, diagnosis, address, uploads, or online storage.</p>
+        </aside>
+
+        <div class="studio-preview-wrap">
+          <div class="studio-preview-toolbar">
+            <div>
+              <span class="eyebrow">Preview</span>
+              <h3 id="studioPreviewTitle">Coloring Page</h3>
+            </div>
+            <button class="secondary-action" id="quickPackBtn" type="button">Make today’s pack</button>
+          </div>
+          <div id="studioPreview" class="studio-preview" aria-live="polite"></div>
+        </div>
       </div>
     </section>
   </main>

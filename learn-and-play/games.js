@@ -1099,6 +1099,99 @@ document.addEventListener("click", (e) => {
 });
 
 
+
+
+// ============ V19 PRINTABLE ACTIVITY STUDIO ============
+const printableSkillLabels = {
+  social: "Social Skills",
+  communication: "Communication / AAC",
+  calm: "Calm Body / Coping",
+  daily: "Daily Living",
+  safety: "Safety",
+  money: "Money & Community",
+  vocational: "Job Skills"
+};
+const printableSkillTips = {
+  social: "Practice noticing feelings, greetings, turn-taking, and expected choices.",
+  communication: "Practice functional phrases, asking for help, and clear messages.",
+  calm: "Practice breathing, coping choices, and asking for a break.",
+  daily: "Practice routines, hygiene, first/then, and independence steps.",
+  safety: "Practice safe choices in the home, street, store, and digital spaces.",
+  money: "Practice counting, buying, community choices, and planning.",
+  vocational: "Practice workplace readiness, interviews, and asking a supervisor for help."
+};
+function studioOptions(){
+  return {
+    type: document.getElementById("printType")?.value || "coloring",
+    skill: document.getElementById("printSkill")?.value || "social",
+    age: document.getElementById("printAge")?.value || "3-5",
+    theme: document.getElementById("printTheme")?.value || "stars",
+    name: (document.getElementById("printName")?.value || safeNickname() || "Learner").trim()
+  };
+}
+function studioTitle(type){
+  return ({coloring:"Coloring Page", tracing:"Tracing Sheet", token:"Token Board", worksheet:"Skill Worksheet", certificate:"Certificate / Badge", pack:"Today’s Printable Pack"})[type] || "Printable";
+}
+function studioThemeSvg(theme, skill){
+  const label = printableSkillLabels[skill] || "Learn & Play";
+  if(theme === "rocket") return `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="360" rx="24" fill="#fff"/><path d="M286 242c-44 50-100 68-174 67 21-67 58-118 113-151" fill="none" stroke="#132a4e" stroke-width="8"/><path d="M324 64c73 10 137 74 147 147-39 12-83 8-121-15l-61 61-68-68 61-61c-23-38-27-82-15-121 18-3 37-4 57-3z" fill="none" stroke="#132a4e" stroke-width="8"/><circle cx="361" cy="128" r="31" fill="none" stroke="#132a4e" stroke-width="8"/><path d="M241 227l-54 54M281 267l-34 34" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/><path d="M430 238l43 43M455 213l54 54" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/><text x="300" y="338" text-anchor="middle" font-family="Arial" font-size="24" font-weight="800" fill="#132a4e">${escapeHtml(label)}</text></svg>`;
+  if(theme === "animals") return `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="360" rx="24" fill="#fff"/><circle cx="205" cy="154" r="70" fill="none" stroke="#132a4e" stroke-width="8"/><circle cx="150" cy="90" r="34" fill="none" stroke="#132a4e" stroke-width="8"/><circle cx="260" cy="90" r="34" fill="none" stroke="#132a4e" stroke-width="8"/><circle cx="181" cy="144" r="8" fill="#132a4e"/><circle cx="228" cy="144" r="8" fill="#132a4e"/><path d="M190 178c10 11 26 11 36 0" fill="none" stroke="#132a4e" stroke-width="7" stroke-linecap="round"/><path d="M362 97h100l31 86-81 65-81-65z" fill="none" stroke="#132a4e" stroke-width="8"/><circle cx="388" cy="158" r="8" fill="#132a4e"/><circle cx="438" cy="158" r="8" fill="#132a4e"/><path d="M391 195c18 13 42 13 60 0" fill="none" stroke="#132a4e" stroke-width="7" stroke-linecap="round"/><text x="300" y="322" text-anchor="middle" font-family="Arial" font-size="24" font-weight="800" fill="#132a4e">Color, talk, and practice</text></svg>`;
+  if(theme === "calm") return `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="360" rx="24" fill="#fff"/><path d="M144 205c-39 0-70-25-70-56 0-28 25-51 58-55 17-35 57-59 102-59 52 0 97 31 110 74 46 2 82 31 82 66 0 37-40 67-89 67H144z" fill="none" stroke="#132a4e" stroke-width="8"/><path d="M132 288c42-16 84-16 126 0s84 16 126 0 84-16 126 0" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/><circle cx="224" cy="151" r="8" fill="#132a4e"/><circle cx="282" cy="151" r="8" fill="#132a4e"/><path d="M230 184c20 16 45 16 65 0" fill="none" stroke="#132a4e" stroke-width="7" stroke-linecap="round"/><text x="300" y="330" text-anchor="middle" font-family="Arial" font-size="24" font-weight="800" fill="#132a4e">Breathe in · breathe out</text></svg>`;
+  if(theme === "island") return `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="360" rx="24" fill="#fff"/><path d="M88 251c98-62 314-62 424 0" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/><path d="M188 245c18-72 76-119 131-119s113 47 132 119" fill="none" stroke="#132a4e" stroke-width="8"/><path d="M319 125V58M319 58c-42 19-67 45-75 76M319 58c43 19 68 45 76 76" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/><circle cx="474" cy="89" r="36" fill="none" stroke="#132a4e" stroke-width="8"/><path d="M125 302c52-15 104-15 156 0s104 15 156 0" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/><text x="300" y="332" text-anchor="middle" font-family="Arial" font-size="24" font-weight="800" fill="#132a4e">${escapeHtml(label)} Island</text></svg>`;
+  return `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="360" rx="24" fill="#fff"/><path d="M300 62l39 79 87 13-63 61 15 86-78-41-78 41 15-86-63-61 87-13z" fill="none" stroke="#132a4e" stroke-width="8"/><circle cx="202" cy="82" r="23" fill="none" stroke="#132a4e" stroke-width="8"/><circle cx="438" cy="90" r="24" fill="none" stroke="#132a4e" stroke-width="8"/><path d="M108 274c62-22 124-22 186 0s124 22 186 0" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/><text x="300" y="332" text-anchor="middle" font-family="Arial" font-size="24" font-weight="800" fill="#132a4e">${escapeHtml(label)}</text></svg>`;
+}
+function studioPrintableMarkup(opts, mode="preview"){
+  const title = studioTitle(opts.type);
+  const skillLabel = printableSkillLabels[opts.skill] || "Learn & Play";
+  const tip = printableSkillTips[opts.skill] || "Practice one skill with a grown-up.";
+  const name = escapeHtml(opts.name || "Learner");
+  const date = new Date().toLocaleDateString();
+  const themeArt = studioThemeSvg(opts.theme, opts.skill);
+  const small = mode === "preview" ? "print-sheet-preview" : "sheet";
+  if(opts.type === "tracing"){
+    const phrases = opts.skill === "communication" ? ["I want", "help", "more", "all done"] : opts.skill === "calm" ? ["I can breathe", "I need a break", "calm body"] : opts.skill === "vocational" ? ["I can ask for help", "I am ready", "thank you"] : [skillLabel, "I can practice", "try again"];
+    return `<main class="${small}"><div class="print-brand">Little Kids Learn & Play</div><h1 class="print-title">${escapeHtml(title)}</h1><p class="print-sub">Trace the words. Then say or practice them with a grown-up.</p>${phrases.map(p=>`<div class="trace-line">${escapeHtml(p)}</div>`).join("")}<div class="home-practice"><strong>Practice at home:</strong><br>${escapeHtml(tip)}</div><div class="print-signature">Grown-up initials:</div><div class="printable-watermark">Generated in the browser · no private data stored online</div></main>`;
+  }
+  if(opts.type === "token"){
+    return `<main class="${small}"><div class="print-brand">Little Kids Learn & Play</div><h1 class="print-title">${escapeHtml(skillLabel)} Token Board</h1><p class="print-sub">Earn a token for each practice step. Choose a simple home reward after the board is full.</p><div class="token-row">${Array.from({length:10}).map((_,i)=>`<div class="token-cell">${i+1}</div>`).join("")}</div><div class="write-box"></div><p class="print-sub">Reward I am working for: ___________________________</p><div class="home-practice"><strong>Practice idea:</strong><br>${escapeHtml(tip)}</div><div class="print-signature">Grown-up signature:</div><div class="printable-watermark">Pretend tokens only · no real money or physical item from the website</div></main>`;
+  }
+  if(opts.type === "worksheet"){
+    const items = opts.skill === "safety" ? ["I see a stop sign.","A stranger asks me to leave.","I need help in a store.","The stove is hot."] : opts.skill === "social" ? ["A friend says hi.","Someone looks sad.","It is my turn to wait.","I made a mistake."] : opts.skill === "money" ? ["I want to buy a snack.","The cashier gives change.","I need to compare prices.","I should keep my receipt."] : ["I need help.","I finished my work.","I need a break.","I can try again."];
+    return `<main class="${small}"><div class="print-brand">Little Kids Learn & Play</div><h1 class="print-title">${escapeHtml(skillLabel)} Worksheet</h1><p class="print-sub">Read each box. Draw or write the safe/helpful response.</p><div class="worksheet-grid">${items.map(item=>`<div class="worksheet-card"><strong>${escapeHtml(item)}</strong><div class="write-box"></div></div>`).join("")}</div><div class="cut-lines"><strong>Choice words:</strong> help · wait · safe · ask · stop · breathe · thank you · try again</div><div class="home-practice"><strong>Practice at home:</strong><br>${escapeHtml(tip)}</div><div class="print-signature">Grown-up signature:</div><div class="printable-watermark">No private data required</div></main>`;
+  }
+  if(opts.type === "certificate"){
+    return `<main class="${small}"><div class="print-brand">Little Kids Learn & Play</div><div class="print-art coloring-svg">${themeArt}</div><h1 class="print-title">${escapeHtml(skillLabel)} Star</h1><p class="print-sub">${name} practiced ${escapeHtml(skillLabel.toLowerCase())} on ${escapeHtml(date)}.</p><div class="home-practice"><strong>I practiced:</strong><br>${escapeHtml(tip)}</div><div class="print-signature">Parent / caregiver signature:</div><div class="printable-watermark">Printable recognition only</div></main>`;
+  }
+  if(opts.type === "pack"){
+    const session = todaysSession();
+    return `<main class="${small}"><div class="print-brand">Little Kids Learn & Play</div><h1 class="print-title">Today’s Printable Pack</h1><p class="print-sub">A simple take-home page for ${name}.</p><div class="studio-pack-list"><div><strong>Date:</strong> ${escapeHtml(date)}</div><div><strong>Stars earned today:</strong> ${escapeHtml(session.stars || 0)}</div><div><strong>Lessons practiced:</strong><ul>${lessonListHtml()}</ul></div><div><strong>Skill focus:</strong> ${escapeHtml(skillLabel)} — ${escapeHtml(tip)}</div></div><div class="print-divider"></div><div class="print-art coloring-svg">${themeArt}</div><div class="home-practice"><strong>Home practice:</strong><br>Pick one skill from today and practice it one more time for 2 minutes.</div><div class="print-signature">Parent / caregiver signature:</div><div class="printable-watermark">Generated on device · no account needed</div></main>`;
+  }
+  return `<main class="${small}"><div class="print-brand">Little Kids Learn & Play</div><h1 class="print-title">${escapeHtml(skillLabel)} Coloring Page</h1><p class="print-sub">Color the picture. Then talk about the skill with a grown-up.</p><div class="print-art coloring-svg">${themeArt}</div><div class="home-practice"><strong>Talk about it:</strong><br>${escapeHtml(tip)}</div><div class="print-signature">Grown-up initials:</div><div class="printable-watermark">Coloring printable only · no data is sent online</div></main>`;
+}
+function renderStudioPreview(){
+  const opts = studioOptions();
+  const preview = document.getElementById("studioPreview");
+  const title = document.getElementById("studioPreviewTitle");
+  if(title) title.textContent = studioTitle(opts.type);
+  if(preview) preview.innerHTML = studioPrintableMarkup(opts, "preview");
+}
+function studioPrintHtml(){
+  const opts = studioOptions();
+  return `<!doctype html><html><head><meta charset="utf-8"><title>${escapeHtml(studioTitle(opts.type))}</title><style>body{font-family:Arial,sans-serif;background:#f8fbff;color:#132a4e;padding:24px}.sheet{max-width:820px;margin:auto;background:white;border:6px solid #132a4e;border-radius:28px;padding:36px;text-align:center}.print-brand{font-weight:900;color:#0f6070;text-transform:uppercase;letter-spacing:.14em;font-size:13px}.print-title{font-size:42px;line-height:1.02;letter-spacing:-.04em;margin:18px 0}.print-sub{color:#52617c;font-size:18px;line-height:1.5}.print-art{margin:24px auto;max-width:640px}.coloring-svg svg{max-width:100%;height:auto}.trace-line{font-size:48px;letter-spacing:.06em;color:transparent;-webkit-text-stroke:1.5px #132a4e;border-bottom:2px dashed #b9c3d2;padding:18px 0;text-align:left}.token-row{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin:32px auto;max-width:620px}.token-cell{aspect-ratio:1;border:3px dashed #132a4e;border-radius:24px;display:grid;place-items:center;font-size:34px;color:#d7dde7}.worksheet-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left;margin-top:24px}.worksheet-card{border:2px solid #d7dde7;border-radius:18px;padding:16px;background:#fbfdff;min-height:92px}.write-box{height:82px;border:2px dashed #b9c3d2;border-radius:16px;margin-top:10px}.cut-lines{border:2px dashed #ff9f43;border-radius:20px;padding:18px;margin:20px 0;background:#fff8e6}.home-practice{margin:26px auto;padding:18px;border:3px dashed #ff9f43;border-radius:20px;background:#fff8e6;max-width:620px}.print-signature{margin-top:34px;border-top:3px solid #132a4e;padding-top:10px;text-align:left}.studio-pack-list{display:grid;gap:12px;text-align:left;margin:26px auto;max-width:640px}.studio-pack-list div{border:2px solid #e6edf6;border-radius:16px;padding:14px;background:#fbfdff}.print-divider{height:1px;background:#d7dde7;margin:30px 0}.printable-watermark{font-size:12px;color:#667085;margin-top:26px}@media print{body{background:white}.sheet{box-shadow:none}}@media(max-width:700px){.worksheet-grid{grid-template-columns:1fr}}</style></head><body onload="setTimeout(()=>window.print(),300)">${studioPrintableMarkup(opts, "print")}</body></html>`;
+}
+function printStudioPrintable(){
+  const w = window.open("", "_blank");
+  if(!w){ setToast("Popup blocked. Allow popups to print."); return; }
+  w.document.open();
+  w.document.write(studioPrintHtml());
+  w.document.close();
+}
+function openPrintableStudio(){
+  const el = document.getElementById("printableStudio");
+  if(el){ el.scrollIntoView({behavior:"smooth", block:"start"}); setToast("Printable Studio opened."); }
+  renderStudioPreview();
+}
+
 $("#dailyCheckinBtn")?.addEventListener("click", () => openDailyCheckin(false));
 $("#dailyCheckinDialog")?.addEventListener("cancel", (e) => {
   if(!checkedInToday()) e.preventDefault();
@@ -1172,3 +1265,20 @@ $("#resetRewardData")?.addEventListener("click", () => {
 
 loadGames();
 applySettings();
+
+
+// V19 Printable Studio listeners
+["printType","printSkill","printAge","printTheme","printName"].forEach(id => {
+  document.getElementById(id)?.addEventListener("input", renderStudioPreview);
+  document.getElementById(id)?.addEventListener("change", renderStudioPreview);
+});
+document.getElementById("generatePrintable")?.addEventListener("click", () => { renderStudioPreview(); setToast("Printable preview updated."); });
+document.getElementById("printStudioPage")?.addEventListener("click", printStudioPrintable);
+document.getElementById("quickPackBtn")?.addEventListener("click", () => {
+  const type = document.getElementById("printType");
+  if(type) type.value = "pack";
+  renderStudioPreview();
+  setToast("Today’s printable pack is ready.");
+});
+document.getElementById("printStudioBtn")?.addEventListener("click", openPrintableStudio);
+renderStudioPreview();
