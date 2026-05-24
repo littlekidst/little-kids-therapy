@@ -615,3 +615,161 @@ body.reduce-motion *::after {
     font-size:25px;
   }
 }
+
+
+/* ===== V15 Polish Fix: in-modal Show Me + modern game cards ===== */
+.game-card {
+  border: 1px solid rgba(19,42,78,.10);
+  background: linear-gradient(145deg, rgba(255,255,255,.92), rgba(245,251,255,.82));
+}
+.game-card::after {
+  content:'';
+  position:absolute;
+  inset:auto 18px 18px 18px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(19,42,78,.10), transparent);
+  pointer-events:none;
+}
+.game-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display:grid;
+  place-items:center;
+  font-size: 1.7rem;
+  background: linear-gradient(135deg, rgba(77,171,247,.18), rgba(255,212,59,.18));
+  border:1px solid rgba(19,42,78,.08);
+  box-shadow: 0 12px 28px rgba(19,42,78,.08);
+  position:relative;
+  z-index:1;
+}
+.game-card-top,
+.game-card-foot {
+  position: relative;
+  z-index: 1;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.game-card-foot {
+  margin-top:auto;
+  color:var(--ink-soft);
+  font-weight:800;
+  font-size:.92rem;
+}
+.category-pill,
+.age-pill {
+  display:inline-flex;
+  align-items:center;
+  border-radius:999px;
+  padding: 7px 10px;
+  font-size: .76rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+  background: rgba(255,255,255,.68);
+  border:1px solid rgba(19,42,78,.08);
+  color:var(--ink-soft);
+}
+.age-pill { background:rgba(255,212,59,.22); color:#755400; }
+.play-btn {
+  position:relative;
+  z-index:2;
+  width:100%;
+  margin-top:14px;
+  border:0;
+  border-radius: 18px;
+  padding: 14px 16px;
+  cursor:pointer;
+  background: linear-gradient(135deg, #ff6b6b, #ff9f43);
+  color:#fff;
+  font-weight: 950;
+  letter-spacing:.01em;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow: 0 18px 36px rgba(255,107,107,.24), inset 0 1px 0 rgba(255,255,255,.35);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+.play-btn strong {
+  width: 34px;
+  height: 34px;
+  border-radius:999px;
+  background:rgba(255,255,255,.20);
+  display:grid;
+  place-items:center;
+  font-size:1.25rem;
+}
+.play-btn:hover {
+  transform: translateY(-2px);
+  filter:saturate(1.05);
+  box-shadow: 0 24px 46px rgba(255,107,107,.30), inset 0 1px 0 rgba(255,255,255,.4);
+}
+.play-btn:active { transform: translateY(0); }
+.game-tools {
+  background: rgba(255,255,255,.60);
+  border: 1px solid rgba(19,42,78,.08);
+  border-radius: 24px;
+  padding: 10px;
+  box-shadow: 0 12px 32px rgba(19,42,78,.07);
+}
+.tool-btn, .prompt-switch button {
+  min-height: 42px;
+  border:1px solid rgba(19,42,78,.10);
+  background: linear-gradient(180deg, #fff, #f9fbff);
+  box-shadow: 0 10px 22px rgba(19,42,78,.06);
+}
+.tool-btn:hover, .prompt-switch button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(19,42,78,.10);
+}
+.tool-btn[data-action="show"] {
+  background: linear-gradient(135deg, rgba(77,171,247,.16), rgba(255,212,59,.18));
+  border-color: rgba(77,171,247,.20);
+}
+.model-prompt {
+  display:none;
+  margin: 10px 0 18px;
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #e8f7ff, #fff9e6);
+  border: 1px solid rgba(77,171,247,.28);
+  box-shadow: 0 18px 44px rgba(19,42,78,.08);
+  color: var(--ink);
+}
+.model-prompt.show {
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  animation: modelPop .22s ease-out both;
+}
+.model-prompt strong {
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#104f80;
+  font-weight:950;
+}
+.model-prompt strong::before { content:'👀'; }
+.model-prompt span {
+  color:var(--ink-soft);
+  font-weight:800;
+  line-height:1.55;
+}
+@keyframes modelPop {
+  from { opacity:0; transform: translateY(-6px) scale(.99); }
+  to { opacity:1; transform: translateY(0) scale(1); }
+}
+.toast { z-index: 9999; }
+.answer-card, .shape-card, .aac-tile {
+  border-width:1px;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.answer-card:hover, .shape-card:hover, .aac-tile:hover {
+  border-color:rgba(77,171,247,.30);
+}
+@media (max-width: 620px) {
+  .model-prompt.show { flex-direction:column; }
+  .play-btn { border-radius:16px; }
+}

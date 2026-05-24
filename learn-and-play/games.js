@@ -402,7 +402,7 @@ function renderGameGrid(){
           <span>⭐ ${p.stars || 0} stars</span>
           <span>${p.completed || 0} completed</span>
         </div>
-        <button class="play-btn" type="button">Play lesson</button>
+        <button class="play-btn" type="button"><span>Play lesson</span><strong>→</strong></button>
       </article>`;
   }).join("");
   if(!filtered.length) gameGrid.innerHTML = `<div class="empty-state">No games are enabled for this age group.</div>`;
@@ -458,7 +458,15 @@ function teachingPanel(trial){
     <div class="teaching-card">
       <strong>${current.mode === "teach" ? "Teaching tip" : current.mode === "help" ? "Small hint" : "Independent practice"}</strong>
       <span>${escapeHtml(hint)}</span>
-    </div>`;
+    </div>
+    <div id="modelPrompt" class="model-prompt" aria-live="polite"></div>`;
+}
+function showModelPrompt(text){
+  const box = document.getElementById("modelPrompt");
+  if(!box){ setToast(text); return; }
+  box.innerHTML = `<strong>Show Me model</strong><span>${escapeHtml(text)}</span>`;
+  box.classList.add("show");
+  box.scrollIntoView({behavior:"smooth", block:"nearest"});
 }
 function adultGuide(){
   const data = current.data;
@@ -776,8 +784,9 @@ document.addEventListener("click", (e) => {
   }
   if(action === "show" && current){
     const trial = current.availableTrials[current.round];
-    setToast(trial.show || trial.teach || "Look for the best answer.");
-    speak(trial.show || trial.teach || "Look for the best answer.");
+    const modelText = trial.show || trial.teach || "Look for the best answer.";
+    showModelPrompt(modelText);
+    speak(modelText);
   }
   if(action === "check-aac") checkAAC();
   if(action === "clear-aac") clearAAC();
