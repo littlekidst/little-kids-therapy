@@ -325,6 +325,8 @@ let activeAge = "ALL";
 let activeIsland = "ALL";
 let settings = loadJSON("learnPlayV17Settings", { bigText:false, reduceMotion:false, sound:false });
 let progress = loadJSON("learnPlayV17Progress", {});
+let rewardWallet = loadJSON("learnPlayRewardWalletV18", { spent:0, purchases:[], lastReward:null });
+let sessionLog = loadJSON("learnPlaySessionLogV18", {});
 let current = null;
 let dailyProfile = loadJSON("learnPlayDailyCheckinV16", { nickname:"", avatar:"😊", ageBand:"ALL", lastCheckin:"", streak:0 });
 
@@ -395,6 +397,8 @@ function escapeHtml(value){ return String(value ?? "").replace(/[&<>'"]/g, ch =>
 function shuffle(arr){ const a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function normalize(value){ return String(value ?? "").trim().toLowerCase(); }
 function totalStars(){ return Object.values(progress).reduce((sum, item) => sum + (Number(item.stars)||0), 0); }
+function spentStars(){ return Number(rewardWallet.spent || 0); }
+function availableStars(){ return Math.max(0, totalStars() - spentStars()); }
 function setToast(message){ const el=$("#toast"); if(!el) return; el.textContent=message; el.classList.add("show"); clearTimeout(setToast.timer); setToast.timer=setTimeout(()=>el.classList.remove("show"),2200); }
 function playTone(kind="correct"){
   if(!settings.sound) return;
@@ -422,8 +426,11 @@ function applySettings(){
   $("#bigTextToggle") && ($("#bigTextToggle").checked = !!settings.bigText);
   $("#reduceMotionToggle") && ($("#reduceMotionToggle").checked = !!settings.reduceMotion);
   $("#soundToggle") && ($("#soundToggle").checked = !!settings.sound);
-  $("#totalStars") && ($("#totalStars").textContent = totalStars());
+  $("#totalStars") && ($("#totalStars").textContent = availableStars());
+  $("#lifetimeStarsMini") && ($("#lifetimeStarsMini").textContent = totalStars());
+  $("#spentStarsMini") && ($("#spentStarsMini").textContent = spentStars());
   renderDailyStatus();
+  renderRewardStore();
 }
 function gameIcon(game){ return iconMap[game.title] || "🎮"; }
 function getGameData(id){
@@ -437,6 +444,164 @@ function getGameData(id){
       {visual:"🎯", prompt:"Choose the best answer.", teach:"Look for the safe, kind, or helpful choice.", show:"Pick the answer that solves the problem.", choices:["Safe choice","Unsafe choice","Silly choice","No choice"], answer:"Safe choice", correction:"The best answer is the safe and helpful choice.", generalize:"Practice with a real example."}
     ]
   };
+}
+
+
+const rewardCatalog = [
+  {id:"smile-badge", title:"Smiley Skill Badge", cost:5, icon:"😊", color:"rgba(255,216,107,.32)", type:"badge", desc:"A cheerful printable badge for finishing a learning session."},
+  {id:"coloring-page", title:"Calm Coloring Page", cost:8, icon:"🎨", color:"rgba(132,94,247,.20)", type:"coloring", desc:"A simple printable coloring reward with stars and calm shapes."},
+  {id:"session-certificate", title:"Session Certificate", cost:10, icon:"🏆", color:"rgba(255,159,67,.24)", type:"certificate", desc:"A printable Learn & Play completion certificate."},
+  {id:"token-board", title:"5-Star Token Board", cost:12, icon:"⭐", color:"rgba(53,194,211,.22)", type:"token", desc:"A printable token board families can use after the session."},
+  {id:"family-game-coupon", title:"Family Game Coupon", cost:15, icon:"🎲", color:"rgba(255,111,105,.18)", type:"coupon", desc:"A pretend coupon for choosing a family game or turn-taking activity."},
+  {id:"super-learner", title:"Super Learner Certificate", cost:20, icon:"🚀", color:"rgba(99,217,138,.20)", type:"certificate", desc:"A bigger printable certificate for a strong learning day."},
+  {id:"coping-card", title:"Coping Strategy Card", cost:9, icon:"🫧", color:"rgba(77,171,247,.18)", type:"card", desc:"A printable calm-body reminder card."},
+  {id:"job-skills-badge", title:"Job Skills Badge", cost:14, icon:"💼", color:"rgba(19,42,78,.14)", type:"badge", desc:"A printable badge for older learners practicing work readiness."}
+];
+function todaysSession(){
+  const key = todayKey();
+  if(!sessionLog[key]) sessionLog[key] = {date:key, lessons:[], stars:0};
+  return sessionLog[key];
+}
+function recordSessionCompletion(game, earned){
+  const session = todaysSession();
+  session.stars = Number(session.stars || 0) + Number(earned || 0);
+  session.lessons.push({title:game.title, category:game.category, stars:earned, at:new Date().toISOString()});
+  saveJSON("learnPlaySessionLogV18", sessionLog);
+}
+function rewardById(id){ return rewardCatalog.find(r => r.id === id); }
+function renderRewardStore(){
+  const avail = availableStars();
+  const lifetime = totalStars();
+  const spent = spentStars();
+  ["availableStarsBig"].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = avail; });
+  ["lifetimeStarsBig"].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = lifetime; });
+  ["spentStarsBig"].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = spent; });
+  const grid = document.getElementById("rewardGrid");
+  if(grid){
+    grid.innerHTML = rewardCatalog.map(reward => {
+      const canBuy = avail >= reward.cost;
+      return `<article class="reward-card" style="--reward-glow:${escapeHtml(reward.color)}">
+        <div class="reward-icon" aria-hidden="true">${escapeHtml(reward.icon)}</div>
+        <h4>${escapeHtml(reward.title)}</h4>
+        <p>${escapeHtml(reward.desc)}</p>
+        <span class="reward-price">⭐ ${reward.cost} stars</span>
+        <div class="reward-actions">
+          <button class="buy-reward" data-reward-id="${escapeHtml(reward.id)}" type="button" ${canBuy ? "" : "disabled"}>${canBuy ? "Buy printable" : "Need more stars"}</button>
+          <button class="preview-reward" data-preview-reward="${escapeHtml(reward.id)}" type="button">Preview</button>
+        </div>
+      </article>`;
+    }).join("");
+  }
+  renderPurchasedRewards();
+  renderSessionSummary();
+}
+function renderPurchasedRewards(){
+  const box = document.getElementById("purchasedRewards");
+  if(!box) return;
+  const purchases = [...(rewardWallet.purchases || [])].reverse();
+  if(!purchases.length){
+    box.innerHTML = `<div class="empty-purchases">No printable rewards yet. Finish lessons, earn stars, then buy a reward.</div>`;
+    return;
+  }
+  box.innerHTML = purchases.slice(0,12).map(p => {
+    const reward = rewardById(p.rewardId) || {title:p.title, icon:p.icon || "⭐"};
+    const when = p.date ? new Date(p.date).toLocaleDateString() : "Today";
+    return `<div class="purchase-item">
+      <div aria-hidden="true">${escapeHtml(reward.icon || "⭐")}</div>
+      <div><strong>${escapeHtml(reward.title || p.title)}</strong><span>${escapeHtml(when)} · ${escapeHtml(p.cost || "")} stars</span></div>
+      <button type="button" data-print-purchase="${escapeHtml(p.id)}">Print again</button>
+    </div>`;
+  }).join("");
+}
+function renderSessionSummary(){
+  const el = document.getElementById("sessionSummaryText");
+  if(!el) return;
+  const session = todaysSession();
+  const lessons = session.lessons || [];
+  if(!lessons.length){
+    el.textContent = "Finish lessons today to create a session summary.";
+    return;
+  }
+  const titles = lessons.slice(-4).map(l => l.title).join(", ");
+  el.textContent = `${lessons.length} lesson${lessons.length === 1 ? "" : "s"} completed today · ${session.stars || 0} stars earned. Latest: ${titles}.`;
+}
+function openRewardRoom(){
+  const el = document.getElementById("rewardRoom");
+  if(el){ el.scrollIntoView({behavior:"smooth", block:"start"}); setToast("Reward Room opened. Spend stars on printable rewards."); }
+  renderRewardStore();
+}
+function buyReward(id, preview=false){
+  const reward = rewardById(id);
+  if(!reward) return;
+  if(!preview && availableStars() < reward.cost){ setToast(`You need ${reward.cost - availableStars()} more stars.`); return; }
+  let purchase = {id:`purchase-${Date.now()}`, rewardId:reward.id, title:reward.title, icon:reward.icon, cost:reward.cost, date:new Date().toISOString(), session:todaysSession()};
+  if(!preview){
+    rewardWallet.spent = spentStars() + reward.cost;
+    rewardWallet.purchases = [...(rewardWallet.purchases || []), purchase];
+    rewardWallet.lastReward = purchase;
+    saveJSON("learnPlayRewardWalletV18", rewardWallet);
+    setToast(`You bought ${reward.title}! Stars left: ${availableStars()}.`);
+  }
+  showRewardDialog(reward, purchase, preview);
+  applySettings();
+}
+function showRewardDialog(reward, purchase, preview=false){
+  const content = document.getElementById("rewardDialogContent");
+  if(!content) return;
+  content.dataset.rewardId = reward.id;
+  content.dataset.purchaseId = purchase.id || "preview";
+  content.innerHTML = `<div class="reward-preview">
+    <div class="preview-icon">${escapeHtml(reward.icon)}</div>
+    <span class="eyebrow">${preview ? "Preview printable" : "Reward unlocked"}</span>
+    <h2>${escapeHtml(reward.title)}</h2>
+    <p>${escapeHtml(reward.desc)}</p>
+    <div class="print-card" aria-hidden="true">
+      <div class="print-icon">${escapeHtml(reward.icon)}</div>
+      <h1>${escapeHtml(reward.title)}</h1>
+      <p>Little Kids Learn & Play printable reward</p>
+      <p>${escapeHtml(safeNickname())} practiced learning skills and earned this reward.</p>
+    </div>
+  </div>`;
+  const dialog = document.getElementById("rewardDialog");
+  if(dialog && !dialog.open) dialog.showModal();
+}
+function lessonListHtml(){
+  const session = todaysSession();
+  const lessons = session.lessons || [];
+  if(!lessons.length) return "<li>Practice a Learn & Play lesson.</li>";
+  return lessons.map(l => `<li>${escapeHtml(l.title)} — ${escapeHtml(l.stars)} stars</li>`).join("");
+}
+function printableHtml(reward){
+  const session = todaysSession();
+  const date = new Date().toLocaleDateString();
+  const nickname = escapeHtml(safeNickname());
+  const avatar = escapeHtml(dailyProfile.avatar || "⭐");
+  return `<!doctype html><html><head><meta charset="utf-8"><title>${escapeHtml(reward.title)} Printable</title><style>
+    body{font-family:Arial, sans-serif;background:#f8fbff;color:#132a4e;padding:28px}.sheet{max-width:820px;margin:auto;background:white;border:6px solid #132a4e;border-radius:28px;padding:36px;text-align:center}.icon{font-size:82px}.brand{font-weight:800;color:#0f6070;text-transform:uppercase;letter-spacing:.12em}.title{font-size:42px;font-weight:900;margin:10px 0}.sub{font-size:20px;color:#43536f}.lines{display:grid;gap:12px;text-align:left;margin:32px auto;max-width:640px}.line{border:2px solid #e6edf6;border-radius:16px;padding:14px 18px;background:#fbfdff}.lessons{display:inline-block;text-align:left}.coupon{margin:28px auto;padding:22px;border:3px dashed #ff9f43;border-radius:20px;max-width:640px;background:#fff8e6}.sig{margin-top:44px;text-align:left;border-top:3px solid #132a4e;padding-top:10px}.small{font-size:13px;color:#667085;margin-top:22px}@media print{body{background:white}.sheet{box-shadow:none}}</style></head><body onload="setTimeout(()=>window.print(),300)"><main class="sheet"><div class="brand">Little Kids Learn & Play</div><div class="icon">${escapeHtml(reward.icon)}</div><div class="title">${escapeHtml(reward.title)}</div><p class="sub">${nickname} completed a Learn & Play practice session.</p><div class="lines"><div class="line"><strong>Date:</strong> ${escapeHtml(date)}</div><div class="line"><strong>Learner:</strong> ${avatar} ${nickname}</div><div class="line"><strong>Stars earned today:</strong> ${escapeHtml(session.stars || 0)}</div><div class="line"><strong>Reward:</strong> ${escapeHtml(reward.title)}</div><div class="line"><strong>Lessons practiced:</strong><ul class="lessons">${lessonListHtml()}</ul></div></div><div class="coupon"><strong>Practice at home:</strong><br>Choose one skill from today and practice it one more time with a grown-up.</div><div class="sig">Parent / caregiver signature:</div><div class="small">Printable reward only. No real money, no shipping, no physical item, and no private data is sent anywhere.</div></main></body></html>`;
+}
+function printReward(rewardId){
+  const reward = rewardById(rewardId) || rewardCatalog[0];
+  const w = window.open("", "_blank");
+  if(!w){ setToast("Popup blocked. Allow popups to print rewards."); return; }
+  w.document.open();
+  w.document.write(printableHtml(reward));
+  w.document.close();
+}
+function printSessionCertificate(){
+  const reward = {id:"daily-session", title:"Daily Session Complete", icon:"🌟", desc:"Printable session completion page."};
+  printRewardObject(reward);
+}
+function printRewardObject(reward){
+  const w = window.open("", "_blank");
+  if(!w){ setToast("Popup blocked. Allow popups to print."); return; }
+  w.document.open();
+  w.document.write(printableHtml(reward));
+  w.document.close();
+}
+function printPurchase(purchaseId){
+  const purchase = (rewardWallet.purchases || []).find(p => p.id === purchaseId);
+  if(!purchase) return;
+  printReward(purchase.rewardId);
 }
 
 
@@ -862,18 +1027,23 @@ function finishGame(){
   const earned = Math.max(1, Math.min(5, current.score));
   const existing = progress[current.game.id] || {stars:0, completed:0};
   progress[current.game.id] = {stars:(existing.stars||0)+earned, completed:(existing.completed||0)+1, last:new Date().toISOString()};
+  recordSessionCompletion(current.game, earned);
   saveJSON("learnPlayV17Progress", progress);
   applySettings();
   gameArea.innerHTML = `
     <div class="finish-screen">
       <div class="confetti" aria-hidden="true">🎉 ⭐ 🎈 🌟 🎊</div>
       <h1>You finished ${escapeHtml(current.game.title)}!</h1>
-      <p>You earned <strong>${earned} stars</strong>.</p>
+      <p>You earned <strong>${earned} stars</strong>. You now have <strong>${availableStars()} stars</strong> to spend.</p>
       <div class="reward-center">
         <div class="badge">🏅 Skill practiced: ${escapeHtml(current.data.skill || current.game.category)}</div>
         <div class="badge">🌎 Try it in real life with a grown-up.</div>
       </div>
+      <div class="reward-store-callout">
+        <strong>Reward Room unlocked:</strong> Spend stars on printable badges, certificates, token boards, and home-practice coupons.
+      </div>
       <div class="action-row center">
+        <button class="primary-action reward-cta" type="button" data-action="open-reward-room">Go to Reward Room ⭐</button>
         <button class="primary-action" type="button" data-action="play-again">Play again</button>
         <button class="secondary-action" type="button" data-action="close">Back to games</button>
       </div>
@@ -914,6 +1084,7 @@ document.addEventListener("click", (e) => {
   if(action === "done-imitation") doneImitation();
   if(action === "play-again" && current) openGame(current.game.id);
   if(action === "close") closeGame();
+  if(action === "open-reward-room"){ closeGame(); openRewardRoom(); }
 
   const ans = e.target.closest(".answer-card[data-answer]");
   if(ans && current) checkChoice(ans.dataset.answer);
@@ -946,8 +1117,12 @@ $("#grownupBtn")?.addEventListener("click", () => $("#grownupDialog").showModal(
 $("#resetProgress")?.addEventListener("click", () => {
   if(confirm("Reset local stars on this browser?")){
     progress = {};
+    rewardWallet = { spent:0, purchases:[], lastReward:null };
+    sessionLog = {};
     saveJSON("learnPlayV17Progress", progress);
-    renderGameGrid(); applySettings(); setToast("Local stars reset.");
+    saveJSON("learnPlayRewardWalletV18", rewardWallet);
+    saveJSON("learnPlaySessionLogV18", sessionLog);
+    renderGameGrid(); applySettings(); setToast("Local stars and rewards reset.");
   }
 });
 $("#bigTextToggle")?.addEventListener("change", e => { settings.bigText = e.target.checked; saveJSON("learnPlayV17Settings", settings); applySettings(); });
@@ -968,6 +1143,31 @@ document.getElementById("clearIslandFilter")?.addEventListener("click", () => {
   activeIsland = "ALL";
   renderGameGrid();
   setToast("Showing all Skill Islands.");
+});
+
+
+$("#rewardRoomBtn")?.addEventListener("click", openRewardRoom);
+document.addEventListener("click", (event) => {
+  const buy = event.target.closest("[data-reward-id]");
+  if(buy) buyReward(buy.dataset.rewardId, false);
+  const preview = event.target.closest("[data-preview-reward]");
+  if(preview) buyReward(preview.dataset.previewReward, true);
+  const printPurchaseBtn = event.target.closest("[data-print-purchase]");
+  if(printPurchaseBtn) printPurchase(printPurchaseBtn.dataset.printPurchase);
+});
+$("#printRewardFromDialog")?.addEventListener("click", (event) => {
+  event.preventDefault();
+  const rewardId = document.getElementById("rewardDialogContent")?.dataset.rewardId;
+  if(rewardId) printReward(rewardId);
+});
+$("#printSessionCertificate")?.addEventListener("click", () => printSessionCertificate());
+$("#resetRewardData")?.addEventListener("click", () => {
+  if(confirm("Reset only purchased rewards and spent stars on this browser? Your lesson stars stay.")){
+    rewardWallet = { spent:0, purchases:[], lastReward:null };
+    saveJSON("learnPlayRewardWalletV18", rewardWallet);
+    applySettings();
+    setToast("Reward Room reset. Lesson stars were kept.");
+  }
 });
 
 loadGames();

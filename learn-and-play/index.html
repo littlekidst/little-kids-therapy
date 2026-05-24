@@ -36,6 +36,7 @@
 
     <nav class="top-actions" aria-label="Learn and Play actions">
       <button class="pill-btn daily-pill" id="dailyCheckinBtn" type="button">Daily Check-In</button>
+      <button class="pill-btn reward-pill" id="rewardRoomBtn" type="button">⭐ Reward Room</button>
       <button class="pill-btn" id="grownupBtn" type="button">Grown-up Mode</button>
       <button class="pill-btn" id="settingsBtn" type="button">Settings</button>
       <a class="pill-btn" href="../">Main Website</a>
@@ -50,15 +51,17 @@
         <p>Each day, learners complete a quick local check-in, choose a skill island, and practice short lessons with prompts, correction, stars, and celebration.</p>
         <div class="hero-actions">
           <a href="#skillMap" class="primary-action">Start playing</a>
+          <a href="#rewardRoom" class="secondary-action store-link">Reward Room</a>
           <button type="button" class="secondary-action" id="resetProgress">Reset local stars</button>
         </div>
       </div>
       <div class="hero-panel" aria-label="Privacy friendly progress">
         <div class="star-ring">
           <span id="totalStars">0</span>
-          <small>local stars</small>
+          <small>available stars</small>
         </div>
         <p><strong id="dailyGreeting">Daily check-in needed</strong><br><span id="dailyStatusText">Progress stays only on this browser/device.</span></p>
+        <div class="wallet-mini"><span>Lifetime: <b id="lifetimeStarsMini">0</b></span><span>Spent: <b id="spentStarsMini">0</b></span></div>
       </div>
     </section>
 
@@ -101,6 +104,54 @@
 
       <div class="game-grid" id="gameGrid" aria-live="polite"></div>
     </section>
+
+    <section class="reward-room" id="rewardRoom" aria-label="Reward Room">
+      <div class="reward-hero">
+        <div>
+          <span class="eyebrow">Printable rewards only</span>
+          <h2>Reward Room</h2>
+          <p>Spend pretend learning stars on printable rewards. No real money, no shipping, no physical items, and no private child information.</p>
+        </div>
+        <div class="wallet-card" aria-label="Star wallet">
+          <div class="wallet-number"><span id="availableStarsBig">0</span><small>stars to spend</small></div>
+          <div class="wallet-lines">
+            <span>Lifetime earned: <b id="lifetimeStarsBig">0</b></span>
+            <span>Spent in Reward Room: <b id="spentStarsBig">0</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reward-note">
+        <strong>Grown-up note:</strong> These are printable celebration tools for home practice. Stars are pretend points and are saved only on this browser/device.
+      </div>
+
+      <div class="reward-layout">
+        <div class="reward-store-panel">
+          <div class="section-head compact-head">
+            <div>
+              <span class="eyebrow">Star Store</span>
+              <h3>Choose a printable reward</h3>
+            </div>
+          </div>
+          <div class="reward-grid" id="rewardGrid"></div>
+        </div>
+
+        <aside class="reward-side">
+          <div class="session-summary-card">
+            <span class="eyebrow">Today’s session</span>
+            <h3>Print a completion page</h3>
+            <p id="sessionSummaryText">Finish lessons today to create a session summary.</p>
+            <button class="primary-action full" id="printSessionCertificate" type="button">Print session certificate</button>
+          </div>
+          <div class="purchased-card">
+            <span class="eyebrow">My printables</span>
+            <h3>Purchased rewards</h3>
+            <div id="purchasedRewards" class="purchased-list"></div>
+          </div>
+          <button class="secondary-action full soft-danger" id="resetRewardData" type="button">Reset Reward Room only</button>
+        </aside>
+      </div>
+    </section>
   </main>
 
   <dialog class="game-modal" id="gameModal" aria-label="Game window">
@@ -108,6 +159,17 @@
       <button class="close-btn" id="closeGame" type="button" aria-label="Close game">×</button>
       <div id="gameArea"></div>
     </div>
+  </dialog>
+
+  <dialog class="side-dialog reward-dialog" id="rewardDialog" aria-label="Reward purchase complete">
+    <form method="dialog" class="dialog-panel reward-print-panel">
+      <button class="close-small" aria-label="Close reward">×</button>
+      <div id="rewardDialogContent"></div>
+      <div class="action-row center">
+        <button class="primary-action" id="printRewardFromDialog" type="button">Print reward</button>
+        <button class="secondary-action" value="close">Done</button>
+      </div>
+    </form>
   </dialog>
 
 
