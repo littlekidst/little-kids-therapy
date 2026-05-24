@@ -36,6 +36,7 @@
 
     <nav class="top-actions" aria-label="Learn and Play actions">
       <button class="pill-btn daily-pill" id="dailyCheckinBtn" type="button">Daily Check-In</button>
+      <button class="pill-btn weekly-pill" id="weeklyPackBtn" type="button">🗓️ Weekly Pack</button>
       <button class="pill-btn reward-pill" id="rewardRoomBtn" type="button">⭐ Reward Room</button>
       <button class="pill-btn print-pill" id="printStudioBtn" type="button">🖍️ Printable Studio</button>
       <button class="pill-btn" id="grownupBtn" type="button">Grown-up Mode</button>
@@ -65,6 +66,28 @@
         <p><strong id="dailyGreeting">Daily check-in needed</strong><br><span id="dailyStatusText">Progress stays only on this browser/device.</span></p>
         <div class="wallet-mini"><span>Lifetime: <b id="lifetimeStarsMini">0</b></span><span>Spent: <b id="spentStarsMini">0</b></span></div>
       </div>
+    </section>
+
+
+
+    <section class="weekly-pack" id="weeklyPack" aria-label="Weekly learning rotation">
+      <div class="weekly-main">
+        <span class="eyebrow">7-day curriculum rotation</span>
+        <h2 id="weeklyTheme">This Week’s Learning Adventure</h2>
+        <p id="weeklyFocus">Every 7 days this page highlights a fresh set of games and printables.</p>
+        <div class="weekly-meta" id="weeklyMeta">Loading weekly pack…</div>
+        <div class="weekly-actions">
+          <button class="primary-action" id="activateWeeklyPack" type="button">Play this week’s pack</button>
+          <button class="secondary-action" id="showAllGamesWeekly" type="button">Show all games</button>
+          <button class="secondary-action" id="openWeeklyPrintables" type="button">Make weekly printables</button>
+        </div>
+      </div>
+      <aside class="weekly-side">
+        <div class="weekly-badge" id="weeklyBadge">🏅 Weekly Badge</div>
+        <div class="weekly-game-chips" id="weeklyGameChips"></div>
+        <div class="weekly-printables" id="weeklyPrintables"></div>
+      </aside>
+      <div class="weekly-calendar" id="weeklyCalendar" aria-label="Upcoming weekly themes"></div>
     </section>
 
     <section class="controls-card" aria-label="Age and skill controls">

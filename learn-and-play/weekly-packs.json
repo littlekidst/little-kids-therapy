@@ -1,0 +1,290 @@
+[
+  {
+    "week": 1,
+    "theme": "Emotions & Feelings Week",
+    "focus": "recognizing feelings, asking for help, and choosing a coping tool",
+    "skill": "social",
+    "badge": "Emotion Explorer Badge",
+    "rewardBonus": "Smiley Skill Badge",
+    "startDate": "2026-05-25",
+    "games": [
+      "emotion-match",
+      "emotion-thermometer-game",
+      "coping-match",
+      "coping-toolkit",
+      "breathing-bubble",
+      "ask-for-help",
+      "perspective-detective"
+    ],
+    "printables": [
+      "Emotion coloring page",
+      "Emotion thermometer",
+      "Coping strategy card",
+      "Home practice sheet"
+    ]
+  },
+  {
+    "week": 2,
+    "theme": "Communication Week",
+    "focus": "functional language, AAC phrases, greetings, and self-advocacy",
+    "skill": "communication",
+    "badge": "Communication Champion Badge",
+    "rewardBonus": "AAC Practice Badge",
+    "startDate": "2026-06-01",
+    "games": [
+      "aac-board",
+      "conversation-builder",
+      "wh-questions",
+      "self-advocacy",
+      "ask-for-help",
+      "yes-no-practice",
+      "text-smart"
+    ],
+    "printables": [
+      "AAC board",
+      "Trace I want/help/more",
+      "Conversation card",
+      "Communication certificate"
+    ]
+  },
+  {
+    "week": 3,
+    "theme": "Listening & Directions Week",
+    "focus": "following directions, color/shape concepts, and sequencing",
+    "skill": "daily",
+    "badge": "Direction Detective Badge",
+    "rewardBonus": "Follow Directions Badge",
+    "startDate": "2026-06-08",
+    "games": [
+      "follow-directions",
+      "color-match",
+      "big-small",
+      "same-different",
+      "routine-sequence",
+      "chore-sequence",
+      "calendar-routines"
+    ],
+    "printables": [
+      "Shape coloring page",
+      "Trace directions",
+      "First/then board",
+      "Schedule cards"
+    ]
+  },
+  {
+    "week": 4,
+    "theme": "Daily Living Week",
+    "focus": "routines, hygiene, clean-up, and independence",
+    "skill": "daily",
+    "badge": "Daily Living Helper Badge",
+    "rewardBonus": "Routine Helper Certificate",
+    "startDate": "2026-06-15",
+    "games": [
+      "first-then",
+      "clean-up-steps",
+      "hygiene-helper",
+      "hygiene-scenarios",
+      "routine-sequence",
+      "chore-sequence",
+      "time-schedule"
+    ],
+    "printables": [
+      "Visual schedule",
+      "Hygiene steps",
+      "Token board",
+      "Routine certificate"
+    ]
+  },
+  {
+    "week": 5,
+    "theme": "Social Choices Week",
+    "focus": "turn-taking, friendship repair, expected behavior, and personal space",
+    "skill": "social",
+    "badge": "Friendship Builder Badge",
+    "rewardBonus": "Social Skills Badge",
+    "startDate": "2026-06-22",
+    "games": [
+      "social-choices",
+      "sharing-choice",
+      "wait-my-turn",
+      "personal-space",
+      "expected-unexpected",
+      "good-sport",
+      "friendship-repair"
+    ],
+    "printables": [
+      "Social story card",
+      "Expected/unexpected worksheet",
+      "Turn-taking token board",
+      "Friendship certificate"
+    ]
+  },
+  {
+    "week": 6,
+    "theme": "Safety Week",
+    "focus": "safe body, community safety, signs, and emergency choices",
+    "skill": "safety",
+    "badge": "Safety Star Badge",
+    "rewardBonus": "Safety Helper Certificate",
+    "startDate": "2026-06-29",
+    "games": [
+      "stop-go",
+      "safety-signs",
+      "playground-safety",
+      "community-safety",
+      "online-safety",
+      "public-transport-safety",
+      "emergency-plan"
+    ],
+    "printables": [
+      "Safety signs page",
+      "Stop/look/ask card",
+      "Community safety worksheet",
+      "Safety badge"
+    ]
+  },
+  {
+    "week": 7,
+    "theme": "Calm Body Week",
+    "focus": "breathing, coping, flexible thinking, and problem size",
+    "skill": "calm",
+    "badge": "Calm Body Coach Badge",
+    "rewardBonus": "Coping Card",
+    "startDate": "2026-07-06",
+    "games": [
+      "breathing-bubble",
+      "coping-match",
+      "coping-toolkit",
+      "flexible-thinking",
+      "problem-size",
+      "problem-solving",
+      "emotion-thermometer-game"
+    ],
+    "printables": [
+      "Breathing cloud coloring",
+      "Problem size scale",
+      "Coping card",
+      "Calm body certificate"
+    ]
+  },
+  {
+    "week": 8,
+    "theme": "Community Skills Week",
+    "focus": "stores, helpers, restaurants, transit, and public expectations",
+    "skill": "money",
+    "badge": "Community Explorer Badge",
+    "rewardBonus": "Community Helper Badge",
+    "startDate": "2026-07-13",
+    "games": [
+      "community-helpers",
+      "store-etiquette",
+      "restaurant-choices",
+      "community-safety",
+      "money-store",
+      "public-transport-safety",
+      "grocery-budget"
+    ],
+    "printables": [
+      "Community map coloring",
+      "Store choices worksheet",
+      "Money token board",
+      "Community certificate"
+    ]
+  },
+  {
+    "week": 9,
+    "theme": "Money Skills Week",
+    "focus": "buying, budgeting, price choices, and change concepts",
+    "skill": "money",
+    "badge": "Money Mission Badge",
+    "rewardBonus": "Store Helper Certificate",
+    "startDate": "2026-07-20",
+    "games": [
+      "money-store",
+      "grocery-budget",
+      "store-etiquette",
+      "problem-solving",
+      "goal-planner",
+      "time-management",
+      "appointment-scheduling"
+    ],
+    "printables": [
+      "Pretend store worksheet",
+      "Budget choices",
+      "Receipt practice",
+      "Money skills badge"
+    ]
+  },
+  {
+    "week": 10,
+    "theme": "Teen Life & Self-Advocacy Week",
+    "focus": "asking for support, texting safely, boundaries, and planning",
+    "skill": "communication",
+    "badge": "Self-Advocacy Badge",
+    "rewardBonus": "Teen Skills Certificate",
+    "startDate": "2026-07-27",
+    "games": [
+      "self-advocacy",
+      "text-smart",
+      "asking-accommodations",
+      "healthy-boundaries",
+      "public-boundaries",
+      "time-management",
+      "goal-planner"
+    ],
+    "printables": [
+      "Ask for help script",
+      "Text safety card",
+      "Boundary choices worksheet",
+      "Self-advocacy certificate"
+    ]
+  },
+  {
+    "week": 11,
+    "theme": "Job Skills Week",
+    "focus": "interviews, feedback, breaks, checking in, and work routines",
+    "skill": "vocational",
+    "badge": "Job Ready Badge",
+    "rewardBonus": "Workplace Skills Certificate",
+    "startDate": "2026-08-03",
+    "games": [
+      "workplace-choices",
+      "job-interview",
+      "workplace-break",
+      "supervisor-feedback",
+      "clock-in-out",
+      "time-management",
+      "asking-accommodations"
+    ],
+    "printables": [
+      "Interview practice sheet",
+      "Work routine checklist",
+      "Ask supervisor script",
+      "Job badge"
+    ]
+  },
+  {
+    "week": 12,
+    "theme": "Review & Celebration Week",
+    "focus": "reviewing favorite skills and earning printable rewards",
+    "skill": "social",
+    "badge": "Super Learner Badge",
+    "rewardBonus": "Super Learner Certificate",
+    "startDate": "2026-08-10",
+    "games": [
+      "emotion-match",
+      "aac-board",
+      "follow-directions",
+      "social-choices",
+      "safety-signs",
+      "money-store",
+      "workplace-choices"
+    ],
+    "printables": [
+      "Full printable pack",
+      "Super learner certificate",
+      "Favorite skill worksheet",
+      "Celebration coloring page"
+    ]
+  }
+]

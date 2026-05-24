@@ -323,6 +323,9 @@ const gameArea = $("#gameArea");
 let allGames = [];
 let activeAge = "ALL";
 let activeIsland = "ALL";
+let weeklyPacks = [];
+let currentWeeklyPack = null;
+let activeWeeklyOnly = loadJSON("learnPlayWeeklyOnlyV21", true);
 let settings = loadJSON("learnPlayV17Settings", { bigText:false, reduceMotion:false, sound:false });
 let progress = loadJSON("learnPlayV17Progress", {});
 let rewardWallet = loadJSON("learnPlayRewardWalletV18", { spent:0, purchases:[], lastReward:null });
@@ -432,18 +435,42 @@ function applySettings(){
   renderDailyStatus();
   renderRewardStore();
 }
-function gameIcon(game){ return iconMap[game.title] || "🎮"; }
+function gameIcon(game){ return game.icon || iconMap[game.title] || "🎮"; }
 function getGameData(id){
   const data = trialLibrary[id];
   if(data) return data;
-  return {
-    type:"choice",
-    skill:"Practice",
-    adult:"Use model, prompt, wait, reinforce, and generalize to daily routines.",
-    trials:[
-      {visual:"🎯", prompt:"Choose the best answer.", teach:"Look for the safe, kind, or helpful choice.", show:"Pick the answer that solves the problem.", choices:["Safe choice","Unsafe choice","Silly choice","No choice"], answer:"Safe choice", correction:"The best answer is the safe and helpful choice.", generalize:"Practice with a real example."}
-    ]
-  };
+  const game = allGames.find(g => g.id === id) || {title:"Practice", category:"Skill", goal:"Practice a helpful skill."};
+  return buildGenericGameData(game);
+}
+function buildGenericGameData(game){
+  const title = game.title || "Practice";
+  const category = `${game.category || ""} ${game.goal || ""} ${title}`.toLowerCase();
+  let bank;
+  if(category.includes("safety") || category.includes("emergency") || category.includes("online")){
+    bank = {skill:"Safety choices", visual:"🛟", teach:"A safe choice protects your body, privacy, and community space.", adult:"Practice the safety rule, model the safe response, then role-play a real example.", answer:"Stop and ask a trusted adult.", wrong:["Keep it secret.","Run away without telling anyone.","Click or touch without asking."], correction:"The safest response is to stop, think, and ask a trusted adult."};
+  } else if(category.includes("vocation") || category.includes("work") || category.includes("job") || category.includes("interview") || category.includes("supervisor")){
+    bank = {skill:"Job readiness", visual:"💼", teach:"At work, helpful choices are respectful, on task, and safe.", adult:"Model the workplace sentence, then let the learner practice with a calm voice.", answer:"Ask the supervisor for help or clarification.", wrong:["Leave without telling anyone.","Use your phone instead of working.","Take items home."], correction:"A good workplace choice is to ask for help, check in, or follow the routine."};
+  } else if(category.includes("money") || category.includes("store") || category.includes("budget") || category.includes("community") || category.includes("restaurant")){
+    bank = {skill:"Community practice", visual:"🛒", teach:"In the community, we check the plan, use polite words, and ask for help when needed.", adult:"Practice one real-life sentence such as “Excuse me, can you help me?”", answer:"Ask politely and follow the community rule.", wrong:["Grab it and leave.","Yell at the worker.","Ignore the rule."], correction:"A helpful community choice is polite, safe, and follows the rule."};
+  } else if(category.includes("communication") || category.includes("aac") || category.includes("advocacy") || category.includes("question") || category.includes("conversation")){
+    bank = {skill:"Communication", visual:"💬", teach:"Communication helps people know what you want, need, feel, or think.", adult:"Model the phrase first, then wait for the learner to try independently.", answer:"Use clear words or AAC to ask for help.", wrong:["Stay upset and say nothing.","Push or grab.","Walk away without telling anyone."], correction:"A clear message helps other people understand and help you."};
+  } else if(category.includes("daily") || category.includes("hygiene") || category.includes("routine") || category.includes("schedule") || category.includes("chore")){
+    bank = {skill:"Daily living", visual:"🧼", teach:"Daily routines are easier when we follow small steps in order.", adult:"Break the routine into first, next, then, done. Reinforce each completed step.", answer:"Do the first step, then the next step.", wrong:["Skip every step.","Throw the materials.","Leave before finishing."], correction:"A routine works best when we complete one small step at a time."};
+  } else if(category.includes("calm") || category.includes("coping") || category.includes("emotion") || category.includes("flexible") || category.includes("problem")){
+    bank = {skill:"Self management", visual:"🌈", teach:"A calm strategy helps your body get ready to learn again.", adult:"Model the coping strategy and praise any attempt to use it.", answer:"Take a breath and ask for a break or help.", wrong:["Scream at someone.","Throw items.","Give up forever."], correction:"A coping choice keeps everyone safe and helps your body calm down."};
+  } else {
+    bank = {skill:"Learning choice", visual:"🎯", teach:"Look for the choice that is safe, kind, helpful, and matches the situation.", adult:"Use model, prompt, wait, reinforce, and generalize to daily routines.", answer:"Choose the safe and helpful response.", wrong:["Choose an unsafe response.","Ignore the direction.","Use an unkind response."], correction:"The best answer is safe, kind, and helpful."};
+  }
+  return {type:"choice", skill:bank.skill, adult:bank.adult, trials:[0,1,2,3,4].map((_,i)=>({
+    visual:bank.visual,
+    prompt:`${title}: What is the best choice?`,
+    teach:bank.teach,
+    show:bank.answer,
+    choices:shuffle([bank.answer, ...bank.wrong]).slice(0,4),
+    answer:bank.answer,
+    correction:bank.correction,
+    generalize:`Practice ${title.toLowerCase()} one time with a grown-up.`
+  }))};
 }
 
 
@@ -654,6 +681,85 @@ function updateSelectedIslandPanel(){
   if(text) text.textContent = island.id === "ALL" ? "Choose any game below, or tap an island to narrow the list." : island.text;
 }
 
+
+function normalizeDate(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+function addDays(date, days){ const d = new Date(date); d.setDate(d.getDate()+days); return d; }
+function niceDate(date){ return date.toLocaleDateString(undefined,{month:"short", day:"numeric"}); }
+function weeklyPackIndex(){
+  if(!weeklyPacks.length) return -1;
+  const base = normalizeDate(new Date(weeklyPacks[0].startDate || "2026-05-25"));
+  const today = normalizeDate(new Date());
+  const diffDays = Math.floor((today - base) / 86400000);
+  if(diffDays < 0) return 0;
+  return Math.floor(diffDays / 7) % weeklyPacks.length;
+}
+function currentPackDateRange(){
+  if(!currentWeeklyPack) return "";
+  const idx = weeklyPackIndex();
+  const base = normalizeDate(new Date(weeklyPacks[0].startDate || "2026-05-25"));
+  const today = normalizeDate(new Date());
+  const diffDays = Math.max(0, Math.floor((today - base) / 86400000));
+  const cycleWeek = Math.floor(diffDays / 7);
+  const start = addDays(base, cycleWeek * 7);
+  const end = addDays(start, 6);
+  return `${niceDate(start)} – ${niceDate(end)}`;
+}
+function nextRotationText(){
+  const base = normalizeDate(new Date(weeklyPacks[0]?.startDate || "2026-05-25"));
+  const today = normalizeDate(new Date());
+  const diffDays = Math.max(0, Math.floor((today - base) / 86400000));
+  const next = addDays(base, (Math.floor(diffDays / 7) + 1) * 7);
+  return niceDate(next);
+}
+async function loadWeeklyPacks(){
+  try{
+    const res = await fetch("weekly-packs.json?v=" + Date.now(), {cache:"no-store"});
+    if(!res.ok) throw new Error("weekly-packs.json not found");
+    weeklyPacks = await res.json();
+  } catch {
+    weeklyPacks = [{week:1, theme:"Learning Adventure Week", focus:"practice a fresh set of skills", skill:"social", badge:"Weekly Learner Badge", games:allGames.slice(0,7).map(g=>g.id), printables:["Coloring page","Token board","Certificate"]}];
+  }
+  currentWeeklyPack = weeklyPacks[weeklyPackIndex()] || weeklyPacks[0] || null;
+  renderWeeklyPack();
+}
+function weeklyGameSet(){ return new Set((currentWeeklyPack?.games || [])); }
+function renderWeeklyPack(){
+  const pack = currentWeeklyPack;
+  if(!pack) return;
+  const byId = Object.fromEntries(allGames.map(g => [g.id, g]));
+  const theme = document.getElementById("weeklyTheme");
+  const focus = document.getElementById("weeklyFocus");
+  const meta = document.getElementById("weeklyMeta");
+  const badge = document.getElementById("weeklyBadge");
+  const chips = document.getElementById("weeklyGameChips");
+  const prints = document.getElementById("weeklyPrintables");
+  if(theme) theme.textContent = pack.theme || "This Week’s Learning Adventure";
+  if(focus) focus.textContent = `Focus: ${pack.focus || "practice new skills"}.`;
+  if(meta) meta.innerHTML = `<span>Week ${escapeHtml(pack.week || "")}</span><span>${escapeHtml(currentPackDateRange())}</span><span>Next rotation: ${escapeHtml(nextRotationText())}</span><span>${activeWeeklyOnly ? "Weekly pack active" : "All games showing"}</span>`;
+  if(badge) badge.textContent = `🏅 ${pack.badge || pack.rewardBonus || "Weekly Badge"}`;
+  if(chips) chips.innerHTML = (pack.games || []).slice(0,10).map(id => `<span>${escapeHtml(gameIcon(byId[id] || {}))} ${escapeHtml((byId[id]||{}).title || id)}</span>`).join("");
+  if(prints) prints.innerHTML = `<strong>Weekly printables:</strong><br>${(pack.printables || []).map(p => `• ${escapeHtml(p)}`).join("<br>")}`;
+  renderWeeklyCalendar();
+}
+function renderWeeklyCalendar(){
+  const cal = document.getElementById("weeklyCalendar");
+  if(!cal || !weeklyPacks.length) return;
+  const currentIdx = weeklyPackIndex();
+  const cards = [0,1,2,3].map(offset => {
+    const idx = (currentIdx + offset) % weeklyPacks.length;
+    const pack = weeklyPacks[idx];
+    return `<div class="week-card ${offset===0?'active':''}"><strong>${offset===0?'This week':`In ${offset} week${offset>1?'s':''}`}</strong><span>${escapeHtml(pack.theme || `Week ${pack.week}`)}</span></div>`;
+  }).join("");
+  cal.innerHTML = cards;
+}
+function setWeeklyMode(on){
+  activeWeeklyOnly = !!on;
+  saveJSON("learnPlayWeeklyOnlyV21", activeWeeklyOnly);
+  renderWeeklyPack();
+  renderGameGrid();
+  setToast(activeWeeklyOnly ? "This week’s pack is active." : "Showing all games.");
+}
+
 async function loadGames(){
   try{
     const res = await fetch("games.json?v=" + Date.now(), {cache:"no-store"});
@@ -661,18 +767,22 @@ async function loadGames(){
     allGames = await res.json();
   } catch { allGames = fallbackGames; }
   allGames = allGames.filter(g => g.enabled !== false);
+  await loadWeeklyPacks();
   renderGameGrid();
   applySettings();
   requireDailyCheckin();
 }
 function renderGameGrid(){
   const island = skillIslands.find(i => i.id === activeIsland) || skillIslands[0];
-  const filtered = allGames.filter(g => (activeAge === "ALL" || g.ageBand === activeAge) && gameBelongsToIsland(g, island));
+  const wset = weeklyGameSet();
+  let filtered = allGames.filter(g => (activeAge === "ALL" || g.ageBand === activeAge) && gameBelongsToIsland(g, island));
+  if(activeWeeklyOnly && wset.size) filtered = filtered.filter(g => wset.has(g.id));
   renderIslands();
-  gameGrid.innerHTML = filtered.map(game => {
+  const weeklyNote = activeWeeklyOnly && currentWeeklyPack ? `<div class="weekly-mode-note">🗓️ Showing this week’s rotation: ${escapeHtml(currentWeeklyPack.theme)}. Use “Show all games” to browse the full library.</div>` : "";
+  gameGrid.innerHTML = weeklyNote + filtered.map(game => {
     const p = progress[game.id] || {stars:0, completed:0};
     return `
-      <article class="game-card" data-game="${escapeHtml(game.id)}">
+      <article class="game-card ${weeklyGameSet().has(game.id) ? 'weekly-featured' : ''}" data-game="${escapeHtml(game.id)}">
         <div class="game-icon">${gameIcon(game)}</div>
         <div class="game-card-top">
           <span class="category-pill">${escapeHtml(getIslandForGame(game).icon)} ${escapeHtml(game.category || "Skill")}</span>
@@ -687,7 +797,7 @@ function renderGameGrid(){
         <button class="play-btn" type="button"><span>Play lesson</span><strong>→</strong></button>
       </article>`;
   }).join("");
-  if(!filtered.length) gameGrid.innerHTML = `<div class="empty-state">No games are enabled for this age group.</div>`;
+  if(!filtered.length) gameGrid.innerHTML = weeklyNote + `<div class="empty-state">No games match this view. Try another age level, island, or Show all games.</div>`;
 }
 
 function openGame(gameId){
@@ -1346,6 +1456,20 @@ $("#resetRewardData")?.addEventListener("click", () => {
     applySettings();
     setToast("Reward Room reset. Lesson stars were kept.");
   }
+});
+
+
+document.getElementById("weeklyPackBtn")?.addEventListener("click", () => document.getElementById("weeklyPack")?.scrollIntoView({behavior:"smooth", block:"start"}));
+document.getElementById("activateWeeklyPack")?.addEventListener("click", () => { setWeeklyMode(true); document.getElementById("skillMap")?.scrollIntoView({behavior:"smooth", block:"start"}); });
+document.getElementById("showAllGamesWeekly")?.addEventListener("click", () => { setWeeklyMode(false); document.getElementById("skillMap")?.scrollIntoView({behavior:"smooth", block:"start"}); });
+document.getElementById("openWeeklyPrintables")?.addEventListener("click", () => {
+  const type = document.getElementById("printType");
+  const skill = document.getElementById("printSkill");
+  if(type) type.value = "pack";
+  if(skill && currentWeeklyPack?.skill) skill.value = currentWeeklyPack.skill;
+  renderStudioPreview();
+  openPrintableStudio();
+  setToast("Weekly printable pack is ready.");
 });
 
 loadGames();
