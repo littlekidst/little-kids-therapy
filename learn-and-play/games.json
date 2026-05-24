@@ -7,7 +7,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Identify common feelings from faces and situations.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🫧"
   },
   {
     "id": "follow-directions",
@@ -17,7 +18,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Follow one-step directions using color, shape, and position words.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🎮"
   },
   {
     "id": "token-board",
@@ -27,7 +29,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice completing steps and earning tokens toward a celebration.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🎮"
   },
   {
     "id": "category-sort",
@@ -37,7 +40,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Sort items into groups such as animals, food, toys, and clothes.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🎮"
   },
   {
     "id": "first-then",
@@ -47,7 +51,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice first/then language and transitions.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🧼"
   },
   {
     "id": "breathing-bubble",
@@ -57,7 +62,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Use a visual breathing cue to practice calming the body.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🫧"
   },
   {
     "id": "aac-board",
@@ -67,7 +73,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice functional communication phrases like help, more, all done, and break.",
-    "enabled": true
+    "enabled": true,
+    "icon": "💬"
   },
   {
     "id": "routine-sequence",
@@ -77,7 +84,8 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Put daily routine steps in the correct order.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🧼"
   },
   {
     "id": "social-choices",
@@ -87,7 +95,8 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Choose safe and friendly responses in simple social situations.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🤝"
   },
   {
     "id": "imitation-cards",
@@ -97,7 +106,8 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice copying simple actions with visual cards.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🎮"
   },
   {
     "id": "conversation-builder",
@@ -107,7 +117,8 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Choose replies that keep a conversation going.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🤝"
   },
   {
     "id": "expected-unexpected",
@@ -117,7 +128,8 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Identify expected and unexpected behaviors in common situations.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🤝"
   },
   {
     "id": "safety-signs",
@@ -127,17 +139,19 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Recognize common safety signs and what to do.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🛟"
   },
   {
-    "id": "coping-strategy",
+    "id": "coping-match",
     "title": "Coping Strategy Match",
     "category": "Regulation",
     "age": "8+",
     "ageBand": "10-13",
     "level": "Preteen",
     "goal": "Match feelings or problems to helpful coping strategies.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🫧"
   },
   {
     "id": "time-schedule",
@@ -147,7 +161,8 @@
     "ageBand": "10-13",
     "level": "Preteen",
     "goal": "Practice reading simple schedules and choosing what comes next.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🎮"
   },
   {
     "id": "hygiene-helper",
@@ -157,7 +172,8 @@
     "ageBand": "10-13",
     "level": "Preteen",
     "goal": "Choose hygiene steps for school, home, and community routines.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🧼"
   },
   {
     "id": "problem-solving",
@@ -167,7 +183,8 @@
     "ageBand": "10-13",
     "level": "Preteen",
     "goal": "Practice stop-think-choose-check problem solving.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🎮"
   },
   {
     "id": "money-store",
@@ -177,7 +194,8 @@
     "ageBand": "10-13",
     "level": "Preteen",
     "goal": "Practice simple purchasing choices and money awareness.",
-    "enabled": true
+    "enabled": true,
+    "icon": "💵"
   },
   {
     "id": "perspective-detective",
@@ -187,7 +205,8 @@
     "ageBand": "10-13",
     "level": "Preteen",
     "goal": "Guess what another person may think or feel from context clues.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🤝"
   },
   {
     "id": "goal-planner",
@@ -197,7 +216,8 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Break a goal into small, doable steps.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🫧"
   },
   {
     "id": "workplace-choices",
@@ -207,7 +227,8 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Choose appropriate workplace behaviors and responses.",
-    "enabled": true
+    "enabled": true,
+    "icon": "💼"
   },
   {
     "id": "text-smart",
@@ -217,7 +238,8 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Choose safe and appropriate text message replies.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🛟"
   },
   {
     "id": "self-advocacy",
@@ -227,7 +249,8 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice asking for help, breaks, clarification, or accommodations.",
-    "enabled": true
+    "enabled": true,
+    "icon": "💬"
   },
   {
     "id": "community-safety",
@@ -237,7 +260,8 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Choose safe responses in stores, streets, and public places.",
-    "enabled": true
+    "enabled": true,
+    "icon": "🛟"
   },
   {
     "id": "job-interview",
@@ -247,7 +271,8 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice professional answers to common interview situations.",
-    "enabled": true
+    "enabled": true,
+    "icon": "💼"
   },
   {
     "id": "color-match",
@@ -257,7 +282,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Match colors and choose the named color.",
-    "icon": "\ud83c\udfa8",
+    "icon": "🎨",
     "enabled": true
   },
   {
@@ -268,7 +293,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice finding and naming common body parts.",
-    "icon": "\ud83e\uddcd",
+    "icon": "🧍",
     "enabled": true
   },
   {
@@ -279,7 +304,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice answering simple yes/no questions.",
-    "icon": "\u2705",
+    "icon": "✅",
     "enabled": true
   },
   {
@@ -290,7 +315,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice size words like big, small, tall, and short.",
-    "icon": "\ud83d\udd35",
+    "icon": "🔵",
     "enabled": true
   },
   {
@@ -301,7 +326,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Identify whether two items are the same or different.",
-    "icon": "\ud83d\udd0e",
+    "icon": "🔎",
     "enabled": true
   },
   {
@@ -312,7 +337,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice waiting and taking turns with support.",
-    "icon": "\u23f3",
+    "icon": "⏳",
     "enabled": true
   },
   {
@@ -323,7 +348,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice cleaning up toys with simple first/next steps.",
-    "icon": "\ud83e\uddf8",
+    "icon": "🧸",
     "enabled": true
   },
   {
@@ -334,7 +359,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice asking for help when something is hard.",
-    "icon": "\ud83d\ude4b",
+    "icon": "🙋",
     "enabled": true
   },
   {
@@ -345,7 +370,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice stop/go directions and safe body control.",
-    "icon": "\ud83d\uded1",
+    "icon": "🛑",
     "enabled": true
   },
   {
@@ -356,7 +381,7 @@
     "ageBand": "3-5",
     "level": "Beginner",
     "goal": "Practice simple sharing and turn-taking choices.",
-    "icon": "\ud83e\udd32",
+    "icon": "🤲",
     "enabled": true
   },
   {
@@ -367,7 +392,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Practice who, what, where, when, and why questions.",
-    "icon": "\u2753",
+    "icon": "❓",
     "enabled": true
   },
   {
@@ -378,7 +403,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Choose respectful body space in common situations.",
-    "icon": "\u2194\ufe0f",
+    "icon": "↔️",
     "enabled": true
   },
   {
@@ -389,7 +414,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Practice helping, asking, and working with others.",
-    "icon": "\ud83e\udd1d",
+    "icon": "🤝",
     "enabled": true
   },
   {
@@ -400,7 +425,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Practice winning, losing, and trying again respectfully.",
-    "icon": "\ud83c\udfc5",
+    "icon": "🏅",
     "enabled": true
   },
   {
@@ -411,7 +436,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Choose expected choices during classroom routines.",
-    "icon": "\ud83c\udfeb",
+    "icon": "🏫",
     "enabled": true
   },
   {
@@ -422,7 +447,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Choose safe playground actions and asking for help.",
-    "icon": "\ud83d\udedd",
+    "icon": "🛝",
     "enabled": true
   },
   {
@@ -433,7 +458,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Put simple home chore steps in order.",
-    "icon": "\ud83e\uddfa",
+    "icon": "🧺",
     "enabled": true
   },
   {
@@ -444,7 +469,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Identify helpers and when to ask an adult for help.",
-    "icon": "\ud83d\ude92",
+    "icon": "🚒",
     "enabled": true
   },
   {
@@ -455,7 +480,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Match feelings with calm coping tools.",
-    "icon": "\ud83e\uddf0",
+    "icon": "🧰",
     "enabled": true
   },
   {
@@ -466,7 +491,7 @@
     "ageBand": "6-9",
     "level": "Growing",
     "goal": "Practice today, tomorrow, before, and after in a schedule.",
-    "icon": "\ud83d\udcc5",
+    "icon": "📅",
     "enabled": true
   },
   {
@@ -477,7 +502,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Practice apologizing, repairing mistakes, and moving forward.",
-    "icon": "\ud83e\udef6",
+    "icon": "🫶",
     "enabled": true
   },
   {
@@ -488,7 +513,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Practice trying a different plan when things change.",
-    "icon": "\ud83d\udd04",
+    "icon": "🔄",
     "enabled": true
   },
   {
@@ -499,7 +524,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Match the size of a problem with the size of a reaction.",
-    "icon": "\ud83d\udccf",
+    "icon": "📏",
     "enabled": true
   },
   {
@@ -510,7 +535,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Rate feelings and choose coping strategies.",
-    "icon": "\ud83c\udf21\ufe0f",
+    "icon": "🌡️",
     "enabled": true
   },
   {
@@ -521,7 +546,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Practice safe choices with messages, links, and privacy.",
-    "icon": "\ud83d\udd10",
+    "icon": "🔐",
     "enabled": true
   },
   {
@@ -532,7 +557,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Break homework into manageable steps.",
-    "icon": "\ud83d\udcda",
+    "icon": "📚",
     "enabled": true
   },
   {
@@ -543,7 +568,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Choose appropriate hygiene and self-care steps.",
-    "icon": "\ud83e\udea5",
+    "icon": "🪥",
     "enabled": true
   },
   {
@@ -554,7 +579,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Practice ordering, waiting, and polite restaurant choices.",
-    "icon": "\ud83c\udf7d\ufe0f",
+    "icon": "🍽️",
     "enabled": true
   },
   {
@@ -565,7 +590,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Choose safe and expected store behavior.",
-    "icon": "\ud83c\udfec",
+    "icon": "🏬",
     "enabled": true
   },
   {
@@ -576,7 +601,7 @@
     "ageBand": "10-13",
     "level": "Intermediate",
     "goal": "Practice safe choices while waiting, riding, and asking for help.",
-    "icon": "\ud83d\ude8c",
+    "icon": "🚌",
     "enabled": true
   },
   {
@@ -587,7 +612,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice asking for a break appropriately at work.",
-    "icon": "\u2615",
+    "icon": "☕",
     "enabled": true
   },
   {
@@ -598,7 +623,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice responding to feedback respectfully.",
-    "icon": "\ud83d\udde3\ufe0f",
+    "icon": "🗣️",
     "enabled": true
   },
   {
@@ -609,7 +634,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice checking in, starting tasks, and finishing shifts.",
-    "icon": "\u23f1\ufe0f",
+    "icon": "⏱️",
     "enabled": true
   },
   {
@@ -620,7 +645,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice choosing items within a simple budget.",
-    "icon": "\ud83d\uded2",
+    "icon": "🛒",
     "enabled": true
   },
   {
@@ -631,7 +656,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice making, remembering, and attending appointments.",
-    "icon": "\ud83d\udcc6",
+    "icon": "📆",
     "enabled": true
   },
   {
@@ -642,7 +667,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice respectful boundaries in public and community settings.",
-    "icon": "\ud83e\uddcd",
+    "icon": "🧍",
     "enabled": true
   },
   {
@@ -653,7 +678,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice asking for support or clarification respectfully.",
-    "icon": "\ud83d\udcdd",
+    "icon": "📝",
     "enabled": true
   },
   {
@@ -664,7 +689,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice what to do in urgent or unsafe situations.",
-    "icon": "\ud83d\udea8",
+    "icon": "🚨",
     "enabled": true
   },
   {
@@ -675,7 +700,7 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Practice planning, arriving on time, and using reminders.",
-    "icon": "\u23f0",
+    "icon": "⏰",
     "enabled": true
   },
   {
@@ -686,7 +711,73 @@
     "ageBand": "14-21",
     "level": "Teen / Young Adult",
     "goal": "Choose safe, respectful responses with friends and peers.",
-    "icon": "\ud83d\udee1\ufe0f",
+    "icon": "🛡️",
     "enabled": true
+  },
+  {
+    "id": "resume-basics",
+    "title": "Resume Basics",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose simple, professional information for a resume or application.",
+    "enabled": true,
+    "icon": "📄"
+  },
+  {
+    "id": "phone-call-practice",
+    "title": "Phone Call Practice",
+    "category": "Communication",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice making polite calls for appointments, work, and help.",
+    "enabled": true,
+    "icon": "☎️"
+  },
+  {
+    "id": "personal-info-safety",
+    "title": "Personal Info Safety",
+    "category": "Digital Safety",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Decide what information is safe to share and what should stay private.",
+    "enabled": true,
+    "icon": "🔐"
+  },
+  {
+    "id": "public-transit-planner",
+    "title": "Public Transit Planner",
+    "category": "Community",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice planning a safe community trip and what to do if plans change.",
+    "enabled": true,
+    "icon": "🚌"
+  },
+  {
+    "id": "roommate-boundaries",
+    "title": "Roommate & Shared Space",
+    "category": "Daily Living",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice respectful choices in shared living, school, or work spaces.",
+    "enabled": true,
+    "icon": "🏠"
+  },
+  {
+    "id": "health-appointment",
+    "title": "Health Appointment Practice",
+    "category": "Self Management",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice checking in, answering simple questions, and asking for help at appointments.",
+    "enabled": true,
+    "icon": "🗓️"
   }
 ]

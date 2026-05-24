@@ -1,41 +1,860 @@
 
 const fallbackGames = [
-  {id:"emotion-match",title:"Emotion Match",category:"Social Skills",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Identify common feelings from faces and situations.",enabled:true},
-  {id:"follow-directions",title:"Follow Directions",category:"Listening",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Follow one-step directions using color, shape, and position words.",enabled:true},
-  {id:"token-board",title:"Token Board",category:"Reinforcement",age:"2+",ageBand:"3-5",level:"Beginner",goal:"Practice completing steps and earning tokens toward a celebration.",enabled:true},
-  {id:"category-sort",title:"Category Sort",category:"Language",age:"4+",ageBand:"3-5",level:"Beginner",goal:"Sort items into groups such as animals, food, toys, and clothes.",enabled:true},
-  {id:"first-then",title:"First / Then Builder",category:"Routine",age:"2+",ageBand:"3-5",level:"Beginner",goal:"Practice first/then language and transitions.",enabled:true},
-  {id:"breathing-bubble",title:"Calm Breathing Bubble",category:"Regulation",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Use a visual breathing cue to practice calming the body.",enabled:true},
-  {id:"aac-board",title:"AAC Choice Board",category:"Communication",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Practice functional communication phrases like help, more, all done, and break.",enabled:true},
-  {id:"routine-sequence",title:"Routine Sequence",category:"Daily Living",age:"5+",ageBand:"6-9",level:"Developing",goal:"Put daily routine steps in order.",enabled:true},
-  {id:"social-choices",title:"Social Choices",category:"Social Skills",age:"5+",ageBand:"6-9",level:"Developing",goal:"Choose friendly, safe, and expected social responses.",enabled:true},
-  {id:"imitation-cards",title:"Imitation Cards",category:"Motor Imitation",age:"4+",ageBand:"6-9",level:"Developing",goal:"Practice copying simple actions.",enabled:true},
-  {id:"conversation-builder",title:"Conversation Builder",category:"Communication",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Practice greetings, questions, comments, and ending conversations politely.",enabled:true},
-  {id:"expected-unexpected",title:"Expected / Unexpected",category:"Social Skills",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Decide whether a behavior is expected or unexpected in context.",enabled:true},
-  {id:"safety-signs",title:"Safety Signs",category:"Safety",age:"6+",ageBand:"10-13",level:"Intermediate",goal:"Recognize common safety signs and what to do.",enabled:true},
-  {id:"coping-match",title:"Coping Strategy Match",category:"Regulation",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Match feelings/situations with appropriate coping strategies.",enabled:true},
-  {id:"time-schedule",title:"Time & Schedule",category:"Executive Function",age:"8+",ageBand:"10-13",level:"Intermediate",goal:"Read time and choose what happens next in a schedule.",enabled:true},
-  {id:"hygiene-helper",title:"Hygiene Helper",category:"Daily Living",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Choose appropriate hygiene and self-care steps.",enabled:true},
-  {id:"problem-solving",title:"Problem Solving Steps",category:"Executive Function",age:"8+",ageBand:"10-13",level:"Intermediate",goal:"Practice stop-think-choose problem solving.",enabled:true},
-  {id:"money-store",title:"Money Store",category:"Life Skills",age:"10+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice basic buying, budgeting, and change concepts.",enabled:true},
-  {id:"perspective-detective",title:"Perspective Detective",category:"Social Skills",age:"10+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice identifying what another person may think or feel.",enabled:true},
-  {id:"goal-planner",title:"Goal Planner",category:"Executive Function",age:"10+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Break a goal into smaller realistic steps.",enabled:true},
-  {id:"workplace-choices",title:"Workplace Choices",category:"Vocational",age:"14+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Choose appropriate workplace behaviors and responses.",enabled:true},
-  {id:"text-smart",title:"Text Smart",category:"Digital Safety",age:"12+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Choose safe and appropriate text message replies.",enabled:true},
-  {id:"self-advocacy",title:"Self-Advocacy Coach",category:"Communication",age:"12+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice asking for help, breaks, clarification, or accommodations.",enabled:true},
-  {id:"community-safety",title:"Community Safety",category:"Safety",age:"12+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Choose safe responses in stores, streets, and public places.",enabled:true},
-  {id:"job-interview",title:"Job Interview Practice",category:"Vocational",age:"14+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice professional answers to common interview situations.",enabled:true}
+  {
+    "id": "emotion-match",
+    "title": "Emotion Match",
+    "category": "Social Skills",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Identify common feelings from faces and situations.",
+    "enabled": true,
+    "icon": "🫧"
+  },
+  {
+    "id": "follow-directions",
+    "title": "Follow Directions",
+    "category": "Listening",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Follow one-step directions using color, shape, and position words.",
+    "enabled": true,
+    "icon": "🎮"
+  },
+  {
+    "id": "token-board",
+    "title": "Token Board",
+    "category": "Reinforcement",
+    "age": "2+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice completing steps and earning tokens toward a celebration.",
+    "enabled": true,
+    "icon": "🎮"
+  },
+  {
+    "id": "category-sort",
+    "title": "Category Sort",
+    "category": "Language",
+    "age": "4+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Sort items into groups such as animals, food, toys, and clothes.",
+    "enabled": true,
+    "icon": "🎮"
+  },
+  {
+    "id": "first-then",
+    "title": "First / Then Builder",
+    "category": "Routine",
+    "age": "2+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice first/then language and transitions.",
+    "enabled": true,
+    "icon": "🧼"
+  },
+  {
+    "id": "breathing-bubble",
+    "title": "Calm Breathing Bubble",
+    "category": "Regulation",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Use a visual breathing cue to practice calming the body.",
+    "enabled": true,
+    "icon": "🫧"
+  },
+  {
+    "id": "aac-board",
+    "title": "AAC Choice Board",
+    "category": "Communication",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice functional communication phrases like help, more, all done, and break.",
+    "enabled": true,
+    "icon": "💬"
+  },
+  {
+    "id": "routine-sequence",
+    "title": "Routine Sequence",
+    "category": "Daily Living",
+    "age": "5+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Put daily routine steps in the correct order.",
+    "enabled": true,
+    "icon": "🧼"
+  },
+  {
+    "id": "social-choices",
+    "title": "Social Choices",
+    "category": "Social Skills",
+    "age": "5+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Choose safe and friendly responses in simple social situations.",
+    "enabled": true,
+    "icon": "🤝"
+  },
+  {
+    "id": "imitation-cards",
+    "title": "Imitation Cards",
+    "category": "Motor Imitation",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice copying simple actions with visual cards.",
+    "enabled": true,
+    "icon": "🎮"
+  },
+  {
+    "id": "conversation-builder",
+    "title": "Conversation Builder",
+    "category": "Social Language",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Choose replies that keep a conversation going.",
+    "enabled": true,
+    "icon": "🤝"
+  },
+  {
+    "id": "expected-unexpected",
+    "title": "Expected / Unexpected",
+    "category": "Social Skills",
+    "age": "7+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Identify expected and unexpected behaviors in common situations.",
+    "enabled": true,
+    "icon": "🤝"
+  },
+  {
+    "id": "safety-signs",
+    "title": "Safety Signs",
+    "category": "Safety",
+    "age": "7+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Recognize common safety signs and what to do.",
+    "enabled": true,
+    "icon": "🛟"
+  },
+  {
+    "id": "coping-match",
+    "title": "Coping Strategy Match",
+    "category": "Regulation",
+    "age": "8+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Match feelings or problems to helpful coping strategies.",
+    "enabled": true,
+    "icon": "🫧"
+  },
+  {
+    "id": "time-schedule",
+    "title": "Time & Schedule",
+    "category": "Executive Function",
+    "age": "8+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Practice reading simple schedules and choosing what comes next.",
+    "enabled": true,
+    "icon": "🎮"
+  },
+  {
+    "id": "hygiene-helper",
+    "title": "Hygiene Helper",
+    "category": "Daily Living",
+    "age": "8+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Choose hygiene steps for school, home, and community routines.",
+    "enabled": true,
+    "icon": "🧼"
+  },
+  {
+    "id": "problem-solving",
+    "title": "Problem Solving Steps",
+    "category": "Executive Function",
+    "age": "9+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Practice stop-think-choose-check problem solving.",
+    "enabled": true,
+    "icon": "🎮"
+  },
+  {
+    "id": "money-store",
+    "title": "Money Store",
+    "category": "Life Skills",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Practice simple purchasing choices and money awareness.",
+    "enabled": true,
+    "icon": "💵"
+  },
+  {
+    "id": "perspective-detective",
+    "title": "Perspective Detective",
+    "category": "Social Thinking",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Guess what another person may think or feel from context clues.",
+    "enabled": true,
+    "icon": "🤝"
+  },
+  {
+    "id": "goal-planner",
+    "title": "Goal Planner",
+    "category": "Self Management",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Break a goal into small, doable steps.",
+    "enabled": true,
+    "icon": "🫧"
+  },
+  {
+    "id": "workplace-choices",
+    "title": "Workplace Choices",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose appropriate workplace behaviors and responses.",
+    "enabled": true,
+    "icon": "💼"
+  },
+  {
+    "id": "text-smart",
+    "title": "Text Smart",
+    "category": "Digital Safety",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose safe and appropriate text message replies.",
+    "enabled": true,
+    "icon": "🛟"
+  },
+  {
+    "id": "self-advocacy",
+    "title": "Self-Advocacy Coach",
+    "category": "Communication",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice asking for help, breaks, clarification, or accommodations.",
+    "enabled": true,
+    "icon": "💬"
+  },
+  {
+    "id": "community-safety",
+    "title": "Community Safety",
+    "category": "Safety",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose safe responses in stores, streets, and public places.",
+    "enabled": true,
+    "icon": "🛟"
+  },
+  {
+    "id": "job-interview",
+    "title": "Job Interview Practice",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice professional answers to common interview situations.",
+    "enabled": true,
+    "icon": "💼"
+  },
+  {
+    "id": "color-match",
+    "title": "Color Match",
+    "category": "Visual Discrimination",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Match colors and choose the named color.",
+    "icon": "🎨",
+    "enabled": true
+  },
+  {
+    "id": "body-parts",
+    "title": "Body Parts Game",
+    "category": "Receptive Language",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice finding and naming common body parts.",
+    "icon": "🧍",
+    "enabled": true
+  },
+  {
+    "id": "yes-no-practice",
+    "title": "Yes / No Practice",
+    "category": "Communication",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice answering simple yes/no questions.",
+    "icon": "✅",
+    "enabled": true
+  },
+  {
+    "id": "big-small",
+    "title": "Big and Small",
+    "category": "Concepts",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice size words like big, small, tall, and short.",
+    "icon": "🔵",
+    "enabled": true
+  },
+  {
+    "id": "same-different",
+    "title": "Same or Different",
+    "category": "Visual Discrimination",
+    "age": "4+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Identify whether two items are the same or different.",
+    "icon": "🔎",
+    "enabled": true
+  },
+  {
+    "id": "wait-my-turn",
+    "title": "Wait for My Turn",
+    "category": "Social Skills",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice waiting and taking turns with support.",
+    "icon": "⏳",
+    "enabled": true
+  },
+  {
+    "id": "clean-up-steps",
+    "title": "Clean Up Steps",
+    "category": "Daily Living",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice cleaning up toys with simple first/next steps.",
+    "icon": "🧸",
+    "enabled": true
+  },
+  {
+    "id": "ask-for-help",
+    "title": "Ask for Help",
+    "category": "Communication",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice asking for help when something is hard.",
+    "icon": "🙋",
+    "enabled": true
+  },
+  {
+    "id": "stop-go",
+    "title": "Stop and Go",
+    "category": "Safety",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice stop/go directions and safe body control.",
+    "icon": "🛑",
+    "enabled": true
+  },
+  {
+    "id": "sharing-choice",
+    "title": "Sharing Choices",
+    "category": "Social Skills",
+    "age": "4+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice simple sharing and turn-taking choices.",
+    "icon": "🤲",
+    "enabled": true
+  },
+  {
+    "id": "wh-questions",
+    "title": "WH Questions",
+    "category": "Language",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Practice who, what, where, when, and why questions.",
+    "icon": "❓",
+    "enabled": true
+  },
+  {
+    "id": "personal-space",
+    "title": "Personal Space",
+    "category": "Social Skills",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Choose respectful body space in common situations.",
+    "icon": "↔️",
+    "enabled": true
+  },
+  {
+    "id": "teamwork-helper",
+    "title": "Teamwork Helper",
+    "category": "Social Skills",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Practice helping, asking, and working with others.",
+    "icon": "🤝",
+    "enabled": true
+  },
+  {
+    "id": "good-sport",
+    "title": "Good Sport Game",
+    "category": "Social Skills",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Practice winning, losing, and trying again respectfully.",
+    "icon": "🏅",
+    "enabled": true
+  },
+  {
+    "id": "classroom-choices",
+    "title": "Classroom Choices",
+    "category": "School Skills",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Choose expected choices during classroom routines.",
+    "icon": "🏫",
+    "enabled": true
+  },
+  {
+    "id": "playground-safety",
+    "title": "Playground Safety",
+    "category": "Safety",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Choose safe playground actions and asking for help.",
+    "icon": "🛝",
+    "enabled": true
+  },
+  {
+    "id": "chore-sequence",
+    "title": "Chore Sequence",
+    "category": "Daily Living",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Put simple home chore steps in order.",
+    "icon": "🧺",
+    "enabled": true
+  },
+  {
+    "id": "community-helpers",
+    "title": "Community Helpers",
+    "category": "Community Skills",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Identify helpers and when to ask an adult for help.",
+    "icon": "🚒",
+    "enabled": true
+  },
+  {
+    "id": "coping-toolkit",
+    "title": "Coping Toolkit",
+    "category": "Regulation",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Match feelings with calm coping tools.",
+    "icon": "🧰",
+    "enabled": true
+  },
+  {
+    "id": "calendar-routines",
+    "title": "Calendar Routines",
+    "category": "Executive Function",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Practice today, tomorrow, before, and after in a schedule.",
+    "icon": "📅",
+    "enabled": true
+  },
+  {
+    "id": "friendship-repair",
+    "title": "Friendship Repair",
+    "category": "Social Skills",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Practice apologizing, repairing mistakes, and moving forward.",
+    "icon": "🫶",
+    "enabled": true
+  },
+  {
+    "id": "flexible-thinking",
+    "title": "Flexible Thinking",
+    "category": "Executive Function",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Practice trying a different plan when things change.",
+    "icon": "🔄",
+    "enabled": true
+  },
+  {
+    "id": "problem-size",
+    "title": "Problem Size",
+    "category": "Self Management",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Match the size of a problem with the size of a reaction.",
+    "icon": "📏",
+    "enabled": true
+  },
+  {
+    "id": "emotion-thermometer-game",
+    "title": "Emotion Thermometer",
+    "category": "Regulation",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Rate feelings and choose coping strategies.",
+    "icon": "🌡️",
+    "enabled": true
+  },
+  {
+    "id": "online-safety",
+    "title": "Online Safety",
+    "category": "Digital Safety",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Practice safe choices with messages, links, and privacy.",
+    "icon": "🔐",
+    "enabled": true
+  },
+  {
+    "id": "homework-planner",
+    "title": "Homework Planner",
+    "category": "Executive Function",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Break homework into manageable steps.",
+    "icon": "📚",
+    "enabled": true
+  },
+  {
+    "id": "hygiene-scenarios",
+    "title": "Hygiene Scenarios",
+    "category": "Daily Living",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Choose appropriate hygiene and self-care steps.",
+    "icon": "🪥",
+    "enabled": true
+  },
+  {
+    "id": "restaurant-choices",
+    "title": "Restaurant Choices",
+    "category": "Community Skills",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Practice ordering, waiting, and polite restaurant choices.",
+    "icon": "🍽️",
+    "enabled": true
+  },
+  {
+    "id": "store-etiquette",
+    "title": "Store Etiquette",
+    "category": "Community Skills",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Choose safe and expected store behavior.",
+    "icon": "🏬",
+    "enabled": true
+  },
+  {
+    "id": "public-transport-safety",
+    "title": "Transit Safety",
+    "category": "Safety",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Intermediate",
+    "goal": "Practice safe choices while waiting, riding, and asking for help.",
+    "icon": "🚌",
+    "enabled": true
+  },
+  {
+    "id": "workplace-break",
+    "title": "Workplace Break Request",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice asking for a break appropriately at work.",
+    "icon": "☕",
+    "enabled": true
+  },
+  {
+    "id": "supervisor-feedback",
+    "title": "Supervisor Feedback",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice responding to feedback respectfully.",
+    "icon": "🗣️",
+    "enabled": true
+  },
+  {
+    "id": "clock-in-out",
+    "title": "Clock In / Clock Out",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice checking in, starting tasks, and finishing shifts.",
+    "icon": "⏱️",
+    "enabled": true
+  },
+  {
+    "id": "grocery-budget",
+    "title": "Grocery Budget",
+    "category": "Money & Community",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice choosing items within a simple budget.",
+    "icon": "🛒",
+    "enabled": true
+  },
+  {
+    "id": "appointment-scheduling",
+    "title": "Appointment Scheduling",
+    "category": "Independent Living",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice making, remembering, and attending appointments.",
+    "icon": "📆",
+    "enabled": true
+  },
+  {
+    "id": "public-boundaries",
+    "title": "Public Boundaries",
+    "category": "Social Skills",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice respectful boundaries in public and community settings.",
+    "icon": "🧍",
+    "enabled": true
+  },
+  {
+    "id": "asking-accommodations",
+    "title": "Ask for Accommodations",
+    "category": "Self-Advocacy",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice asking for support or clarification respectfully.",
+    "icon": "📝",
+    "enabled": true
+  },
+  {
+    "id": "emergency-plan",
+    "title": "Emergency Plan",
+    "category": "Safety",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice what to do in urgent or unsafe situations.",
+    "icon": "🚨",
+    "enabled": true
+  },
+  {
+    "id": "time-management",
+    "title": "Time Management",
+    "category": "Executive Function",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice planning, arriving on time, and using reminders.",
+    "icon": "⏰",
+    "enabled": true
+  },
+  {
+    "id": "healthy-boundaries",
+    "title": "Healthy Boundaries",
+    "category": "Social Skills",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose safe, respectful responses with friends and peers.",
+    "icon": "🛡️",
+    "enabled": true
+  },
+  {
+    "id": "resume-basics",
+    "title": "Resume Basics",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose simple, professional information for a resume or application.",
+    "enabled": true,
+    "icon": "📄"
+  },
+  {
+    "id": "phone-call-practice",
+    "title": "Phone Call Practice",
+    "category": "Communication",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice making polite calls for appointments, work, and help.",
+    "enabled": true,
+    "icon": "☎️"
+  },
+  {
+    "id": "personal-info-safety",
+    "title": "Personal Info Safety",
+    "category": "Digital Safety",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Decide what information is safe to share and what should stay private.",
+    "enabled": true,
+    "icon": "🔐"
+  },
+  {
+    "id": "public-transit-planner",
+    "title": "Public Transit Planner",
+    "category": "Community",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice planning a safe community trip and what to do if plans change.",
+    "enabled": true,
+    "icon": "🚌"
+  },
+  {
+    "id": "roommate-boundaries",
+    "title": "Roommate & Shared Space",
+    "category": "Daily Living",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice respectful choices in shared living, school, or work spaces.",
+    "enabled": true,
+    "icon": "🏠"
+  },
+  {
+    "id": "health-appointment",
+    "title": "Health Appointment Practice",
+    "category": "Self Management",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice checking in, answering simple questions, and asking for help at appointments.",
+    "enabled": true,
+    "icon": "🗓️"
+  }
 ];
 
 const iconMap = {
-  "Emotion Match":"😊", "Follow Directions":"🔺", "Token Board":"⭐", "Category Sort":"🧺",
-  "First / Then Builder":"➡️", "Calm Breathing Bubble":"🫧", "AAC Choice Board":"💬",
-  "Routine Sequence":"🪥", "Social Choices":"🤝", "Imitation Cards":"👏",
-  "Conversation Builder":"🗣️", "Expected / Unexpected":"✅", "Safety Signs":"🛑",
-  "Coping Strategy Match":"🌈", "Time & Schedule":"🕒", "Hygiene Helper":"🧼",
-  "Problem Solving Steps":"🧩", "Money Store":"💵", "Perspective Detective":"🕵️",
-  "Goal Planner":"🎯", "Workplace Choices":"💼", "Text Smart":"📱", "Self-Advocacy Coach":"🙋",
-  "Community Safety":"🚦", "Job Interview Practice":"👔"
+  "Emotion Match": "🫧",
+  "Follow Directions": "🎮",
+  "Token Board": "🎮",
+  "Category Sort": "🎮",
+  "First / Then Builder": "🧼",
+  "Calm Breathing Bubble": "🫧",
+  "AAC Choice Board": "💬",
+  "Routine Sequence": "🧼",
+  "Social Choices": "🤝",
+  "Imitation Cards": "🎮",
+  "Conversation Builder": "🤝",
+  "Expected / Unexpected": "🤝",
+  "Safety Signs": "🛟",
+  "Coping Strategy Match": "🫧",
+  "Time & Schedule": "🎮",
+  "Hygiene Helper": "🧼",
+  "Problem Solving Steps": "🎮",
+  "Money Store": "💵",
+  "Perspective Detective": "🤝",
+  "Goal Planner": "🫧",
+  "Workplace Choices": "💼",
+  "Text Smart": "🛟",
+  "Self-Advocacy Coach": "💬",
+  "Community Safety": "🛟",
+  "Job Interview Practice": "💼",
+  "Color Match": "🎨",
+  "Body Parts Game": "🧍",
+  "Yes / No Practice": "✅",
+  "Big and Small": "🔵",
+  "Same or Different": "🔎",
+  "Wait for My Turn": "⏳",
+  "Clean Up Steps": "🧸",
+  "Ask for Help": "🙋",
+  "Stop and Go": "🛑",
+  "Sharing Choices": "🤲",
+  "WH Questions": "❓",
+  "Personal Space": "↔️",
+  "Teamwork Helper": "🤝",
+  "Good Sport Game": "🏅",
+  "Classroom Choices": "🏫",
+  "Playground Safety": "🛝",
+  "Chore Sequence": "🧺",
+  "Community Helpers": "🚒",
+  "Coping Toolkit": "🧰",
+  "Calendar Routines": "📅",
+  "Friendship Repair": "🫶",
+  "Flexible Thinking": "🔄",
+  "Problem Size": "📏",
+  "Emotion Thermometer": "🌡️",
+  "Online Safety": "🔐",
+  "Homework Planner": "📚",
+  "Hygiene Scenarios": "🪥",
+  "Restaurant Choices": "🍽️",
+  "Store Etiquette": "🏬",
+  "Transit Safety": "🚌",
+  "Workplace Break Request": "☕",
+  "Supervisor Feedback": "🗣️",
+  "Clock In / Clock Out": "⏱️",
+  "Grocery Budget": "🛒",
+  "Appointment Scheduling": "📆",
+  "Public Boundaries": "🧍",
+  "Ask for Accommodations": "📝",
+  "Emergency Plan": "🚨",
+  "Time Management": "⏰",
+  "Healthy Boundaries": "🛡️",
+  "Resume Basics": "📄",
+  "Phone Call Practice": "☎️",
+  "Personal Info Safety": "🔐",
+  "Public Transit Planner": "🚌",
+  "Roommate & Shared Space": "🏠",
+  "Health Appointment Practice": "🗓️"
 };
 
 const trialLibrary = {
@@ -299,6 +1118,36 @@ const extraChoiceData = {
       ["You do not understand a question.","Ask politely.","Could you please repeat the question?",["What? Bad question.","Could you please repeat the question?","Ignore them.","Leave."],"Could you please repeat the question?","That is a polite clarification request."],
       ["The interview ends.","Use a polite closing.","Thank you for meeting with me.",["Bye I guess.","Thank you for meeting with me.","Give me the job now.","Walk out silently."],"Thank you for meeting with me.","A thank-you is professional."],
     ]
+  },
+  "resume-basics": {
+    skill:"Resume and application readiness", adult:"Practice choosing simple, true, professional information for a job or volunteer application.",
+    trials:[
+      ["Which item belongs on a simple resume?","A resume should include safe contact information, skills, and experience.","Skills like being on time, helping, cleaning, or using a computer can go on a resume.",["Favorite video game password","A skill I can do","A stranger's phone number","Private medical information"],"A skill I can do","Use safe, job-related information only."],
+      ["What should you do before sending an application?","Checking your work helps you make a good impression.","Ask a trusted adult to review spelling and details.",["Send it without checking","Ask a trusted adult to review it","Add fake experience","Leave every blank empty"],"Ask a trusted adult to review it","Reviewing with help is a strong job-readiness skill."],
+      ["Which sentence sounds professional?","Professional words are polite and clear.","Try: I am available to work after school.",["Give me the job now","I am available to work after school","This is boring","I don't care"],"I am available to work after school","A professional sentence is polite and clear."],
+      ["What is okay to keep private?","Some information should only be shared with a trusted adult or official form.","Do not share passwords or private health details on a public worksheet.",["A skill I learned","My password","Volunteer experience","School club"],"My password","Passwords should stay private."],
+      ["You need help completing the form.","Asking for help is responsible.","Say: Can you help me understand this question?",["Can you help me understand this question?","Throw it away","Guess every answer","Copy someone else"],"Can you help me understand this question?","Asking for clarification is a safe choice."]
+    ]
+  },
+  "phone-call-practice": {
+    skill:"Phone communication", adult:"Role-play a short call: greeting, reason for call, question, and polite closing.",
+    trials:[
+      ["You call to ask about an appointment time. What do you say first?","Start with a greeting and your reason for calling.","Hello, I am calling to ask about my appointment time.",["Hello, I am calling to ask about my appointment time.","Why didn't you call me?","I don't know bye","Give me everything"],"Hello, I am calling to ask about my appointment time.","A polite greeting helps the call start well."],
+      ["You did not hear the answer.","It is okay to ask someone to repeat information.","Say: Can you please repeat that?",["Can you please repeat that?","Hang up immediately","Yell louder","Pretend you heard"],"Can you please repeat that?","Asking to repeat helps you understand."],
+      ["The person asks for your name.","Only share information needed for the call, with a trusted organization.","Give your first name or initials when appropriate.",["Give every password","Say your first name if needed","Refuse every question","Give a stranger your address"],"Say your first name if needed","Share only the necessary information."],
+      ["How do you end a phone call politely?","A closing tells the other person you are done.","Thank you. Have a good day.",["Thank you. Have a good day.","Stop talking now","Hang up while they speak","Whatever"],"Thank you. Have a good day.","A polite goodbye ends the call."],
+      ["You feel nervous before calling.","You can use a script and take a breath.","Write your question first, then call.",["Write my question first","Throw the phone","Never ask for help","Call random numbers"],"Write my question first","A simple script can help you feel prepared."]
+    ]
+  },
+  "personal-info-safety": {
+    skill:"Personal information safety", adult:"Teach private vs public information. Practice examples and safe help-seeking.",
+    trials:[
+      ["Which information should stay private online?","Private information can identify or locate you.","Passwords and addresses should stay private.",["Favorite color","Password","A safe hobby","A general interest"],"Password","Passwords should never be shared."],
+      ["A stranger asks where you live online.","Location is private information.","Do not answer. Tell a trusted adult.",["Send the address","Do not answer and tell an adult","Send a photo of your house","Meet them"],"Do not answer and tell an adult","Do not share location with strangers."],
+      ["Which is usually okay to share in a class activity?","General preferences are safer than identifying details.","Favorite color is usually okay.",["Social Security number","Home address","Favorite color","Password"],"Favorite color","A favorite color is not private identifying information."],
+      ["A website asks for a password.","Only enter passwords on trusted sites with grown-up support.","Ask a trusted adult first.",["Ask a trusted adult first","Type it anywhere","Tell a chat friend","Use the same password everywhere"],"Ask a trusted adult first","Getting help protects your information."],
+      ["You accidentally shared private information.","Tell a trusted adult quickly.","Say: I shared something private and need help.",["Hide it forever","Tell a trusted adult","Share more details","Delete the device"],"Tell a trusted adult","Getting help quickly is the safest step."]
+    ]
   }
 };
 
@@ -325,7 +1174,7 @@ let activeAge = "ALL";
 let activeIsland = "ALL";
 let weeklyPacks = [];
 let currentWeeklyPack = null;
-let activeWeeklyOnly = loadJSON("learnPlayWeeklyOnlyV21", true);
+let activeWeeklyOnly = loadJSON("learnPlayWeeklyOnlyV22", false);
 let settings = loadJSON("learnPlayV17Settings", { bigText:false, reduceMotion:false, sound:false });
 let progress = loadJSON("learnPlayV17Progress", {});
 let rewardWallet = loadJSON("learnPlayRewardWalletV18", { spent:0, purchases:[], lastReward:null });
@@ -378,6 +1227,7 @@ function completeDailyCheckin(){
   dailyProfile = { nickname, avatar, ageBand, lastCheckin: todayKey(), streak };
   saveJSON("learnPlayDailyCheckinV16", dailyProfile);
   activeAge = ageBand;
+  activeIsland = "ALL";
   $$(".age-tab").forEach(btn => btn.classList.toggle("active", (btn.dataset.age || "ALL") === activeAge));
   renderDailyStatus();
   renderGameGrid();
@@ -389,6 +1239,7 @@ function requireDailyCheckin(){
   if(checkedInToday()){
     if(dailyProfile.ageBand && dailyProfile.ageBand !== activeAge){
       activeAge = dailyProfile.ageBand;
+      activeIsland = "ALL";
       $$(".age-tab").forEach(btn => btn.classList.toggle("active", (btn.dataset.age || "ALL") === activeAge));
     }
     return;
@@ -754,7 +1605,7 @@ function renderWeeklyCalendar(){
 }
 function setWeeklyMode(on){
   activeWeeklyOnly = !!on;
-  saveJSON("learnPlayWeeklyOnlyV21", activeWeeklyOnly);
+  saveJSON("learnPlayWeeklyOnlyV22", activeWeeklyOnly);
   renderWeeklyPack();
   renderGameGrid();
   setToast(activeWeeklyOnly ? "This week’s pack is active." : "Showing all games.");
@@ -775,10 +1626,21 @@ async function loadGames(){
 function renderGameGrid(){
   const island = skillIslands.find(i => i.id === activeIsland) || skillIslands[0];
   const wset = weeklyGameSet();
-  let filtered = allGames.filter(g => (activeAge === "ALL" || g.ageBand === activeAge) && gameBelongsToIsland(g, island));
-  if(activeWeeklyOnly && wset.size) filtered = filtered.filter(g => wset.has(g.id));
+  const baseFiltered = allGames.filter(g => (activeAge === "ALL" || g.ageBand === activeAge) && gameBelongsToIsland(g, island));
+  let filtered = baseFiltered;
+  let weeklyFallback = false;
+  if(activeWeeklyOnly && wset.size){
+    const weeklyFiltered = baseFiltered.filter(g => wset.has(g.id));
+    if(weeklyFiltered.length) filtered = weeklyFiltered;
+    else { filtered = baseFiltered; weeklyFallback = true; }
+  }
   renderIslands();
-  const weeklyNote = activeWeeklyOnly && currentWeeklyPack ? `<div class="weekly-mode-note">🗓️ Showing this week’s rotation: ${escapeHtml(currentWeeklyPack.theme)}. Use “Show all games” to browse the full library.</div>` : "";
+  let weeklyNote = "";
+  if(activeWeeklyOnly && currentWeeklyPack){
+    weeklyNote = weeklyFallback
+      ? `<div class="weekly-mode-note warn">🗓️ This week’s pack has no ${escapeHtml(activeAge === "ALL" ? "matching" : activeAge)} lesson in this island, so I’m showing the full library for this view. Use “Show all games” anytime.</div>`
+      : `<div class="weekly-mode-note">🗓️ Showing this week’s rotation: ${escapeHtml(currentWeeklyPack.theme)}. Use “Show all games” to browse the full library.</div>`;
+  }
   gameGrid.innerHTML = weeklyNote + filtered.map(game => {
     const p = progress[game.id] || {stars:0, completed:0};
     return `
@@ -1253,12 +2115,17 @@ function studioTitle(type){
     thermometer:"Emotion Thermometer",
     token:"Token Board",
     worksheet:"Scenario Worksheet",
+    roleplay:"Role-play Cards",
+    budget:"Budget Practice Sheet",
+    jobreadiness:"Job Readiness Checklist",
+    goalplan:"Weekly Goal Planner",
+    socialstory:"Social Story Mini Book",
     certificate:"Certificate / Badge",
     pack:"Today’s Full Printable Pack"
   })[type] || "Printable";
 }
-function skillWords(skill){
-  return ({
+function skillWords(skill, age){
+  const young = {
     social:["happy", "sad", "my turn", "your turn", "hello", "friend", "wait", "share"],
     communication:["I want", "help", "more", "all done", "break", "yes", "no", "please"],
     calm:["breathe", "break", "quiet hands", "calm body", "count to 5", "squeeze", "walk", "ask for help"],
@@ -1266,10 +2133,20 @@ function skillWords(skill){
     safety:["stop", "wait", "safe body", "ask adult", "hot", "street", "help", "emergency"],
     money:["buy", "pay", "change", "price", "save", "need", "want", "receipt"],
     vocational:["check in", "task", "on time", "supervisor", "break", "help", "thank you", "ready"]
-  })[skill] || ["practice", "help", "try", "done"];
+  };
+  const teen = {
+    social:["respect", "personal space", "conversation", "perspective", "friendship", "boundaries", "repair", "choice"],
+    communication:["clarify", "advocate", "request", "accommodation", "phone call", "text safely", "ask again", "confirm"],
+    calm:["trigger", "coping plan", "break request", "body signal", "strategy", "reset", "problem size", "flexible thinking"],
+    daily:["routine", "hygiene", "laundry", "meal prep", "appointment", "schedule", "shared space", "independence"],
+    safety:["privacy", "online safety", "emergency plan", "trusted adult", "public place", "transportation", "safe route", "report"],
+    money:["budget", "price", "receipt", "save", "compare", "need vs want", "tip", "total"],
+    vocational:["resume", "interview", "clock in", "feedback", "supervisor", "task list", "work break", "professional" ]
+  };
+  return (age === "14-21" || age === "10-13" ? teen : young)[skill] || ["practice", "help", "try", "done"];
 }
-function skillScenarios(skill){
-  return ({
+function skillScenarios(skill, age){
+  const young = {
     social:["A friend says hello.", "Someone looks sad.", "It is not my turn yet.", "I made a mistake."],
     communication:["I want a toy.", "I do not understand.", "I need a break.", "I am finished."],
     calm:["My body feels fast.", "The room is loud.", "I feel frustrated.", "I need space."],
@@ -1277,7 +2154,17 @@ function skillScenarios(skill){
     safety:["The light is red.", "The stove is hot.", "A stranger asks me to leave.", "I am lost in a store."],
     money:["I want to buy a snack.", "I have three dollars.", "The cashier gives change.", "Two items have different prices."],
     vocational:["I arrive at work.", "I do not know the task.", "It is break time.", "A supervisor gives feedback."]
-  })[skill] || ["I need help.", "I can try again.", "I can ask.", "I can wait."];
+  };
+  const teen = {
+    social:["A friend stops replying to texts.", "Someone makes a joke I do not understand.", "A group changes the plan.", "I need to repair a misunderstanding."],
+    communication:["I need an accommodation.", "I do not understand a direction.", "I need to make a phone call.", "I need to say no politely."],
+    calm:["My plan changes suddenly.", "I feel overwhelmed in public.", "Feedback feels hard.", "I need a safe break."],
+    daily:["I need to get ready independently.", "I share a space with others.", "I have an appointment today.", "I forgot one step in my routine."],
+    safety:["Someone asks for personal information online.", "I miss the bus or ride.", "I am unsure if a place is safe.", "There is an emergency warning."],
+    money:["I have a $20 budget.", "Two items cost different amounts.", "I need to check my receipt.", "I want something but also need to save."],
+    vocational:["I arrive for a shift.", "I do not understand the task.", "My supervisor gives feedback.", "I need to ask for a work break."]
+  };
+  return (age === "14-21" || age === "10-13" ? teen : young)[skill] || ["I need help.", "I can try again.", "I can ask.", "I can wait."];
 }
 function agePrompt(age){
   return ({"3-5":"Point, color, trace, or say one word.", "6-9":"Read with help, answer, then practice one time.", "10-13":"Write or explain the safe/helpful choice.", "14-21":"Use the skill in a real-life role-play or community example."})[age] || "Practice with a grown-up.";
@@ -1313,8 +2200,8 @@ function studioPrintableMarkup(opts, mode="preview"){
   const date = new Date().toLocaleDateString();
   const art = lineArtSvg(opts.theme, opts.skill);
   const small = mode === "preview" ? "print-sheet-preview" : "sheet";
-  const words = skillWords(opts.skill);
-  const scenarios = skillScenarios(opts.skill);
+  const words = skillWords(opts.skill, opts.age);
+  const scenarios = skillScenarios(opts.skill, opts.age);
   if(opts.type === "coloring"){
     return `<main class="${small}">${printableHeader(`${skillLabel} Coloring Scene`, "Color the picture. Then talk about the skill with a grown-up.")}<div class="print-art real-coloring">${art}</div><div class="coloring-prompts"><strong>Talk about it:</strong><span>${escapeHtml(words.slice(0,4).join(" · "))}</span></div>${skillFooter(tip)}</main>`;
   }
@@ -1351,12 +2238,32 @@ function studioPrintableMarkup(opts, mode="preview"){
   if(opts.type === "worksheet"){
     return `<main class="${small}">${printableHeader(`${skillLabel} Scenario Worksheet`, "Read each box. Draw or write the safe/helpful response.")}<div class="worksheet-grid real">${scenarios.map(item=>`<div class="worksheet-card"><strong>${escapeHtml(item)}</strong><div class="write-box"></div></div>`).join("")}</div><div class="word-bank"><strong>Word bank:</strong> ${escapeHtml(words.join(" · "))}</div>${skillFooter(tip)}</main>`;
   }
+  if(opts.type === "roleplay"){
+    return `<main class="${small}">${printableHeader(`${skillLabel} Role-play Cards`, `${agePrompt(opts.age)} Cut out or point to one card and practice the response.`)}<div class="worksheet-grid real">${scenarios.map((item,i)=>`<div class="worksheet-card"><strong>Role-play ${i+1}</strong><p>${escapeHtml(item)}</p><div class="write-box">Helpful words / action:</div></div>`).join("")}</div><div class="word-bank"><strong>Helpful phrases:</strong> ${escapeHtml(words.slice(0,8).join(" · "))}</div>${skillFooter(tip)}</main>`;
+  }
+  if(opts.type === "budget"){
+    const budget = opts.age === "14-21" ? ["Starting budget: $20", "Item 1: $____", "Item 2: $____", "Tax/tip: $____", "Total: $____", "Money left: $____"] : ["I have 5 stars", "Reward cost: ____", "Stars left: ____", "Need or want? ____"];
+    return `<main class="${small}">${printableHeader("Budget Practice Sheet", "Practice planning, comparing, and checking what is left.")}<div class="worksheet-grid real">${budget.map(line=>`<div class="worksheet-card"><strong>${escapeHtml(line)}</strong><div class="write-box"></div></div>`).join("")}</div><div class="word-bank"><strong>Think about:</strong> need · want · price · total · save · ask for help</div>${skillFooter(printableSkillTips.money)}</main>`;
+  }
+  if(opts.type === "jobreadiness"){
+    const checklist = ["Arrive on time", "Check in", "Ask what task to start", "Use a respectful voice", "Ask for help if confused", "Take break when allowed", "Clean up area", "Check out / say thank you"];
+    return `<main class="${small}">${printableHeader("Job Readiness Checklist", "Use this for work, volunteering, school jobs, or community practice.")}<div class="checklist-print">${checklist.map((line,i)=>`<div><span class="check-square"></span><strong>${i+1}. ${escapeHtml(line)}</strong></div>`).join("")}</div><div class="write-prompt"><strong>My work goal today:</strong><div class="write-box"></div></div>${skillFooter(printableSkillTips.vocational)}</main>`;
+  }
+  if(opts.type === "goalplan"){
+    const steps = ["My goal", "Step 1", "Step 2", "Step 3", "Who can help?", "How will I know I finished?"];
+    return `<main class="${small}">${printableHeader("Weekly Goal Planner", "Break one goal into small, doable steps.")}<div class="goal-plan-grid">${steps.map(s=>`<div><strong>${escapeHtml(s)}</strong><div class="write-box"></div></div>`).join("")}</div>${skillFooter(printableSkillTips.vocational)}</main>`;
+  }
+  if(opts.type === "socialstory"){
+    const story = scenarios.slice(0,4);
+    return `<main class="${small}">${printableHeader(`${skillLabel} Social Story Mini Book`, "Read each box. Draw a picture or write a helpful response.")}<div class="mini-book-grid">${story.map((s,i)=>`<div><strong>Page ${i+1}</strong><p>${escapeHtml(s)}</p><div class="picture-box"></div></div>`).join("")}</div>${skillFooter(tip)}</main>`;
+  }
   if(opts.type === "certificate"){
     return `<main class="${small}">${printableHeader(`${skillLabel} Star Certificate`, `${name} practiced ${skillLabel.toLowerCase()} on ${date}.`)}<div class="certificate-badge">${printableSkillIcon[opts.skill] || "⭐"}</div><h2 class="certificate-name">${name}</h2><p class="print-sub">completed a Learn & Play practice activity.</p><div class="home-practice"><strong>I practiced:</strong><br>${escapeHtml(tip)}</div><div class="print-signature">Parent / caregiver signature:</div><div class="printable-watermark">Printable recognition only</div></main>`;
   }
   if(opts.type === "pack"){
     const session = todaysSession();
-    return `<div class="print-pack"><main class="${small}">${printableHeader("Today’s Printable Pack", `Take-home practice for ${name}.`)}<div class="studio-pack-list"><div><strong>Date:</strong> ${escapeHtml(date)}</div><div><strong>Stars earned today:</strong> ${escapeHtml(session.stars || 0)}</div><div><strong>Lessons practiced:</strong><ul>${lessonListHtml()}</ul></div><div><strong>Skill focus:</strong> ${escapeHtml(skillLabel)} — ${escapeHtml(tip)}</div></div><div class="print-art real-coloring">${art}</div>${skillFooter("Pick one skill from today and practice it one more time for 2 minutes.")}</main><main class="${small}">${studioPrintableMarkup({...opts,type:"tracing"}, mode)}</main><main class="${small}">${studioPrintableMarkup({...opts,type:"token"}, mode)}</main></div>`;
+    const teenPack = opts.age === "14-21" || opts.age === "10-13";
+    return `<div class="print-pack"><main class="${small}">${printableHeader("Today’s Printable Pack", `Take-home practice for ${name}.`)}<div class="studio-pack-list"><div><strong>Date:</strong> ${escapeHtml(date)}</div><div><strong>Stars earned today:</strong> ${escapeHtml(session.stars || 0)}</div><div><strong>Lessons practiced:</strong><ul>${lessonListHtml()}</ul></div><div><strong>Skill focus:</strong> ${escapeHtml(skillLabel)} — ${escapeHtml(tip)}</div></div><div class="print-art real-coloring">${art}</div>${skillFooter("Pick one skill from today and practice it one more time with a grown-up.")}</main><main class="${small}">${studioPrintableMarkup({...opts,type: teenPack ? "roleplay" : "tracing"}, mode)}</main><main class="${small}">${studioPrintableMarkup({...opts,type: teenPack ? "goalplan" : "token"}, mode)}</main></div>`;
   }
   return `<main class="${small}">${printableHeader(title)}<p class="print-sub">Choose a printable type to generate a page.</p></main>`;
 }
@@ -1368,7 +2275,7 @@ function renderStudioPreview(){
   if(preview) preview.innerHTML = studioPrintableMarkup(opts, "preview");
 }
 function studioPrintCss(){
-  return `body{font-family:Arial,sans-serif;background:#f8fbff;color:#132a4e;padding:20px}.sheet{max-width:820px;min-height:980px;margin:0 auto 26px;background:white;border:6px solid #132a4e;border-radius:28px;padding:34px;text-align:center;box-sizing:border-box;break-after:page}.print-brand{font-weight:900;color:#0f6070;text-transform:uppercase;letter-spacing:.14em;font-size:13px}.print-title{font-size:38px;line-height:1.02;letter-spacing:-.04em;margin:18px 0}.print-sub{color:#52617c;font-size:17px;line-height:1.45}.print-art{margin:24px auto;max-width:680px}.real-coloring svg,.coloring-svg svg{max-width:100%;height:auto}.coloring-prompts,.word-bank,.reward-line,.sentence-strip{border:3px dashed #ff9f43;border-radius:18px;padding:14px;margin:18px auto;background:#fff8e6;max-width:640px}.trace-practice{display:grid;gap:12px;margin:18px 0}.trace-row{display:grid;grid-template-columns:210px 1fr;gap:14px;align-items:end;text-align:left}.trace-word{font-size:36px;color:transparent;-webkit-text-stroke:1.5px #132a4e;letter-spacing:.04em}.trace-blank{border-bottom:3px dashed #b9c3d2;height:48px}.shape-trace-row{border:2px solid #e6edf6;border-radius:18px;padding:12px;margin:20px 0}.cut-card-grid,.schedule-cards,.aac-print-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cut-card,.schedule-card,.aac-print-cell,.worksheet-card,.match-box,.paste-grid div{border:2px dashed #132a4e;border-radius:18px;padding:14px;background:#fff;min-height:70px}.paste-grid,.match-sheet{display:grid;grid-template-columns:1fr 1fr;gap:18px}.picture-box,.write-box,.draw-icon{height:86px;border:2px dashed #b9c3d2;border-radius:16px;margin-top:10px}.first-then-board{display:grid;grid-template-columns:1fr 1fr;gap:18px}.first-then-board>div{border:4px solid #132a4e;border-radius:24px;padding:20px}.mini-token-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px auto;max-width:420px}.mini-token-row span,.token-cell{aspect-ratio:1;border:3px dashed #132a4e;border-radius:22px;display:grid;place-items:center;font-weight:900}.token-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:28px auto;max-width:620px}.token-row.big .token-cell{font-size:32px;color:#d7dde7}.worksheet-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left}.word-bank{text-align:left}.thermo-sheet{display:grid;grid-template-columns:220px 1fr;gap:24px;text-align:left}.thermo-bar{display:grid;gap:8px}.thermo-bar div{border:3px solid #132a4e;border-radius:16px;padding:10px;display:flex;gap:12px}.coping-list{border:2px solid #e6edf6;border-radius:20px;padding:18px}.certificate-badge{font-size:96px;margin:24px auto}.certificate-name{font-size:46px;border-bottom:3px solid #132a4e;display:inline-block;padding:0 30px}.home-practice{margin:24px auto;padding:16px;border:3px dashed #ff9f43;border-radius:20px;background:#fff8e6;max-width:640px}.print-signature{margin-top:30px;border-top:3px solid #132a4e;padding-top:10px;text-align:left}.studio-pack-list{display:grid;gap:10px;text-align:left;margin:22px auto;max-width:640px}.studio-pack-list div{border:2px solid #e6edf6;border-radius:16px;padding:12px;background:#fbfdff}.printable-watermark{font-size:12px;color:#667085;margin-top:22px}.task-lines{text-align:left;display:grid;gap:14px;margin:18px auto;max-width:580px}.task-lines span{border-bottom:2px dashed #b9c3d2;padding:10px}@media print{body{background:white;padding:0}.sheet{box-shadow:none;border-radius:18px;page-break-after:always}.print-pack .sheet:last-child{page-break-after:auto}}@media(max-width:700px){.worksheet-grid,.cut-card-grid,.schedule-cards,.aac-print-grid,.paste-grid,.match-sheet,.first-then-board,.thermo-sheet{grid-template-columns:1fr}.trace-row{grid-template-columns:1fr}}`;
+  return `body{font-family:Arial,sans-serif;background:#f8fbff;color:#132a4e;padding:20px}.sheet{max-width:820px;min-height:980px;margin:0 auto 26px;background:white;border:6px solid #132a4e;border-radius:28px;padding:34px;text-align:center;box-sizing:border-box;break-after:page}.print-brand{font-weight:900;color:#0f6070;text-transform:uppercase;letter-spacing:.14em;font-size:13px}.print-title{font-size:38px;line-height:1.02;letter-spacing:-.04em;margin:18px 0}.print-sub{color:#52617c;font-size:17px;line-height:1.45}.print-art{margin:24px auto;max-width:680px}.real-coloring svg,.coloring-svg svg{max-width:100%;height:auto}.coloring-prompts,.word-bank,.reward-line,.sentence-strip{border:3px dashed #ff9f43;border-radius:18px;padding:14px;margin:18px auto;background:#fff8e6;max-width:640px}.trace-practice{display:grid;gap:12px;margin:18px 0}.trace-row{display:grid;grid-template-columns:210px 1fr;gap:14px;align-items:end;text-align:left}.trace-word{font-size:36px;color:transparent;-webkit-text-stroke:1.5px #132a4e;letter-spacing:.04em}.trace-blank{border-bottom:3px dashed #b9c3d2;height:48px}.shape-trace-row{border:2px solid #e6edf6;border-radius:18px;padding:12px;margin:20px 0}.cut-card-grid,.schedule-cards,.aac-print-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.cut-card,.schedule-card,.aac-print-cell,.worksheet-card,.match-box,.paste-grid div{border:2px dashed #132a4e;border-radius:18px;padding:14px;background:#fff;min-height:70px}.paste-grid,.match-sheet{display:grid;grid-template-columns:1fr 1fr;gap:18px}.picture-box,.write-box,.draw-icon{height:86px;border:2px dashed #b9c3d2;border-radius:16px;margin-top:10px}.first-then-board{display:grid;grid-template-columns:1fr 1fr;gap:18px}.first-then-board>div{border:4px solid #132a4e;border-radius:24px;padding:20px}.mini-token-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px auto;max-width:420px}.mini-token-row span,.token-cell{aspect-ratio:1;border:3px dashed #132a4e;border-radius:22px;display:grid;place-items:center;font-weight:900}.token-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:28px auto;max-width:620px}.token-row.big .token-cell{font-size:32px;color:#d7dde7}.worksheet-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left}.word-bank{text-align:left}.thermo-sheet{display:grid;grid-template-columns:220px 1fr;gap:24px;text-align:left}.thermo-bar{display:grid;gap:8px}.thermo-bar div{border:3px solid #132a4e;border-radius:16px;padding:10px;display:flex;gap:12px}.coping-list{border:2px solid #e6edf6;border-radius:20px;padding:18px}.certificate-badge{font-size:96px;margin:24px auto}.certificate-name{font-size:46px;border-bottom:3px solid #132a4e;display:inline-block;padding:0 30px}.home-practice{margin:24px auto;padding:16px;border:3px dashed #ff9f43;border-radius:20px;background:#fff8e6;max-width:640px}.print-signature{margin-top:30px;border-top:3px solid #132a4e;padding-top:10px;text-align:left}.studio-pack-list{display:grid;gap:10px;text-align:left;margin:22px auto;max-width:640px}.studio-pack-list div{border:2px solid #e6edf6;border-radius:16px;padding:12px;background:#fbfdff}.checklist-print,.goal-plan-grid,.mini-book-grid{display:grid;gap:12px;margin:20px auto;max-width:680px;text-align:left}.checklist-print div,.goal-plan-grid>div,.mini-book-grid>div{border:2px solid #e6edf6;border-radius:18px;background:#fff;padding:14px}.check-square{display:inline-block;width:24px;height:24px;border:3px solid #132a4e;border-radius:6px;margin-right:10px;vertical-align:middle}.goal-plan-grid,.mini-book-grid{grid-template-columns:1fr 1fr}.printable-watermark{font-size:12px;color:#667085;margin-top:22px}.task-lines{text-align:left;display:grid;gap:14px;margin:18px auto;max-width:580px}.task-lines span{border-bottom:2px dashed #b9c3d2;padding:10px}@media print{body{background:white;padding:0}.sheet{box-shadow:none;border-radius:18px;page-break-after:always}.print-pack .sheet:last-child{page-break-after:auto}}@media(max-width:700px){.worksheet-grid,.cut-card-grid,.schedule-cards,.aac-print-grid,.paste-grid,.match-sheet,.first-then-board,.thermo-sheet{grid-template-columns:1fr}.trace-row{grid-template-columns:1fr}}`;
 }
 function studioPrintHtml(){
   const opts = studioOptions();
