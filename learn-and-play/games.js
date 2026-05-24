@@ -1,816 +1,817 @@
+
 const fallbackGames = [
-  {id:"emotion-match",title:"Emotion Match",category:"Social Skills",age:"3+",goal:"Identify emotions and match facial expressions to feeling words.",enabled:true},
-  {id:"follow-directions",title:"Follow Directions",category:"Listening",age:"3+",goal:"Practice one-step directions with color, shape, and position words.",enabled:true},
-  {id:"token-board",title:"Token Board",category:"Reinforcement",age:"2+",goal:"Earn five tokens and celebrate a completed task.",enabled:true},
-  {id:"category-sort",title:"Category Sort",category:"Language",age:"4+",goal:"Sort items into animals, foods, toys, and clothes.",enabled:true},
-  {id:"first-then",title:"First / Then Builder",category:"Routine",age:"2+",goal:"Practice first/then language and transitions.",enabled:true},
-  {id:"breathing-bubble",title:"Calm Breathing Bubble",category:"Regulation",age:"3+",goal:"Follow a visual breathing cue to calm the body.",enabled:true},
-  {id:"aac-board",title:"AAC Choice Board",category:"Communication",age:"2+",goal:"Practice functional phrases like I want, help, more, and all done.",enabled:true},
-  {id:"routine-sequence",title:"Routine Sequence",category:"Daily Living",age:"4+",goal:"Put everyday routine steps in order.",enabled:true},
-  {id:"social-choices",title:"Social Choices",category:"Social Skills",age:"5+",goal:"Choose friendly responses in common social situations.",enabled:true},
-  {id:"imitation-cards",title:"Imitation Cards",category:"Motor Imitation",age:"2+",goal:"Practice simple gross-motor imitation actions.",enabled:true},
-  {id:"conversation-builder",title:"Conversation Builder",category:"Communication",age:"5+",goal:"Practice greetings, questions, comments, and ending conversations politely.",enabled:true},
-  {id:"expected-unexpected",title:"Expected / Unexpected",category:"Social Skills",age:"6+",goal:"Learn which behaviors fit different places and situations.",enabled:true},
-  {id:"safety-signs",title:"Safety Signs",category:"Safety",age:"6+",goal:"Recognize common community safety signs and what they mean.",enabled:true},
-  {id:"coping-match",title:"Coping Strategy Match",category:"Regulation",age:"6+",goal:"Choose a helpful coping strategy for common feelings and problems.",enabled:true},
-  {id:"time-schedule",title:"Time & Schedule",category:"Executive Function",age:"7+",goal:"Practice reading simple schedules and choosing what happens next.",enabled:true},
-  {id:"hygiene-helper",title:"Hygiene Helper",category:"Daily Living",age:"6+",goal:"Match daily hygiene tasks with the right tools and steps.",enabled:true},
-  {id:"problem-solving",title:"Problem Solving Steps",category:"Executive Function",age:"8+",goal:"Practice stop-think-choose skills for everyday problems.",enabled:true},
-  {id:"money-store",title:"Money Store",category:"Life Skills",age:"8+",goal:"Practice paying for small items and comparing prices.",enabled:true},
-  {id:"perspective-detective",title:"Perspective Detective",category:"Social Skills",age:"9+",goal:"Think about what another person may feel, think, or need.",enabled:true},
-  {id:"goal-planner",title:"Goal Planner",category:"Executive Function",age:"10+",goal:"Break a bigger goal into small action steps.",enabled:true},
-  {id:"workplace-choices",title:"Workplace Choices",category:"Vocational",age:"12-21",goal:"Practice safe, respectful choices for jobs, volunteering, and community work.",enabled:true}
+  {id:"emotion-match",title:"Emotion Match",category:"Social Skills",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Identify common feelings from faces and situations.",enabled:true},
+  {id:"follow-directions",title:"Follow Directions",category:"Listening",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Follow one-step directions using color, shape, and position words.",enabled:true},
+  {id:"token-board",title:"Token Board",category:"Reinforcement",age:"2+",ageBand:"3-5",level:"Beginner",goal:"Practice completing steps and earning tokens toward a celebration.",enabled:true},
+  {id:"category-sort",title:"Category Sort",category:"Language",age:"4+",ageBand:"3-5",level:"Beginner",goal:"Sort items into groups such as animals, food, toys, and clothes.",enabled:true},
+  {id:"first-then",title:"First / Then Builder",category:"Routine",age:"2+",ageBand:"3-5",level:"Beginner",goal:"Practice first/then language and transitions.",enabled:true},
+  {id:"breathing-bubble",title:"Calm Breathing Bubble",category:"Regulation",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Use a visual breathing cue to practice calming the body.",enabled:true},
+  {id:"aac-board",title:"AAC Choice Board",category:"Communication",age:"3+",ageBand:"3-5",level:"Beginner",goal:"Practice functional communication phrases like help, more, all done, and break.",enabled:true},
+  {id:"routine-sequence",title:"Routine Sequence",category:"Daily Living",age:"5+",ageBand:"6-9",level:"Developing",goal:"Put daily routine steps in order.",enabled:true},
+  {id:"social-choices",title:"Social Choices",category:"Social Skills",age:"5+",ageBand:"6-9",level:"Developing",goal:"Choose friendly, safe, and expected social responses.",enabled:true},
+  {id:"imitation-cards",title:"Imitation Cards",category:"Motor Imitation",age:"4+",ageBand:"6-9",level:"Developing",goal:"Practice copying simple actions.",enabled:true},
+  {id:"conversation-builder",title:"Conversation Builder",category:"Communication",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Practice greetings, questions, comments, and ending conversations politely.",enabled:true},
+  {id:"expected-unexpected",title:"Expected / Unexpected",category:"Social Skills",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Decide whether a behavior is expected or unexpected in context.",enabled:true},
+  {id:"safety-signs",title:"Safety Signs",category:"Safety",age:"6+",ageBand:"10-13",level:"Intermediate",goal:"Recognize common safety signs and what to do.",enabled:true},
+  {id:"coping-match",title:"Coping Strategy Match",category:"Regulation",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Match feelings/situations with appropriate coping strategies.",enabled:true},
+  {id:"time-schedule",title:"Time & Schedule",category:"Executive Function",age:"8+",ageBand:"10-13",level:"Intermediate",goal:"Read time and choose what happens next in a schedule.",enabled:true},
+  {id:"hygiene-helper",title:"Hygiene Helper",category:"Daily Living",age:"7+",ageBand:"10-13",level:"Intermediate",goal:"Choose appropriate hygiene and self-care steps.",enabled:true},
+  {id:"problem-solving",title:"Problem Solving Steps",category:"Executive Function",age:"8+",ageBand:"10-13",level:"Intermediate",goal:"Practice stop-think-choose problem solving.",enabled:true},
+  {id:"money-store",title:"Money Store",category:"Life Skills",age:"10+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice basic buying, budgeting, and change concepts.",enabled:true},
+  {id:"perspective-detective",title:"Perspective Detective",category:"Social Skills",age:"10+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice identifying what another person may think or feel.",enabled:true},
+  {id:"goal-planner",title:"Goal Planner",category:"Executive Function",age:"10+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Break a goal into smaller realistic steps.",enabled:true},
+  {id:"workplace-choices",title:"Workplace Choices",category:"Vocational",age:"14+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Choose appropriate workplace behaviors and responses.",enabled:true},
+  {id:"text-smart",title:"Text Smart",category:"Digital Safety",age:"12+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Choose safe and appropriate text message replies.",enabled:true},
+  {id:"self-advocacy",title:"Self-Advocacy Coach",category:"Communication",age:"12+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice asking for help, breaks, clarification, or accommodations.",enabled:true},
+  {id:"community-safety",title:"Community Safety",category:"Safety",age:"12+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Choose safe responses in stores, streets, and public places.",enabled:true},
+  {id:"job-interview",title:"Job Interview Practice",category:"Vocational",age:"14+",ageBand:"14-21",level:"Teen / Young Adult",goal:"Practice professional answers to common interview situations.",enabled:true}
 ];
 
-const gameIcons = {
-  'emotion-match':'😊',
-  'follow-directions':'🎯',
-  'token-board':'⭐',
-  'category-sort':'🧺',
-  'first-then':'➡️',
-  'breathing-bubble':'🫧',
-  'aac-board':'💬',
-  'routine-sequence':'🪥',
-  'social-choices':'👋',
-  'imitation-cards':'🙌',
-  'conversation-builder':'🗣️',
-  'expected-unexpected':'✅',
-  'safety-signs':'🚦',
-  'coping-match':'🧘',
-  'time-schedule':'🕒',
-  'hygiene-helper':'🧼',
-  'problem-solving':'🧠',
-  'money-store':'🛒',
-  'perspective-detective':'🔎',
-  'goal-planner':'🪜',
-  'workplace-choices':'💼'
+const iconMap = {
+  "Emotion Match":"😊", "Follow Directions":"🔺", "Token Board":"⭐", "Category Sort":"🧺",
+  "First / Then Builder":"➡️", "Calm Breathing Bubble":"🫧", "AAC Choice Board":"💬",
+  "Routine Sequence":"🪥", "Social Choices":"🤝", "Imitation Cards":"👏",
+  "Conversation Builder":"🗣️", "Expected / Unexpected":"✅", "Safety Signs":"🛑",
+  "Coping Strategy Match":"🌈", "Time & Schedule":"🕒", "Hygiene Helper":"🧼",
+  "Problem Solving Steps":"🧩", "Money Store":"💵", "Perspective Detective":"🕵️",
+  "Goal Planner":"🎯", "Workplace Choices":"💼", "Text Smart":"📱", "Self-Advocacy Coach":"🙋",
+  "Community Safety":"🚦", "Job Interview Practice":"👔"
 };
 
-const accents = ['rgba(77,171,247,.18)','rgba(255,212,59,.28)','rgba(255,107,157,.18)','rgba(99,217,138,.20)','rgba(255,159,67,.20)'];
-let games = [];
-let activeFilter = 'All';
-let currentGame = null;
-let session = null;
-let currentTokens = 0;
-let routinePicked = [];
-let ftFirst = null;
-let ftThen = null;
-let aacWords = [];
-
-const progress = JSON.parse(localStorage.getItem('lk_play_progress') || '{"stars":0,"played":0}');
-const $ = sel => document.querySelector(sel);
-const $$ = sel => [...document.querySelectorAll(sel)];
-
-function saveProgress() {
-  localStorage.setItem('lk_play_progress', JSON.stringify(progress));
-  const stars = $('#totalStars');
-  const played = $('#gamesPlayed');
-  if (stars) stars.textContent = progress.stars;
-  if (played) played.textContent = progress.played;
-}
-function completeGame(amount = 3) {
-  progress.stars += amount;
-  progress.played += 1;
-  saveProgress();
-  confetti();
-}
-function toast(msg) {
-  const el = $('#toast');
-  if (!el) return;
-  el.textContent = msg;
-  el.classList.add('show');
-  setTimeout(() => el.classList.remove('show'), 1900);
-}
-function confetti() {
-  const root = $('#confetti');
-  if (!root) return;
-  const colors = ['#ff6b6b','#ffd43b','#4dabf7','#63d98a','#ff6b9d','#35c2d3'];
-  for (let i = 0; i < 80; i++) {
-    const piece = document.createElement('span');
-    piece.style.left = Math.random() * 100 + 'vw';
-    piece.style.background = colors[i % colors.length];
-    piece.style.animationDelay = Math.random() * .5 + 's';
-    piece.style.transform = `rotate(${Math.random()*180}deg)`;
-    root.appendChild(piece);
-    setTimeout(() => piece.remove(), 1900);
+const trialLibrary = {
+  "emotion-match": {
+    type:"choice",
+    skill:"Identifying feelings",
+    adult:"Point to facial features, model the label, then ask the learner to choose. Reinforce independent labeling and generalize to real faces, books, and cartoons.",
+    trials:[
+      {visual:"😊", prompt:"Look at the face. Which feeling does it show?", teach:"A happy face usually has a smile and relaxed eyes.", show:"This face is smiling, so the feeling is happy.", choices:["thinking","happy","calm","scared"], answer:"happy", correction:"Look for the smile. A smile is a clue for happy.", generalize:"Find a happy face in a book or picture."},
+      {visual:"😢", prompt:"Which feeling does this face show?", teach:"A sad face may have tears or a down mouth.", show:"The tears and down mouth show sad.", choices:["sad","excited","angry","sleepy"], answer:"sad", correction:"Tears and a down mouth are clues for sad.", generalize:"Practice saying, “I feel sad” when something is hard."},
+      {visual:"😡", prompt:"Which feeling does this face show?", teach:"An angry face may have tight eyebrows and a serious mouth.", show:"The tight eyebrows are a clue for angry.", choices:["silly","angry","calm","proud"], answer:"angry", correction:"Look at the eyebrows. Tight eyebrows can mean angry.", generalize:"Talk about a safe way to calm your body."},
+      {visual:"😨", prompt:"Which feeling does this face show?", teach:"A scared face may have wide eyes and an open mouth.", show:"The wide eyes show scared.", choices:["scared","happy","bored","friendly"], answer:"scared", correction:"Wide eyes and open mouth are clues for scared.", generalize:"Practice asking for help when you feel scared."},
+      {visual:"😌", prompt:"Which feeling does this face show?", teach:"A calm face often looks relaxed and peaceful.", show:"The relaxed face shows calm.", choices:["calm","mad","worried","loud"], answer:"calm", correction:"Look for a relaxed face. That is calm.", generalize:"Try one slow breath and say, “I am calm.”"}
+    ]
+  },
+  "conversation-builder": {
+    type:"choice",
+    skill:"Conversation responses",
+    adult:"Teach conversation parts: greeting, answer, question back, comment, and goodbye. Reinforce short polite responses first, then expand.",
+    trials:[
+      {visual:"👋", prompt:"A friend says, “Hi!” What could you say back?", teach:"A greeting answers a greeting.", show:"You can say, “Hi! How are you?”", choices:["Walk away silently.","Give me that toy.","No, I am not talking.","Hi! How are you?"], answer:"Hi! How are you?", correction:"When someone greets you, a friendly greeting back is expected.", generalize:"Practice greeting a family member."},
+      {visual:"🎮", prompt:"Your friend says, “I like games.” What could you say?", teach:"A comment keeps the conversation going.", show:"You can say, “Me too. What game do you like?”", choices:["Me too. What game do you like?","Stop talking.","That is wrong.","I need to leave now."], answer:"Me too. What game do you like?", correction:"A related comment or question helps the conversation continue.", generalize:"Ask someone one question about something they like."},
+      {visual:"🍕", prompt:"Someone asks, “What food do you like?”", teach:"Answer the question, then ask one back.", show:"Try: “I like pizza. What do you like?”", choices:["I like pizza. What do you like?","Because yes.","No talking.","Give me food."], answer:"I like pizza. What do you like?", correction:"Answer first, then ask a question back.", generalize:"Practice answer + question with a helper."},
+      {visual:"⏰", prompt:"You need to end the conversation politely.", teach:"A polite ending tells the other person you are leaving.", show:"Try: “I have to go. See you later.”", choices:["I have to go. See you later.","Run away.","You are boring.","Stop."], answer:"I have to go. See you later.", correction:"Use a kind goodbye when ending a conversation.", generalize:"Practice saying goodbye after a short talk."},
+      {visual:"🤔", prompt:"You do not understand what someone said.", teach:"Self-advocacy means asking for help or clarification.", show:"Try: “Can you say that again?”", choices:["Can you say that again?","Never mind forever.","Laugh at them.","Leave the room."], answer:"Can you say that again?", correction:"Asking them to repeat is a respectful way to get help.", generalize:"Practice asking, “Can you repeat that?”"}
+    ]
+  },
+  "workplace-choices": {
+    type:"choice",
+    skill:"Vocational behavior",
+    adult:"Use scenarios to teach expected work routines, asking for help, staying safe, and respectful communication. Connect every answer to real work expectations.",
+    trials:[
+      {visual:"🕘", prompt:"You arrive at volunteer work. What should you do first?", teach:"Work routines often start with checking in.", show:"Check in and ask what task to start.", choices:["Start using your phone.","Check in and ask what task to start.","Take items home.","Leave without telling anyone."], answer:"Check in and ask what task to start.", correction:"At work, checking in helps everyone know you are ready.", generalize:"Practice saying, “I’m here. What should I do first?”"},
+      {visual:"🙋", prompt:"You do not understand a task.", teach:"Asking for clarification is responsible.", show:"Ask your supervisor to show you again.", choices:["Guess and maybe break it.","Ask your supervisor to show you again.","Hide in the bathroom.","Quit immediately."], answer:"Ask your supervisor to show you again.", correction:"It is better to ask than to guess when a task is unclear.", generalize:"Practice asking, “Can you show me again?”"},
+      {visual:"📱", prompt:"Your phone buzzes while you are working.", teach:"Many jobs have phone rules.", show:"Wait for a break or ask about the phone rule.", choices:["Stop working and scroll.","Answer every message now.","Wait for a break or ask about the phone rule.","Take a selfie with customers."], answer:"Wait for a break or ask about the phone rule.", correction:"Phone use should follow workplace rules.", generalize:"Talk about when phone breaks are allowed."},
+      {visual:"🧹", prompt:"You finish your assigned task early.", teach:"Ask for the next task instead of wandering.", show:"Say, “I finished. What should I do next?”", choices:["Wander around.","Hide supplies.","I finished. What should I do next?","Go home without telling anyone."], answer:"I finished. What should I do next?", correction:"When finished, ask what to do next.", generalize:"Practice a finished-task script."},
+      {visual:"😤", prompt:"A coworker corrects your work.", teach:"Feedback helps improve work.", show:"Say, “Okay, thank you. I can fix it.”", choices:["Argue loudly.","Okay, thank you. I can fix it.","Throw the item.","Ignore them forever."], answer:"Okay, thank you. I can fix it.", correction:"A calm response to feedback is expected at work.", generalize:"Practice a calm feedback script."}
+    ]
+  },
+  "aac-board": {
+    type:"aac",
+    skill:"Functional communication",
+    adult:"Model the message first, then ask the learner to tap the words. Reinforce any functional communication attempt.",
+    trials:[
+      {target:["I want","play"], prompt:"Build this message: I want play", teach:"Use “I want” to request something.", show:"Tap: I want → play", words:["I want","play","help","please","more","bubbles","all done","yes","no","break","my turn","thank you"], generalize:"Practice requesting a toy or activity."},
+      {target:["I want","more"], prompt:"Build this message: I want more", teach:"Use “more” when you want another turn or more of something.", show:"Tap: I want → more", words:["I want","more","help","play","all done","please","break","yes","no","bubbles"], generalize:"Practice asking for more snack, bubbles, or turns."},
+      {target:["help","please"], prompt:"Build this message: help please", teach:"Use “help” when something is hard.", show:"Tap: help → please", words:["help","please","I want","more","all done","my turn","yes","no","play"], generalize:"Pause during a hard task and practice asking for help."},
+      {target:["all done"], prompt:"Build this message: all done", teach:"Use “all done” to finish or stop.", show:"Tap: all done", words:["all done","more","I want","play","help","yes","no","please"], generalize:"Practice saying/tapping all done at the end of an activity."}
+    ]
+  },
+  "follow-directions": {
+    type:"shapes",
+    skill:"Receptive language",
+    adult:"Teach one attribute at a time, then combine color + shape. If wrong, label the selected object and teach the difference.",
+    trials:[
+      {color:"red", shape:"triangle", prompt:"Touch the red triangle.", teach:"A triangle has 3 sides and 3 corners.", show:"Look for the red shape with 3 sides.", generalize:"Find a triangle in the room."},
+      {color:"blue", shape:"square", prompt:"Touch the blue square.", teach:"A square has 4 equal sides and 4 corners.", show:"Look for the blue shape with 4 sides.", generalize:"Find a square object."},
+      {color:"green", shape:"circle", prompt:"Touch the green circle.", teach:"A circle is round with no corners.", show:"Look for the green round shape.", generalize:"Find something round."},
+      {color:"yellow", shape:"star", prompt:"Touch the yellow star.", teach:"A star has points.", show:"Look for the yellow shape with points.", generalize:"Point to a star picture."},
+      {color:"purple", shape:"rectangle", prompt:"Touch the purple rectangle.", teach:"A rectangle has 4 sides. Two sides are longer.", show:"Look for the purple long box shape.", generalize:"Find a rectangle like a door or phone."}
+    ]
+  },
+  "category-sort": {
+    type:"choice",
+    skill:"Categorizing",
+    adult:"Teach category labels, then ask where an item belongs. Reinforce language like “apple is a food.”",
+    trials:[
+      {visual:"🍎", prompt:"What group does apple belong to?", teach:"Foods are things we eat.", show:"Apple goes with food.", choices:["animals","food","clothes","vehicles"], answer:"food", correction:"Apple is something we eat, so it is food.", generalize:"Name three foods."},
+      {visual:"🐶", prompt:"What group does dog belong to?", teach:"Animals are living things that can move and need care.", show:"Dog goes with animals.", choices:["food","animals","toys","clothes"], answer:"animals", correction:"A dog is an animal.", generalize:"Name three animals."},
+      {visual:"👕", prompt:"What group does shirt belong to?", teach:"Clothes are things we wear.", show:"Shirt goes with clothes.", choices:["vehicles","food","clothes","animals"], answer:"clothes", correction:"A shirt is something we wear.", generalize:"Point to something you wear."},
+      {visual:"🚗", prompt:"What group does car belong to?", teach:"Vehicles help people move from place to place.", show:"Car goes with vehicles.", choices:["vehicles","clothes","food","toys"], answer:"vehicles", correction:"A car is a vehicle.", generalize:"Name two vehicles."},
+      {visual:"🧸", prompt:"What group does teddy bear belong to?", teach:"Toys are things we play with.", show:"Teddy bear goes with toys.", choices:["food","toys","vehicles","clothes"], answer:"toys", correction:"A teddy bear is a toy.", generalize:"Find a toy near you."}
+    ]
+  },
+  "first-then": {
+    type:"sequence",
+    skill:"Transitions",
+    adult:"Use First/Then language to support transitions. Keep the first task brief and the then activity motivating.",
+    trials:[
+      {prompt:"Put this in order: clean up, then bubbles.", teach:"First is what happens now. Then is what happens after.", show:"First clean up → Then bubbles.", steps:["clean up","bubbles"], answer:["clean up","bubbles"], generalize:"Practice first clean up, then play."},
+      {prompt:"Put this in order: wash hands, then snack.", teach:"Some routines have a safe order.", show:"First wash hands → Then snack.", steps:["snack","wash hands"], answer:["wash hands","snack"], generalize:"Practice before snack time."},
+      {prompt:"Put this in order: shoes on, then go outside.", teach:"Shoes come before going outside.", show:"First shoes on → Then go outside.", steps:["go outside","shoes on"], answer:["shoes on","go outside"], generalize:"Use first/then before leaving home."}
+    ]
+  },
+  "routine-sequence": {
+    type:"sequence",
+    skill:"Sequencing routines",
+    adult:"Task analysis breaks routines into teachable steps. Practice with pictures/words, then real life.",
+    trials:[
+      {prompt:"Put the morning routine in order.", teach:"Routines have steps. Start with waking up.", show:"Wake up → Brush teeth → Get dressed → Eat breakfast", steps:["Eat breakfast","Wake up","Get dressed","Brush teeth"], answer:["Wake up","Brush teeth","Get dressed","Eat breakfast"], generalize:"Practice checking off morning steps."},
+      {prompt:"Put handwashing steps in order.", teach:"Washing hands has a sequence.", show:"Water → Soap → Scrub → Rinse → Dry", steps:["Dry","Soap","Water","Rinse","Scrub"], answer:["Water","Soap","Scrub","Rinse","Dry"], generalize:"Practice at the sink."},
+      {prompt:"Put bedtime steps in order.", teach:"A bedtime routine helps the body get ready to sleep.", show:"Pajamas → Brush teeth → Story → Lights off", steps:["Story","Lights off","Pajamas","Brush teeth"], answer:["Pajamas","Brush teeth","Story","Lights off"], generalize:"Make a bedtime visual schedule."}
+    ]
+  },
+  "token-board": {
+    type:"token",
+    skill:"Token reinforcement",
+    adult:"Use token boards to make reinforcement visual. Keep the task expectation clear and deliver reinforcement when the board is full.",
+    trials:[
+      {prompt:"Earn 5 stars. Tap each task after you finish it.", teach:"A token board shows progress toward a reward.", show:"Do a step → earn a star → fill the board.", tasks:["Look at the teacher","Try the question","Use kind hands","Ask for help","Finish strong"], generalize:"Use a 5-star board for a real routine."}
+    ]
+  },
+  "breathing-bubble": {
+    type:"breathing",
+    skill:"Calming strategy",
+    adult:"Teach breathing when the learner is calm first. Practice often so it is available during stress.",
+    trials:[
+      {prompt:"Breathe with the bubble.", teach:"Slow breathing can help your body feel calm.", show:"Breathe in as the bubble grows. Breathe out as it gets smaller.", cycles:4, generalize:"Practice one slow breath before a hard task."}
+    ]
+  },
+  "imitation-cards": {
+    type:"imitation",
+    skill:"Motor imitation",
+    adult:"Model the movement, wait, then reinforce attempts. Use physical prompting only if appropriate and consented by caregiver/clinical team.",
+    trials:[
+      {visual:"👏", prompt:"Copy this: clap hands.", teach:"Watch first, then do the same action.", show:"Clap, clap.", action:"clap hands", generalize:"Practice copying 3 actions."},
+      {visual:"👋", prompt:"Copy this: wave bye.", teach:"Imitation means doing what someone shows you.", show:"Wave your hand.", action:"wave bye", generalize:"Wave to a family member."},
+      {visual:"🙆", prompt:"Copy this: hands up.", teach:"Look at the body position.", show:"Raise both hands.", action:"hands up", generalize:"Play Simon Says."}
+    ]
   }
-}
-function shuffle(arr) { return [...arr].sort(() => Math.random() - .5); }
-function escapeHtml(value) {
-  return String(value ?? '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
-}
-function setGameMeta(game) {
-  $('#gameTitle').textContent = game.title;
-  $('#gameCategory').textContent = game.category;
-  $('#gameGoal').textContent = game.goal;
-}
-async function loadGames() {
-  try {
-    const res = await fetch('games.json?v=' + Date.now(), {cache:'no-store'});
-    if (!res.ok) throw new Error('games.json not found');
-    games = (await res.json()).filter(g => g.enabled !== false);
-  } catch {
-    games = fallbackGames;
+};
+
+// Add choice-game libraries efficiently.
+const extraChoiceData = {
+  "social-choices": {
+    skill:"Expected social responses", adult:"Teach what the other person may feel and what response is safe/kind.",
+    trials:[
+      ["A peer asks to play with you.","Sharing or taking turns can be friendly.","Say, “Yes, we can take turns.”",["Push them away.","Yes, we can take turns.","Ignore forever.","Hide the toy."],"Yes, we can take turns.","A kind answer helps play continue."],
+      ["You accidentally bump someone.","Repair means noticing and apologizing.","Say, “Sorry, are you okay?”",["Laugh.","Sorry, are you okay?","Blame them.","Run away."],"Sorry, are you okay?","Apologizing helps repair an accident."],
+      ["Someone is talking and you want a turn.","Wait, then ask for a turn.","Say, “Can I have a turn to talk?”",["Interrupt loudly.","Can I have a turn to talk?","Yell stop.","Leave angry."],"Can I have a turn to talk?","Asking for a turn is expected."],
+      ["You lose a game.","Losing can feel hard. A calm response is expected.","Say, “Good game. Can we play again?”",["Throw pieces.","Good game. Can we play again?","Call names.","Quit all games."],"Good game. Can we play again?","A calm response keeps games fun."],
+      ["Someone says no.","No is an answer. You can ask for another choice.","Say, “Okay. What can I do instead?”",["Scream.","Okay. What can I do instead?","Grab it.","Keep asking 20 times."],"Okay. What can I do instead?","Accepting no and asking for options is flexible."]
+    ]
+  },
+  "expected-unexpected": {
+    skill:"Social expectations", adult:"Discuss context: expected behaviors make others feel comfortable; unexpected behaviors may confuse or bother others.",
+    trials:[
+      ["At the library, someone whispers.","Libraries are quiet places.","Expected",["Expected","Unexpected"],"Expected","Whispering at the library matches the situation."],
+      ["At the movies, someone talks loudly on the phone.","A theater needs quiet so people can hear.","Unexpected",["Expected","Unexpected"],"Unexpected","Loud phone talking can bother others."],
+      ["In class, a student raises a hand before speaking.","Raising a hand helps group learning.","Expected",["Expected","Unexpected"],"Expected","It helps the teacher know you want to talk."],
+      ["At work, someone takes supplies home without asking.","Work supplies belong at work unless permission is given.","Unexpected",["Expected","Unexpected"],"Unexpected","Taking items without permission is not okay."],
+      ["At the store, someone waits in line.","Lines help everyone take turns.","Expected",["Expected","Unexpected"],"Expected","Waiting in line is expected."],
+    ]
+  },
+  "safety-signs": {
+    skill:"Safety signs", adult:"Teach sign meaning and the action connected to it. Generalize using signs in the community.",
+    trials:[
+      ["What does a STOP sign mean?","Stop means pause and check for safety.","Stop and look.",["Run fast.","Stop and look.","Ignore it.","Close eyes."],"Stop and look.","A stop sign tells us to stop."],
+      ["What should you do at a WALK signal?","A walk signal means it may be safe to cross, but still look.","Look both ways and cross carefully.",["Look both ways and cross carefully.","Run without looking.","Sit down.","Call a friend."],"Look both ways and cross carefully.","Always look before crossing."],
+      ["What does Wet Floor mean?","A wet floor can be slippery.","Walk carefully around it.",["Slide on it.","Walk carefully around it.","Jump on it.","Touch it."],"Walk carefully around it.","Wet floors can cause falls."],
+      ["You see an Exit sign in a building.","Exit signs show a way out.","It shows a way out.",["It means bathroom.","It shows a way out.","It means snack.","It means play."],"It shows a way out.","Exit signs help during emergencies."],
+      ["A sign says Employees Only.","Some areas are only for workers.","Do not enter unless invited by staff.",["Go inside.","Do not enter unless invited by staff.","Hide there.","Take supplies."],"Do not enter unless invited by staff.","Respect restricted areas."]
+    ]
+  },
+  "coping-match": {
+    skill:"Coping strategies", adult:"Match coping tools to body signals. Practice when calm, not only during escalation.",
+    trials:[
+      ["You feel frustrated because work is hard.","A break can help your body reset.","Ask for a short break.",["Throw paper.","Ask for a short break.","Quit forever.","Yell loudly."],"Ask for a short break.","A short break is a safe coping strategy."],
+      ["The room is too loud.","You can ask for help with sensory needs.","Use headphones or ask for a quieter space.",["Scream louder.","Use headphones or ask for a quieter space.","Run into street.","Hit someone."],"Use headphones or ask for a quieter space.","That helps reduce noise safely."],
+      ["You feel nervous before a new activity.","Deep breathing can calm the body.","Take 3 slow breaths.",["Take 3 slow breaths.","Hide forever.","Say mean words.","Rip materials."],"Take 3 slow breaths.","Breathing is a safe calming tool."],
+      ["You are angry after losing.","Use words and a calm body.","Say, “I need a minute.”",["Throw the game.","Say, “I need a minute.”","Call someone names.","Break pieces."],"Say, “I need a minute.”","Asking for a minute is self-control."],
+      ["You feel sad.","Talking to a trusted adult can help.","Tell a trusted adult.",["Keep it secret always.","Tell a trusted adult.","Push others.","Run away."],"Tell a trusted adult.","Trusted adults can help."]
+    ]
+  },
+  "time-schedule": {
+    skill:"Schedules and time", adult:"Use visual schedules and teach next/then language.",
+    trials:[
+      ["Schedule: 8:00 breakfast, 8:30 brush teeth. It is 8:30. What is next?","Look at the time and match the schedule.","Brush teeth",["Breakfast","Brush teeth","Go to bed","Lunch"],"Brush teeth","The schedule says brush teeth at 8:30."],
+      ["School ends at 3:00. It is 2:55.","Five minutes before 3:00 means school is almost over.","Get ready to pack up",["Start a new movie","Get ready to pack up","Eat dinner","Go to sleep"],"Get ready to pack up","Pack-up time comes near the end."],
+      ["Work starts at 9:00. You arrive at 8:55.","Arriving early gives time to check in.","Check in and get ready",["Leave","Check in and get ready","Go shopping","Take a nap"],"Check in and get ready","Arriving a little early is responsible."],
+      ["You have 10 minutes before therapy starts.","Use waiting time calmly.","Choose a quiet waiting activity",["Run away","Choose a quiet waiting activity","Yell","Throw toys"],"Choose a quiet waiting activity","A quiet activity helps wait."],
+      ["The timer rings after break.","A timer can show when break is finished.","Return to the task",["Ask what is next and return","Ignore it","Hide","Break the timer"],"Ask what is next and return","Timers help transitions."]
+    ]
+  },
+  "hygiene-helper": {
+    skill:"Hygiene routines", adult:"Use task analysis for hygiene skills. Teach why each step matters.",
+    trials:[
+      ["Before eating, what should you do?","Hands can have germs. Washing helps keep us healthy.","Wash hands",["Wash hands","Touch shoes","Skip it","Eat off floor"],"Wash hands","Washing hands before eating is healthy."],
+      ["After using the bathroom, what should you do?","Bathroom routines include handwashing.","Flush and wash hands",["Run away","Flush and wash hands","Touch food","Skip washing"],"Flush and wash hands","This is part of bathroom hygiene."],
+      ["Your teeth feel dirty at bedtime.","Brushing teeth keeps the mouth healthy.","Brush teeth",["Brush teeth","Eat candy only","Hide toothbrush","Use soap"],"Brush teeth","Brush teeth as part of bedtime routine."],
+      ["Your clothes are dirty after playing outside.","Changing can help you stay clean.","Change into clean clothes",["Wear dirty clothes all week","Change into clean clothes","Put them in fridge","Throw them outside"],"Change into clean clothes","Clean clothes are part of hygiene."],
+      ["You cough into your hands.","Germs can spread from hands.","Wash or sanitize hands",["Touch everyone","Wash or sanitize hands","Keep playing with food","Rub eyes"],"Wash or sanitize hands","Cleaning hands helps reduce germs."]
+    ]
+  },
+  "problem-solving": {
+    skill:"Problem solving", adult:"Teach Stop → Think → Choose → Check. Model the steps out loud.",
+    trials:[
+      ["Your pencil breaks during work.","Stop, think, choose a helpful action.","Ask for a new pencil or sharpen it",["Scream","Ask for a new pencil or sharpen it","Throw it","Quit forever"],"Ask for a new pencil or sharpen it","That solves the problem safely."],
+      ["You cannot find your backpack.","Think where it was last and ask for help.","Look calmly and ask for help",["Cry only","Look calmly and ask for help","Run outside","Blame everyone"],"Look calmly and ask for help","Calm searching and asking can solve it."],
+      ["The game you want is not available.","Flexible thinking means choosing another option.","Pick another activity while waiting",["Break the game","Pick another activity while waiting","Yell until you get it","Grab it"],"Pick another activity while waiting","That is flexible and safe."],
+      ["You made a mistake on a worksheet.","Mistakes can be fixed.","Erase or ask for help",["Rip the paper","Erase or ask for help","Hide it","Say I’m bad"],"Erase or ask for help","A mistake is something to fix, not fear."],
+      ["You and a friend both want the same toy.","Problem solving can include taking turns.","Use a timer and take turns",["Push friend","Use a timer and take turns","Take it and run","Never play again"],"Use a timer and take turns","Taking turns can solve sharing problems."]
+    ]
+  },
+  "money-store": {
+    skill:"Money skills", adult:"Use real coins/bills or visuals. Keep amounts simple and practical.",
+    trials:[
+      ["You have $5. A snack costs $3. Can you buy it?","If you have more money than the price, you can buy it.","Yes, and you have $2 left.",["No","Yes, and you have $2 left.","You need $10 more.","You get $8 change."],"Yes, and you have $2 left.","5 minus 3 leaves 2."],
+      ["You have $10. A shirt costs $12.","If the price is more than your money, you need more money.","No, you need $2 more.",["Yes","No, you need $2 more.","You have $22.","Buy two."],"No, you need $2 more.","12 is 2 more than 10."],
+      ["You buy water for $2 with a $5 bill.","Change is money back.","You get $3 back.",["$1","$2","$3","$7"],"$3","5 minus 2 equals 3."],
+      ["You have $20 and need to save $10 for lunch.","Budget means keeping enough for what you need.","Spend no more than $10 now.",["Spend all $20","Spend no more than $10 now","Give it away","Buy everything"],"Spend no more than $10 now","Saving for lunch is part of budgeting."],
+      ["A cashier gives too much change.","Honesty is expected.","Tell the cashier politely.",["Keep it quietly","Tell the cashier politely","Run","Laugh"],"Tell the cashier politely.","Honesty is important in stores."]
+    ]
+  },
+  "perspective-detective": {
+    skill:"Perspective taking", adult:"Ask: What happened? What might the person think? What might they feel? What could you do?",
+    trials:[
+      ["You step on someone’s foot by accident.","They may feel hurt or surprised.","They might feel hurt.",["They might feel hurt.","They are happy you did it.","They do not have feelings.","They want candy."],"They might feel hurt.","Accidents can still hurt someone."],
+      ["A friend is quiet after losing a game.","They may feel disappointed.","They might feel disappointed.",["They might feel disappointed.","They are definitely sleeping.","They hate everyone.","They won the game."],"They might feel disappointed.","Losing can feel disappointing."],
+      ["Your teacher smiles after you finish work.","They may feel proud or pleased.","They might feel proud.",["They might feel proud.","They are angry.","They are lost.","They are sleepy."],"They might feel proud.","A smile after success can mean proud."],
+      ["A coworker looks confused when you explain.","They may not understand yet.","They may need you to explain again.",["They may need you to explain again.","They are being mean.","They are done forever.","They want you to leave."],"They may need you to explain again.","Confused faces can mean they need clarification."],
+      ["Your sibling covers their ears when the TV is loud.","They may think the sound is too loud.","They may want the volume lower.",["They may want the volume lower.","They want louder sound.","They are dancing.","They want a snack."],"They may want the volume lower.","Covering ears is a clue about sound sensitivity."]
+    ]
+  },
+  "goal-planner": {
+    skill:"Goal planning", adult:"Break goals into small observable steps. Reinforce checking off each step.",
+    trials:[
+      ["Goal: Finish homework.","A good plan starts with materials and one small step.","Get materials, do one page, check work",["Watch TV only","Get materials, do one page, check work","Throw backpack","Wait forever"],"Get materials, do one page, check work","Small steps make goals easier."],
+      ["Goal: Learn a new job task.","Watch, ask, practice, get feedback.","Watch, ask questions, practice",["Pretend you know","Watch, ask questions, practice","Ignore instructions","Quit"],"Watch, ask questions, practice","This is a learning plan."],
+      ["Goal: Keep room clean.","Daily small steps help.","Put laundry away and clear floor",["Do nothing for a month","Put laundry away and clear floor","Hide everything under bed","Throw things"],"Put laundry away and clear floor","Cleaning is easier in small steps."],
+      ["Goal: Make a friend.","Friendly actions build connection.","Greet, ask a question, share interest",["Demand friendship","Greet, ask a question, share interest","Never talk","Take their things"],"Greet, ask a question, share interest","Friendship grows with kind communication."],
+      ["Goal: Be on time.","Planning helps punctuality.","Set reminder and leave early",["Leave late","Set reminder and leave early","Ignore clock","Hope it works"],"Set reminder and leave early","Reminders and leaving early help on-time arrival."]
+    ]
+  },
+  "text-smart": {
+    skill:"Digital safety", adult:"Teach rules for safe texting: respectful, private info protected, ask adult when unsure.",
+    trials:[
+      ["A classmate texts, “Send me your address.”","Private information should be protected.","Do not send it. Ask a trusted adult.",["Send it","Do not send it. Ask a trusted adult.","Post it online","Send a photo too"],"Do not send it. Ask a trusted adult.","Addresses are private information."],
+      ["A friend texts, “Are you coming?”","Answer clearly and politely.","Yes, I will be there at 3.",["maybe idk stop","Yes, I will be there at 3.","You are annoying","No response forever"],"Yes, I will be there at 3.","Clear texts help communication."],
+      ["Someone sends an unkind message.","Pause before responding.","Do not reply angry. Tell a trusted adult if needed.",["Send insults","Do not reply angry. Tell a trusted adult if needed.","Share it with everyone","Threaten them"],"Do not reply angry. Tell a trusted adult if needed.","Pause and get help for unsafe messages."],
+      ["You get a link from someone you do not know.","Unknown links can be unsafe.","Do not click. Ask an adult.",["Click fast","Do not click. Ask an adult.","Send password","Download everything"],"Do not click. Ask an adult.","Unknown links may be unsafe."],
+      ["You need to cancel plans politely.","A respectful text gives clear info.","Sorry, I can’t come today. Can we reschedule?",["I hate this.","Sorry, I can’t come today. Can we reschedule?","Ghost them forever","Send random emojis"],"Sorry, I can’t come today. Can we reschedule?","Polite texts help relationships."]
+    ]
+  },
+  "self-advocacy": {
+    skill:"Self-advocacy", adult:"Teach scripts for help, breaks, clarification, sensory needs, and choice-making.",
+    trials:[
+      ["The assignment is confusing.","Ask for clarification.","Can you explain that again?",["I quit.","Can you explain that again?","This is dumb.","Hide it."],"Can you explain that again?","That is a respectful help request."],
+      ["The room is too bright.","Ask for a reasonable support.","Can I move to a less bright spot?",["Break lights","Can I move to a less bright spot?","Scream","Leave building"],"Can I move to a less bright spot?","This communicates a sensory need."],
+      ["You need a short break.","Use a clear break request.","Can I take a 2-minute break?",["Run away","Can I take a 2-minute break?","Throw items","Say nothing"],"Can I take a 2-minute break?","Specific break requests are helpful."],
+      ["You do not want help touching your body.","Use a consent/safety statement.","Please tell me with words, not hands.",["Hit","Please tell me with words, not hands.","Do nothing","Cry quietly"],"Please tell me with words, not hands.","This expresses a boundary."],
+      ["You need more time to answer.","Ask for time.","Can I have a minute to think?",["Can I have a minute to think?","Never talk","Get angry","Walk away"],"Can I have a minute to think?","Asking for thinking time is self-advocacy."]
+    ]
+  },
+  "community-safety": {
+    skill:"Community safety", adult:"Teach safe behaviors with role-play and real-world visuals.",
+    trials:[
+      ["A stranger asks you to get in their car.","Safety rule: do not go with unknown people.","Say no and go to a trusted adult.",["Get in","Say no and go to a trusted adult.","Give your address","Follow them"],"Say no and go to a trusted adult.","Trusted adults help keep you safe."],
+      ["You are lost in a store.","Find a safe helper.","Ask an employee or security for help.",["Leave the store alone","Ask an employee or security for help.","Hide","Call random numbers"],"Ask an employee or security for help.","Store employees can help."],
+      ["You need to cross the street.","Use street safety steps.","Stop, look both ways, use crosswalk.",["Run across","Stop, look both ways, use crosswalk.","Close eyes","Follow anyone"],"Stop, look both ways, use crosswalk.","Crosswalk safety matters."],
+      ["You see fire or smoke.","Emergency safety means leave and get help.","Move away and tell an adult/call emergency help.",["Touch it","Move away and tell an adult/call emergency help.","Take photos up close","Hide"],"Move away and tell an adult/call emergency help.","Fire and smoke are danger signs."],
+      ["Someone online asks for a private picture.","Private pictures should not be sent.","Do not send. Tell a trusted adult.",["Send it","Do not send. Tell a trusted adult.","Ask for money","Keep secret"],"Do not send. Tell a trusted adult.","Online safety protects privacy."]
+    ]
+  },
+  "job-interview": {
+    skill:"Interview practice", adult:"Practice short, positive answers with role-play. Teach eye contact alternatives and calm body if appropriate.",
+    trials:[
+      ["Interviewer asks, “Tell me about yourself.”","A good answer is brief and job-related.","I am reliable and like helping with tasks.",["I hate work.","I am reliable and like helping with tasks.","Nothing.","Give me money."],"I am reliable and like helping with tasks.","This answer is positive and job-related."],
+      ["They ask, “Why do you want this job?”","Connect your interest to the work.","I want to learn and be part of the team.",["Because my mom said so only.","I want to learn and be part of the team.","I don’t know.","I need snacks."],"I want to learn and be part of the team.","This sounds respectful and motivated."],
+      ["They ask about availability.","Give clear days/times.","I am available weekdays after 3.",["Whenever maybe.","I am available weekdays after 3.","Never.","Look at my phone."],"I am available weekdays after 3.","Clear availability helps scheduling."],
+      ["You do not understand a question.","Ask politely.","Could you please repeat the question?",["What? Bad question.","Could you please repeat the question?","Ignore them.","Leave."],"Could you please repeat the question?","That is a polite clarification request."],
+      ["The interview ends.","Use a polite closing.","Thank you for meeting with me.",["Bye I guess.","Thank you for meeting with me.","Give me the job now.","Walk out silently."],"Thank you for meeting with me.","A thank-you is professional."],
+    ]
   }
-  renderFilters();
-  renderGrid();
-}
-function renderFilters() {
-  const wrap = $('.filters');
-  if (!wrap) return;
-  const categories = ['All', ...new Set(games.map(g => g.category).filter(Boolean))];
-  if (!categories.includes(activeFilter)) activeFilter = 'All';
-  wrap.innerHTML = categories.map(c => `<button class="filter ${c === activeFilter ? 'active' : ''}" data-filter="${escapeHtml(c)}" type="button">${escapeHtml(c)}</button>`).join('');
-  $$('.filter').forEach(btn => {
-    btn.addEventListener('click', () => {
-      $$('.filter').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeFilter = btn.dataset.filter;
-      renderGrid();
-    });
-  });
-}
-function renderGrid() {
-  const grid = $('#gameGrid');
-  if (!grid) return;
-  const filtered = games.filter(g => activeFilter === 'All' || g.category === activeFilter);
-  grid.innerHTML = filtered.map((game, i) => `
-    <button class="game-card" data-game="${escapeHtml(game.id)}" style="--accent:${accents[i % accents.length]}">
-      <div class="game-icon">${gameIcons[game.id] || '🎮'}</div>
-      <h3>${escapeHtml(game.title)}</h3>
-      <p>${escapeHtml(game.goal)}</p>
-      <div class="tags">
-        <span class="tag">${escapeHtml(game.category)}</span>
-        <span class="tag">Age ${escapeHtml(game.age)}</span>
-      </div>
-    </button>
-  `).join('');
-}
-function openGame(id) {
-  const game = games.find(g => g.id === id) || fallbackGames.find(g => g.id === id);
-  if (!game) return;
-  currentGame = game;
-  setGameMeta(game);
-  $('#playPanel').hidden = false;
-  document.body.style.overflow = 'hidden';
-  const routes = {
-    'emotion-match': () => startSession(5, renderEmotion),
-    'follow-directions': () => startSession(6, renderDirections),
-    'token-board': () => renderTokenBoard(),
-    'category-sort': () => startSession(6, renderSort),
-    'first-then': () => startSession(3, renderFirstThen),
-    'breathing-bubble': () => renderBreathing(),
-    'aac-board': () => startSession(4, renderAAC),
-    'routine-sequence': () => startSession(3, renderRoutine),
-    'social-choices': () => startSession(4, renderSocial),
-    'imitation-cards': () => startSession(5, renderImitation),
-    'conversation-builder': () => startSession(5, renderConversation),
-    'expected-unexpected': () => startSession(5, renderExpectedUnexpected),
-    'safety-signs': () => startSession(5, renderSafetySigns),
-    'coping-match': () => startSession(5, renderCopingMatch),
-    'time-schedule': () => startSession(5, renderTimeSchedule),
-    'hygiene-helper': () => startSession(5, renderHygieneHelper),
-    'problem-solving': () => startSession(5, renderProblemSolving),
-    'money-store': () => startSession(5, renderMoneyStore),
-    'perspective-detective': () => startSession(5, renderPerspectiveDetective),
-    'goal-planner': () => startSession(4, renderGoalPlanner),
-    'workplace-choices': () => startSession(5, renderWorkplaceChoices)
+};
+
+for (const [id, data] of Object.entries(extraChoiceData)) {
+  trialLibrary[id] = {
+    type:"choice",
+    skill:data.skill,
+    adult:data.adult,
+    trials:data.trials.map((t, i) => ({
+      visual: ["💬","🌟","🧠","✅","🙋"][i % 5],
+      prompt:t[0], teach:t[1], show:t[2], choices:t[3], answer:t[4], correction:t[5],
+      generalize:"Practice this skill in a real-life situation with a trusted adult."
+    }))
   };
-  (routes[game.id] || (() => toast('This game is coming soon.')))();
-}
-function closeGame() {
-  $('#playPanel').hidden = true;
-  document.body.style.overflow = '';
-  $('#gameArea').innerHTML = '';
-  currentGame = null;
-  session = null;
-}
-function startSession(total, renderFn) {
-  session = { round: 1, correct: 0, total, renderFn };
-  renderFn();
-}
-function roundHeader() {
-  if (!session) return '';
-  const pct = Math.round(((session.round - 1) / session.total) * 100);
-  return `
-    <div class="round-wrap">
-      <div class="round-label">Practice ${session.round} of ${session.total}</div>
-      <div class="round-bar"><span style="width:${pct}%"></span></div>
-    </div>`;
-}
-function finishSession(title = 'You finished!', detail = 'Great practice today.', stars = 3) {
-  completeGame(stars);
-  $('#gameArea').innerHTML = `
-    <div class="finish-card">
-      <div class="finish-icon">🎉</div>
-      <h3>${escapeHtml(title)}</h3>
-      <p>${escapeHtml(detail)}</p>
-      <div class="finish-stars">+${stars} stars earned ⭐</div>
-      <div class="finish-actions">
-        <button class="btn primary" id="playAgain" type="button">Play again</button>
-        <button class="btn soft" id="closeFinished" type="button">Back to arcade</button>
-      </div>
-    </div>`;
-  $('#playAgain').onclick = () => openGame(currentGame.id);
-  $('#closeFinished').onclick = closeGame;
-}
-function nextRoundOrFinish(renderFn, finishTitle, finishDetail, stars = 3) {
-  session.correct += 1;
-  if (session.round >= session.total) {
-    finishSession(finishTitle, finishDetail, stars);
-  } else {
-    session.round += 1;
-    renderFn();
-  }
-}
-function showFeedback(type, message) {
-  const box = $('#gameFeedback');
-  if (!box) return;
-  box.className = 'game-feedback ' + type;
-  box.innerHTML = message;
 }
 
-function renderEmotion() {
-  const emotions = [
-    {face:'😊', word:'happy', teach:'A happy face usually has a smile.'},
-    {face:'😢', word:'sad', teach:'A sad face may have tears or a frown.'},
-    {face:'😡', word:'angry', teach:'An angry face may have tight eyes or a frown.'},
-    {face:'😨', word:'scared', teach:'A scared face may look worried or surprised.'},
-    {face:'😴', word:'tired', teach:'A tired face may have sleepy eyes.'},
-    {face:'😲', word:'surprised', teach:'A surprised face may have a big open mouth.'},
-    {face:'😌', word:'calm', teach:'A calm face looks relaxed.'},
-    {face:'🤔', word:'thinking', teach:'A thinking face means someone is deciding or wondering.'}
-  ];
-  const target = emotions[(session.round - 1) % emotions.length];
-  const options = shuffle([target.word, ...shuffle(emotions.filter(e => e.word !== target.word)).slice(0,3).map(e => e.word)]);
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message"><strong>Look at the face.</strong> Which feeling does it show?</div>
-    <div class="teaching-tip">${escapeHtml(target.teach)}</div>
-    <div class="big-face">${target.face}</div>
-    <div class="choices">${options.map(o => `<button class="choice-btn" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.choice-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.answer === target.word) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Yes! This face shows <strong>${target.word}</strong>.`);
-      setTimeout(() => nextRoundOrFinish(renderEmotion, 'Emotion Match complete!', 'You practiced matching faces to feeling words.', 3), 650);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. This face is not ${escapeHtml(btn.dataset.answer)}. ${escapeHtml(target.teach)}`);
-    }
-  });
-}
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+const gameGrid = $("#gameGrid");
+const gameModal = $("#gameModal");
+const gameArea = $("#gameArea");
+let allGames = [];
+let activeAge = "ALL";
+let settings = loadJSON("learnPlayV14Settings", { bigText:false, reduceMotion:false, sound:false });
+let progress = loadJSON("learnPlayV14Progress", {});
+let current = null;
 
-const colorHex = { red:'#ff6b6b', blue:'#4dabf7', yellow:'#ffd43b', green:'#63d98a', purple:'#845ef7', orange:'#ff9f43' };
-function shapeSvg(color, shape) {
-  const fill = colorHex[color] || color;
-  if (shape === 'circle') return `<svg class="svg-shape" viewBox="0 0 120 120" role="img" aria-label="${color} circle"><circle cx="60" cy="60" r="34" fill="${fill}"/></svg>`;
-  if (shape === 'square') return `<svg class="svg-shape" viewBox="0 0 120 120" role="img" aria-label="${color} square"><rect x="28" y="28" width="64" height="64" rx="6" fill="${fill}"/></svg>`;
-  if (shape === 'triangle') return `<svg class="svg-shape" viewBox="0 0 120 120" role="img" aria-label="${color} triangle"><polygon points="60,22 98,92 22,92" fill="${fill}"/></svg>`;
-  if (shape === 'star') return `<svg class="svg-shape" viewBox="0 0 120 120" role="img" aria-label="${color} star"><polygon points="60,18 72,45 102,47 79,66 87,96 60,79 33,96 41,66 18,47 48,45" fill="${fill}"/></svg>`;
-  return '';
+function loadJSON(key, fallback){ try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } }
+function saveJSON(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
+function escapeHtml(value){ return String(value ?? "").replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch])); }
+function shuffle(arr){ const a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function normalize(value){ return String(value ?? "").trim().toLowerCase(); }
+function totalStars(){ return Object.values(progress).reduce((sum, item) => sum + (Number(item.stars)||0), 0); }
+function setToast(message){ const el=$("#toast"); if(!el) return; el.textContent=message; el.classList.add("show"); clearTimeout(setToast.timer); setToast.timer=setTimeout(()=>el.classList.remove("show"),2200); }
+function playTone(kind="correct"){
+  if(!settings.sound) return;
+  try{
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.value = kind === "correct" ? 660 : 220;
+    gain.gain.value = 0.06;
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(); setTimeout(()=>{osc.stop(); ctx.close();}, kind === "correct" ? 130 : 220);
+  }catch{}
 }
-function shapeTeach(shape) {
+function speak(text){
+  if(!("speechSynthesis" in window)) { setToast("Read-aloud is not supported on this browser."); return; }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.rate = 0.9;
+  utter.pitch = 1.05;
+  window.speechSynthesis.speak(utter);
+}
+function applySettings(){
+  document.body.classList.toggle("big-text", !!settings.bigText);
+  document.body.classList.toggle("reduce-motion", !!settings.reduceMotion);
+  $("#bigTextToggle") && ($("#bigTextToggle").checked = !!settings.bigText);
+  $("#reduceMotionToggle") && ($("#reduceMotionToggle").checked = !!settings.reduceMotion);
+  $("#soundToggle") && ($("#soundToggle").checked = !!settings.sound);
+  $("#totalStars") && ($("#totalStars").textContent = totalStars());
+}
+function gameIcon(game){ return iconMap[game.title] || "🎮"; }
+function getGameData(id){
+  const data = trialLibrary[id];
+  if(data) return data;
   return {
-    circle:'A circle is round and has no corners.',
-    square:'A square has 4 equal sides and 4 corners.',
-    triangle:'A triangle has 3 sides and 3 corners.',
-    star:'A star has points.'
-  }[shape] || '';
-}
-function renderDirections() {
-  const directions = [
-    {color:'red', shape:'triangle'}, {color:'blue', shape:'square'}, {color:'yellow', shape:'circle'},
-    {color:'green', shape:'square'}, {color:'purple', shape:'star'}, {color:'orange', shape:'triangle'},
-    {color:'blue', shape:'circle'}, {color:'red', shape:'square'}, {color:'green', shape:'triangle'},
-    {color:'yellow', shape:'star'}
-  ];
-  const target = directions[(session.round - 1) % directions.length];
-  const optionPool = directions.filter((s, index, self) => index === self.findIndex(x => x.color === s.color && x.shape === s.shape));
-  const distractors = shuffle(optionPool.filter(s => !(s.color === target.color && s.shape === target.shape))).slice(0,5);
-  const options = shuffle([target, ...distractors]);
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message"><strong>Touch the ${target.color} ${target.shape}.</strong></div>
-    <div class="teaching-tip">Listen for two clues: <strong>color</strong> and <strong>shape</strong>. ${shapeTeach(target.shape)}</div>
-    <div class="shape-board">${options.map(s => `
-      <button class="shape-btn" data-key="${s.color}-${s.shape}" data-color="${s.color}" data-shape="${s.shape}" aria-label="${s.color} ${s.shape}">
-        ${shapeSvg(s.color, s.shape)}
-        <span class="shape-label">${s.color} ${s.shape}</span>
-      </button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.shape-btn').forEach(btn => btn.onclick = () => {
-    const clicked = `${btn.dataset.color} ${btn.dataset.shape}`;
-    const correct = `${target.color}-${target.shape}`;
-    if (btn.dataset.key === correct) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Correct! You found the <strong>${target.color} ${target.shape}</strong>. ${shapeTeach(target.shape)}`);
-      setTimeout(() => nextRoundOrFinish(renderDirections, 'Directions complete!', 'You practiced listening for color and shape words.', 4), 750);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `That is the <strong>${escapeHtml(clicked)}</strong>. Try again: find the <strong>${target.color} ${target.shape}</strong>.`);
-    }
-  });
-}
-
-function renderTokenBoard() {
-  currentTokens = 0;
-  updateTokenBoard();
-}
-function updateTokenBoard() {
-  $('#gameArea').innerHTML = `
-    <div class="token-wrap">
-      <div class="game-message"><strong>Token board:</strong> Earn 5 tokens, then celebrate!</div>
-      <div class="teaching-tip">Use this with any task: first work, then earn a token.</div>
-      <div class="token-row">${[0,1,2,3,4].map(i => `<div class="token ${i < currentTokens ? 'filled' : ''}">${i < currentTokens ? '⭐' : ''}</div>`).join('')}</div>
-      <button class="btn primary" id="earnTokenBtn" type="button">Earn token</button>
-      <button class="btn soft" id="resetTokenBtn" type="button">Reset token board</button>
-    </div>
-  `;
-  $('#earnTokenBtn').onclick = () => {
-    currentTokens = Math.min(5, currentTokens + 1);
-    if (currentTokens >= 5) {
-      finishSession('Token board complete!', 'You earned all 5 tokens.', 3);
-    } else {
-      updateTokenBoard();
-    }
+    type:"choice",
+    skill:"Practice",
+    adult:"Use model, prompt, wait, reinforce, and generalize to daily routines.",
+    trials:[
+      {visual:"🎯", prompt:"Choose the best answer.", teach:"Look for the safe, kind, or helpful choice.", show:"Pick the answer that solves the problem.", choices:["Safe choice","Unsafe choice","Silly choice","No choice"], answer:"Safe choice", correction:"The best answer is the safe and helpful choice.", generalize:"Practice with a real example."}
+    ]
   };
-  $('#resetTokenBtn').onclick = renderTokenBoard;
 }
 
-function renderSort() {
-  const items = [
-    {icon:'🐶', name:'dog', category:'Animals', teach:'A dog is an animal.'}, {icon:'🍎', name:'apple', category:'Foods', teach:'An apple is food.'},
-    {icon:'🧸', name:'teddy bear', category:'Toys', teach:'A teddy bear is a toy.'}, {icon:'👕', name:'shirt', category:'Clothes', teach:'A shirt is clothing.'},
-    {icon:'🐠', name:'fish', category:'Animals', teach:'A fish is an animal.'}, {icon:'🍕', name:'pizza', category:'Foods', teach:'Pizza is food.'},
-    {icon:'🚗', name:'car', category:'Toys', teach:'A toy car goes with toys.'}, {icon:'🧦', name:'socks', category:'Clothes', teach:'Socks are clothing.'}
-  ];
-  const target = items[(session.round - 1) % items.length];
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message">What group does this item belong to?</div>
-    <div class="teaching-tip">Think: is it an animal, food, toy, or clothing?</div>
-    <div class="sort-layout">
-      <div class="item-card"><div><div class="item-icon">${target.icon}</div><div class="item-name">${escapeHtml(target.name)}</div></div></div>
-      <div class="sort-options">${['Animals','Foods','Toys','Clothes'].map(c => `<button class="sort-btn" data-category="${c}">${c}</button>`).join('')}</div>
-    </div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.sort-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.category === target.category) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Correct! ${escapeHtml(target.teach)}`);
-      setTimeout(() => nextRoundOrFinish(renderSort, 'Category Sort complete!', 'You practiced grouping items by category.', 3), 650);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Not that group. ${escapeHtml(target.teach)}`);
-    }
-  });
+async function loadGames(){
+  try{
+    const res = await fetch("games.json?v=" + Date.now(), {cache:"no-store"});
+    if(!res.ok) throw new Error("games.json not found");
+    allGames = await res.json();
+  } catch { allGames = fallbackGames; }
+  allGames = allGames.filter(g => g.enabled !== false);
+  renderGameGrid();
+  applySettings();
 }
-
-function renderFirstThen() {
-  ftFirst = null; ftThen = null;
-  drawFirstThen();
-}
-function drawFirstThen() {
-  const firstChoices = ['Clean up 🧺', 'Read book 📚', 'Wash hands 🧼', 'Do puzzle 🧩', 'Practice words 💬'];
-  const thenChoices = ['Bubbles 🫧', 'Snack 🍓', 'Outside 🌳', 'Music 🎵', 'Toy car 🚗'];
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message"><strong>First / Then:</strong> choose one work task and one fun reward.</div>
-    <div class="teaching-tip">FIRST means what we do now. THEN means what comes next.</div>
-    <div class="first-then-board">
-      <div class="ft-box"><div><strong>FIRST</strong>${ftFirst || 'Pick a first activity'}</div></div>
-      <div class="ft-box"><div><strong>THEN</strong>${ftThen || 'Pick a then activity'}</div></div>
-    </div>
-    <h4 class="mini-title">First choices</h4>
-    <div class="ft-option-grid">${firstChoices.map(c => `<button class="choice-btn" data-first="${c}">${c}</button>`).join('')}</div>
-    <h4 class="mini-title">Then choices</h4>
-    <div class="ft-option-grid">${thenChoices.map(c => `<button class="choice-btn" data-then="${c}">${c}</button>`).join('')}</div>
-    <div class="game-actions">
-      <button class="btn primary" id="completeFT" type="button">Complete first/then</button>
-      <button class="btn soft" id="resetFT" type="button">Start over</button>
-    </div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('[data-first]').forEach(btn => btn.onclick = () => { ftFirst = btn.dataset.first; drawFirstThen(); });
-  $$('[data-then]').forEach(btn => btn.onclick = () => { ftThen = btn.dataset.then; drawFirstThen(); });
-  $('#completeFT').onclick = () => {
-    if (ftFirst && ftThen) {
-      showFeedback('correct', `Great! First ${escapeHtml(ftFirst)}, then ${escapeHtml(ftThen)}.`);
-      setTimeout(() => nextRoundOrFinish(renderFirstThen, 'First / Then complete!', 'You practiced transition language.', 3), 750);
-    } else toast('Pick a FIRST and a THEN.');
-  };
-  $('#resetFT').onclick = renderFirstThen;
-}
-
-function renderBreathing() {
-  $('#gameArea').innerHTML = `
-    <div class="breath-wrap" id="breathWrap">
-      <div>
-        <div class="game-message"><strong>Calm breathing:</strong> follow the bubble for 4 slow breaths.</div>
-        <div class="bubble">Breathe</div>
-        <p class="breath-text">Grow = breathe in. Shrink = breathe out.</p>
-        <div class="game-actions center">
-          <button class="btn primary" id="startBreath" type="button">Start calm breathing</button>
-          <button class="btn soft" id="finishBreath" type="button">I did 4 breaths</button>
+function renderGameGrid(){
+  const filtered = allGames.filter(g => activeAge === "ALL" || g.ageBand === activeAge);
+  gameGrid.innerHTML = filtered.map(game => {
+    const p = progress[game.id] || {stars:0, completed:0};
+    return `
+      <article class="game-card" data-game="${escapeHtml(game.id)}">
+        <div class="game-icon">${gameIcon(game)}</div>
+        <div class="game-card-top">
+          <span class="category-pill">${escapeHtml(game.category || "Skill")}</span>
+          <span class="age-pill">${escapeHtml(game.ageBand || game.age || "All")}</span>
         </div>
+        <h3>${escapeHtml(game.title)}</h3>
+        <p>${escapeHtml(game.goal || "Practice a learning skill.")}</p>
+        <div class="game-card-foot">
+          <span>⭐ ${p.stars || 0} stars</span>
+          <span>${p.completed || 0} completed</span>
+        </div>
+        <button class="play-btn" type="button">Play lesson</button>
+      </article>`;
+  }).join("");
+  if(!filtered.length) gameGrid.innerHTML = `<div class="empty-state">No games are enabled for this age group.</div>`;
+}
+
+function openGame(gameId){
+  const game = allGames.find(g => g.id === gameId);
+  if(!game) return;
+  const data = getGameData(gameId);
+  current = {
+    game, data,
+    round:0, score:0, tries:0,
+    mode:"teach",
+    selected:[],
+    completedTokens:0,
+    availableTrials: shuffle(data.trials || []).slice(0, Math.min(5, (data.trials || []).length || 1))
+  };
+  if(current.availableTrials.length === 1 && ["token","breathing"].includes(data.type)) current.availableTrials = data.trials;
+  gameModal.showModal();
+  renderCurrentRound();
+}
+function closeGame(){
+  window.speechSynthesis?.cancel?.();
+  gameModal.close();
+  current = null;
+}
+
+function progressBar(){
+  const total = current.availableTrials.length || 1;
+  const pct = Math.round((current.round / total) * 100);
+  return `
+    <div class="round-progress">
+      <strong>Practice ${Math.min(current.round + 1, total)} of ${total}</strong>
+      <div class="progress-track"><span style="width:${pct}%"></span></div>
+    </div>`;
+}
+function modeButtons(){
+  return `
+    <div class="game-tools">
+      <button class="tool-btn" type="button" data-action="read">🔊 Read</button>
+      <button class="tool-btn" type="button" data-action="show">👀 Show me</button>
+      <div class="prompt-switch" role="group" aria-label="Prompt level">
+        <button class="${current.mode==='teach'?'active':''}" data-mode="teach" type="button">Teach Me</button>
+        <button class="${current.mode==='help'?'active':''}" data-mode="help" type="button">Help Me</button>
+        <button class="${current.mode==='test'?'active':''}" data-mode="test" type="button">Test Me</button>
       </div>
+    </div>`;
+}
+function teachingPanel(trial){
+  let hint = current.mode === "teach" ? trial.teach : current.mode === "help" ? (trial.show || trial.teach) : "Try it independently. You can use Show Me if you need a model.";
+  return `
+    <div class="instruction-card">${escapeHtml(trial.prompt || "Choose the best answer.")}</div>
+    <div class="teaching-card">
+      <strong>${current.mode === "teach" ? "Teaching tip" : current.mode === "help" ? "Small hint" : "Independent practice"}</strong>
+      <span>${escapeHtml(hint)}</span>
+    </div>`;
+}
+function adultGuide(){
+  const data = current.data;
+  return `
+    <details class="adult-guide">
+      <summary>Grown-up teaching guide</summary>
+      <div>
+        <p><strong>Target skill:</strong> ${escapeHtml(data.skill || current.game.goal || "Practice")}</p>
+        <p><strong>How to teach:</strong> ${escapeHtml(data.adult || "Model, prompt, wait, reinforce, and practice in real life.")}</p>
+        <p><strong>Prompt plan:</strong> Teach Me gives a model, Help Me gives a smaller hint, Test Me checks independence.</p>
+      </div>
+    </details>`;
+}
+function renderGameShell(inner){
+  gameArea.innerHTML = `
+    <div class="game-head">
+      <span class="eyebrow">${escapeHtml(current.game.category || "Practice")}</span>
+      <h1>${escapeHtml(current.game.title)}</h1>
+      <p>${escapeHtml(current.game.goal || "")}</p>
     </div>
-  `;
-  $('#startBreath').onclick = () => $('#breathWrap').classList.add('breathing');
-  $('#finishBreath').onclick = () => finishSession('Breathing complete!', 'You practiced a calm body strategy.', 3);
+    ${progressBar()}
+    ${modeButtons()}
+    ${inner}
+    ${adultGuide()}`;
 }
 
-function renderAAC() {
-  aacWords = [];
-  drawAAC();
+function renderCurrentRound(){
+  const total = current.availableTrials.length || 1;
+  if(current.round >= total) return finishGame();
+  const trial = current.availableTrials[current.round];
+  current.selected = [];
+  const type = current.data.type;
+  if(type === "shapes") return renderShapeGame(trial);
+  if(type === "aac") return renderAACGame(trial);
+  if(type === "sequence") return renderSequenceGame(trial);
+  if(type === "token") return renderTokenGame(trial);
+  if(type === "breathing") return renderBreathingGame(trial);
+  if(type === "imitation") return renderImitationGame(trial);
+  renderChoiceGame(trial);
 }
-function drawAAC() {
-  const tasks = [
-    {target:['I want','play'], teach:'Use “I want” to request something.'},
-    {target:['help','please'], teach:'Use “help please” when something is hard.'},
-    {target:['more','bubbles'], teach:'Use “more” to ask for more of an activity.'},
-    {target:['all done'], teach:'Use “all done” to end or stop an activity.'}
-  ];
-  const current = tasks[(session.round - 1) % tasks.length];
-  const words = ['I want','play','help','please','more','bubbles','all done','yes','no','break','my turn','thank you'];
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message">Build this message: <strong>${escapeHtml(current.target.join(' '))}</strong></div>
-    <div class="teaching-tip">${escapeHtml(current.teach)}</div>
-    <div class="aac-sentence">${aacWords.length ? aacWords.join(' ') : 'Tap words below to build the message.'}</div>
-    <div class="aac-grid">${words.map(w => `<button class="aac-btn" data-word="${w}">${w}</button>`).join('')}</div>
-    <div class="game-actions">
-      <button class="btn primary" id="checkAAC" type="button">Check message</button>
-      <button class="btn soft" id="clearAAC" type="button">Clear</button>
+
+function visualBlock(trial){
+  if(!trial.visual) return "";
+  return `<div class="big-visual" aria-hidden="true">${escapeHtml(trial.visual)}</div>`;
+}
+function renderChoiceGame(trial){
+  const choices = shuffle(trial.choices || []);
+  renderGameShell(`
+    ${teachingPanel(trial)}
+    ${visualBlock(trial)}
+    <div class="answer-grid">
+      ${choices.map(choice => `<button class="answer-card" data-answer="${escapeHtml(choice)}" type="button">${escapeHtml(choice)}</button>`).join("")}
     </div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.aac-btn').forEach(btn => btn.onclick = () => { aacWords.push(btn.dataset.word); drawAAC(); });
-  $('#clearAAC').onclick = () => { aacWords = []; drawAAC(); };
-  $('#checkAAC').onclick = () => {
-    const target = current.target.join(' ').toLowerCase();
-    const actual = aacWords.join(' ').toLowerCase();
-    if (target === actual) {
-      showFeedback('correct', `Nice communication! You made: <strong>${escapeHtml(current.target.join(' '))}</strong>.`);
-      setTimeout(() => nextRoundOrFinish(renderAAC, 'AAC practice complete!', 'You practiced functional communication phrases.', 3), 750);
-    } else {
-      showFeedback('wrong', `Try again. Build exactly: <strong>${escapeHtml(current.target.join(' '))}</strong>.`);
-    }
-  };
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  `);
 }
-
-function renderRoutine() {
-  routinePicked = [];
-  drawRoutine();
-}
-function drawRoutine() {
-  const routines = [
-    {name:'Morning routine', correct:['Wake up ☀️','Brush teeth 🪥','Get dressed 👕','Eat breakfast 🍌']},
-    {name:'Bedtime routine', correct:['Put pajamas on 🌙','Brush teeth 🪥','Read book 📚','Go to bed 🛏️']},
-    {name:'School routine', correct:['Pack bag 🎒','Get in car 🚗','Go to class 🏫','Say hello 👋']}
-  ];
-  const routine = routines[(session.round - 1) % routines.length];
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message">Put the <strong>${escapeHtml(routine.name)}</strong> in order.</div>
-    <div class="teaching-tip">Tap the cards in the order they happen: first, next, then, last.</div>
-    <div class="routine-list">${routinePicked.map(step => `<span class="routine-step">${step}</span>`).join('') || 'Tap cards below to build the routine.'}</div>
-    <div class="routine-options">${shuffle(routine.correct).map(step => `<button class="routine-btn" data-step="${step}">${step}</button>`).join('')}</div>
-    <div class="game-actions">
-      <button class="btn primary" id="checkRoutine" type="button">Check order</button>
-      <button class="btn soft" id="resetRoutine" type="button">Start over</button>
-    </div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.routine-btn').forEach(btn => btn.onclick = () => {
-    if (!routinePicked.includes(btn.dataset.step)) routinePicked.push(btn.dataset.step);
-    drawRoutine();
-  });
-  $('#checkRoutine').onclick = () => {
-    if (routinePicked.join('|') === routine.correct.join('|')) {
-      showFeedback('correct', 'Correct order! You used first, next, then, last.');
-      setTimeout(() => nextRoundOrFinish(renderRoutine, 'Routine Sequence complete!', 'You practiced sequencing everyday routines.', 3), 750);
-    } else showFeedback('wrong', 'Try again. What happens first? Start over and build the routine carefully.');
-  };
-  $('#resetRoutine').onclick = renderRoutine;
-}
-
-function renderSocial() {
-  const scenarios = [
-    {q:'A friend says, “Hi!” What can you say?', good:'Hi! Want to play?', teach:'A friendly greeting keeps the conversation going.', options:['Go away','Hi! Want to play?','Take the toy','Yell']},
-    {q:'You need help opening a snack. What can you say?', good:'Help please', teach:'Asking for help is safer than throwing or yelling.', options:['Help please','Throw it','Run away','Say nothing']},
-    {q:'Someone is using the toy you want. What can you do?', good:'Ask for a turn', teach:'Asking for a turn is a safe social choice.', options:['Grab it','Ask for a turn','Push','Scream']},
-    {q:'Your body feels mad. What can help?', good:'Take a calm breath', teach:'A calm breath can help your body slow down.', options:['Hit','Take a calm breath','Throw toys','Run into street']}
-  ];
-  const s = scenarios[(session.round - 1) % scenarios.length];
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message">${escapeHtml(s.q)}</div>
-    <div class="teaching-tip">Choose the safe and friendly answer.</div>
-    <div class="social-options">${shuffle(s.options).map(o => `<button class="social-btn" data-social="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.social-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.social === s.good) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Yes. ${escapeHtml(s.teach)}`);
-      setTimeout(() => nextRoundOrFinish(renderSocial, 'Social Choices complete!', 'You practiced safe and friendly choices.', 3), 750);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. ${escapeHtml(s.teach)}`);
-    }
-  });
-}
-
-function renderImitation() {
-  const actions = [
-    {do:'Clap hands 👏', teach:'Watch, then copy the action.'},
-    {do:'Wave bye 👋', teach:'Use your hand to wave.'},
-    {do:'Touch head 🙆', teach:'Find your head and touch it.'},
-    {do:'Stomp feet 🦶', teach:'Move your feet like this.'},
-    {do:'Give thumbs up 👍', teach:'Copy the hand gesture.'}
-  ];
-  const action = actions[(session.round - 1) % actions.length];
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message">Imitate this action:</div>
-    <div class="teaching-tip">${escapeHtml(action.teach)}</div>
-    <div class="action-card imitation-card-big">${escapeHtml(action.do)}</div>
-    <div class="game-actions">
-      <button class="btn primary" id="doneAction" type="button">I did it</button>
-      <button class="btn soft" id="repeatAction" type="button">Show again</button>
-    </div>
-  `;
-  $('#doneAction').onclick = () => nextRoundOrFinish(renderImitation, 'Imitation Cards complete!', 'You practiced copying actions.', 3);
-  $('#repeatAction').onclick = renderImitation;
-}
-
-
-const scenarioSets = {
-  conversation: {
-    finishTitle: 'Conversation Builder complete!',
-    finishDetail: 'You practiced friendly conversation skills.',
-    items: [
-      {s:'A friend says, “Hi!”', q:'What could you say back?', tip:'A greeting answers a greeting.', correct:'Hi! How are you?', wrong:['Give me that toy.','Walk away silently.','No, I am not talking.']},
-      {s:'Someone shows you a drawing they made.', q:'What is a friendly comment?', tip:'A comment tells what you notice or like.', correct:'I like the colors you used.', wrong:['That is boring.','Give it to me.','I am leaving now.']},
-      {s:'You want to join a game.', q:'What can you ask?', tip:'Asking before joining is expected and respectful.', correct:'Can I play too?', wrong:['Move everyone out of the way.','Take the ball without asking.','Tell everyone to stop.']},
-      {s:'You do not understand the directions.', q:'What can you say?', tip:'It is okay to ask for help or clarification.', correct:'Can you say it again, please?', wrong:['Never mind, I quit.','You are wrong.','Throw the paper away.']},
-      {s:'You are done talking and need to leave.', q:'How can you end politely?', tip:'A closing lets people know the conversation is ending.', correct:'I have to go. See you later!', wrong:['Stop talking.','I do not care.','Just turn your back.']}
-    ]
-  },
-  expected: {
-    finishTitle: 'Expected / Unexpected complete!',
-    finishDetail: 'You practiced matching behavior to the situation.',
-    items: [
-      {s:'In the library', q:'Which behavior is expected?', tip:'Quiet places need quiet voices and calm bodies.', correct:'Use a quiet voice.', wrong:['Yell across the room.','Run between shelves.','Throw books.']},
-      {s:'Waiting in line', q:'Which behavior is expected?', tip:'Waiting means keeping your place and body safe.', correct:'Stand behind the person in front.', wrong:['Push to the front.','Lean on strangers.','Leave without telling anyone.']},
-      {s:'During group work', q:'Which behavior is expected?', tip:'Teamwork uses listening, turn-taking, and kind words.', correct:'Listen and take turns sharing ideas.', wrong:['Talk over everyone.','Refuse every idea.','Hide the materials.']},
-      {s:'At a restaurant', q:'Which behavior is expected?', tip:'Restaurants need safe hands and indoor voices.', correct:'Sit safely and use an indoor voice.', wrong:['Climb on the table.','Run around servers.','Take food from another table.']},
-      {s:'When someone is upset', q:'Which behavior is expected?', tip:'Kindness helps people feel safe.', correct:'Ask, “Are you okay?”', wrong:['Laugh at them.','Tell them to stop feeling.','Walk away every time.']}
-    ]
-  },
-  coping: {
-    finishTitle: 'Coping Strategy complete!',
-    finishDetail: 'You practiced choosing helpful regulation tools.',
-    items: [
-      {s:'You feel angry because a game ended.', q:'What is a helpful coping choice?', tip:'Coping helps your body get back to safe and calm.', correct:'Take three slow breaths and ask for a break.', wrong:['Throw the game.','Yell at the person.','Kick the chair.']},
-      {s:'The room is too loud.', q:'What can you do?', tip:'A sensory break or headphones can help with loud sounds.', correct:'Ask for headphones or a quiet break.', wrong:['Scream louder.','Push people away.','Cover someone else’s mouth.']},
-      {s:'You made a mistake on work.', q:'What can you say?', tip:'Mistakes are practice. Helpful self-talk matters.', correct:'I can try again or ask for help.', wrong:['I am bad at everything.','Rip the paper.','Blame someone else.']},
-      {s:'You are worried about a new place.', q:'What could help?', tip:'Previewing steps can make new places feel safer.', correct:'Look at the schedule and ask what comes next.', wrong:['Run away without telling anyone.','Refuse all choices.','Hide the whole time.']},
-      {s:'You need movement.', q:'What is a safe choice?', tip:'Movement can be safe when you choose the right place and way.', correct:'Ask for a walk, stretch, or movement break.', wrong:['Crash into people.','Jump from furniture.','Leave the building alone.']}
-    ]
-  },
-  problem: {
-    finishTitle: 'Problem Solving complete!',
-    finishDetail: 'You practiced stop, think, choose.',
-    items: [
-      {s:'Your pencil breaks during work.', q:'What is the best first step?', tip:'Problem-solving starts with a small safe step.', correct:'Ask for a new pencil or sharpen it.', wrong:['Stop working for the day.','Throw the pencil.','Take someone’s pencil without asking.']},
-      {s:'Two people want the same toy.', q:'What can you try?', tip:'Sharing problems can use turns, timers, or asking an adult.', correct:'Use a timer and take turns.', wrong:['Grab it and run.','Say nobody can play.','Break the toy.']},
-      {s:'You forgot what to do next.', q:'What is a helpful choice?', tip:'Asking or checking a visual schedule helps memory.', correct:'Check the schedule or ask, “What is next?”', wrong:['Guess and get upset.','Leave the room.','Refuse everything.']},
-      {s:'A friend says no to playing.', q:'What can you do?', tip:'No is okay. You can choose another activity or ask someone else.', correct:'Say okay and choose another activity.', wrong:['Keep begging.','Say mean words.','Take their materials.']},
-      {s:'Your plan changed.', q:'What helps flexible thinking?', tip:'Flexible thinking means finding a new safe plan.', correct:'Ask what the new plan is and choose a coping tool.', wrong:['Refuse to move forever.','Knock things down.','Run away.']}
-    ]
-  },
-  perspective: {
-    finishTitle: 'Perspective Detective complete!',
-    finishDetail: 'You practiced thinking about other people.',
-    items: [
-      {s:'Mia drops her ice cream and starts crying.', q:'How might Mia feel?', tip:'Look at what happened and the person’s face/body.', correct:'Sad or disappointed.', wrong:['Excited.','Bored.','Proud.']},
-      {s:'Leo is covering his ears during a loud fire drill.', q:'What might Leo need?', tip:'Body clues can show sensory needs.', correct:'A quieter space or headphones.', wrong:['More loud sounds.','Everyone to laugh.','A harder math problem.']},
-      {s:'A classmate is smiling after winning a game.', q:'What might they feel?', tip:'A smile after a win often means happy or proud.', correct:'Happy or proud.', wrong:['Scared.','Sleepy.','Confused.']},
-      {s:'Someone says, “Please stop. I don’t like that.”', q:'What should you think?', tip:'People’s words tell us their boundary.', correct:'They want me to stop and give space.', wrong:['They want more.','They are joking every time.','I should keep doing it.']},
-      {s:'A friend is quiet and looking away after an argument.', q:'What could help?', tip:'Repair can mean giving space or using kind words.', correct:'Ask if they need space or say sorry if needed.', wrong:['Demand they talk now.','Call them rude.','Ignore their feelings.']}
-    ]
-  },
-  workplace: {
-    finishTitle: 'Workplace Choices complete!',
-    finishDetail: 'You practiced job and community readiness choices.',
-    items: [
-      {s:'You arrive at volunteer work.', q:'What should you do first?', tip:'Work routines often start with checking in.', correct:'Check in and ask what task to start.', wrong:['Start using your phone.','Leave without telling anyone.','Take items home.']},
-      {s:'A supervisor gives feedback.', q:'What is a professional response?', tip:'Feedback helps people learn job skills.', correct:'Listen, say okay, and try the change.', wrong:['Argue loudly.','Walk out.','Tell them they are always wrong.']},
-      {s:'You finish your assigned task early.', q:'What should you do?', tip:'When work is finished, ask for the next task.', correct:'Ask, “What should I do next?”', wrong:['Hide in the bathroom.','Distract coworkers.','Clock out without permission.']},
-      {s:'You feel overwhelmed at work.', q:'What is a safe self-advocacy choice?', tip:'Self-advocacy means asking for what helps in a respectful way.', correct:'Ask for a short break or clarification.', wrong:['Yell at customers.','Throw supplies.','Leave without telling anyone.']},
-      {s:'A coworker is using equipment you need.', q:'What can you say?', tip:'Polite requests help work go smoothly.', correct:'Can I use that when you are finished?', wrong:['Take it from their hands.','Say mean things.','Refuse to work forever.']}
-    ]
+function checkChoice(value){
+  const trial = current.availableTrials[current.round];
+  const fb = $("#feedback");
+  if(normalize(value) === normalize(trial.answer)){
+    playTone("correct");
+    current.score++;
+    fb.className = "feedback correct";
+    fb.innerHTML = `<strong>Correct!</strong> ${escapeHtml(trial.generalize || "Great job. Try this skill in real life.")}`;
+    setTimeout(nextRound, 950);
+  } else {
+    playTone("wrong");
+    fb.className = "feedback wrong";
+    fb.innerHTML = `<strong>Try again.</strong> You chose “${escapeHtml(value)}.” ${escapeHtml(trial.correction || trial.teach || "Look for the best choice.")}`;
   }
-};
+}
+function nextRound(){ current.round++; renderCurrentRound(); }
 
-function renderScenarioGame(key, renderer, categoryLabel) {
-  const config = scenarioSets[key];
-  const item = config.items[(session.round - 1) % config.items.length];
-  const options = shuffle([item.correct, ...item.wrong]);
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="scenario-card">
-      <div class="scenario-label">${escapeHtml(categoryLabel || 'Practice scenario')}</div>
-      <h3>${escapeHtml(item.s)}</h3>
-      <p>${escapeHtml(item.q)}</p>
+function shapeSvg(shape, color){
+  const colors = {red:"#ff6666", blue:"#4dabf7", green:"#5ed58a", yellow:"#ffd43b", purple:"#9b5de5"};
+  const fill = colors[color] || color || "#4dabf7";
+  const parts = {
+    circle:`<circle cx="50" cy="50" r="30" fill="${fill}"/>`,
+    square:`<rect x="22" y="22" width="56" height="56" rx="7" fill="${fill}"/>`,
+    triangle:`<polygon points="50,16 84,80 16,80" fill="${fill}"/>`,
+    star:`<polygon points="50,10 61,36 89,36 66,53 75,82 50,65 25,82 34,53 11,36 39,36" fill="${fill}"/>`,
+    rectangle:`<rect x="15" y="32" width="70" height="38" rx="7" fill="${fill}"/>`
+  };
+  return `<svg class="shape-svg" viewBox="0 0 100 100" aria-hidden="true">${parts[shape] || parts.circle}</svg>`;
+}
+function renderShapeGame(trial){
+  const options = [
+    {color:"yellow",shape:"circle"}, {color:"red",shape:"circle"}, {color:"blue",shape:"square"},
+    {color:"red",shape:"square"}, {color:"blue",shape:"rounded square"}, {color:"green",shape:"rounded rectangle"},
+    {color:"red",shape:"triangle"}, {color:"yellow",shape:"star"}, {color:"purple",shape:"rectangle"},
+    {color:trial.color,shape:trial.shape}
+  ].filter((v,i,a)=>a.findIndex(x=>x.color===v.color && x.shape===v.shape)===i);
+  const final = shuffle(options).slice(0,6);
+  if(!final.some(o=>o.color===trial.color && o.shape===trial.shape)) final[0] = {color:trial.color, shape:trial.shape};
+  renderGameShell(`
+    ${teachingPanel(trial)}
+    <div class="shape-grid">
+      ${shuffle(final).map(o => `
+        <button class="shape-card" type="button" data-color="${escapeHtml(o.color)}" data-shape="${escapeHtml(o.shape)}" aria-label="${escapeHtml(o.color + ' ' + o.shape)}">
+          ${shapeSvg(o.shape.includes("rounded") ? (o.shape.includes("rectangle") ? "rectangle" : "square") : o.shape, o.color)}
+          <span>${escapeHtml(o.color)} ${escapeHtml(o.shape)}</span>
+        </button>`).join("")}
     </div>
-    <div class="teaching-tip">${escapeHtml(item.tip)}</div>
-    <div class="choices scenario-options">${options.map(o => `<button class="choice-btn" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.choice-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.answer === item.correct) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Correct. <strong>${escapeHtml(item.correct)}</strong>`);
-      setTimeout(() => nextRoundOrFinish(renderer, config.finishTitle, config.finishDetail, 4), 750);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. Think about the safe/helpful choice. ${escapeHtml(item.tip)}`);
-    }
-  });
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  `);
 }
-function renderConversation() { renderScenarioGame('conversation', renderConversation, 'Conversation practice'); }
-function renderExpectedUnexpected() { renderScenarioGame('expected', renderExpectedUnexpected, 'Expected behavior'); }
-function renderCopingMatch() { renderScenarioGame('coping', renderCopingMatch, 'Coping strategy'); }
-function renderProblemSolving() { renderScenarioGame('problem', renderProblemSolving, 'Problem solving'); }
-function renderPerspectiveDetective() { renderScenarioGame('perspective', renderPerspectiveDetective, 'Perspective taking'); }
-function renderWorkplaceChoices() { renderScenarioGame('workplace', renderWorkplaceChoices, 'Work readiness'); }
-
-function renderSafetySigns() {
-  const signs = [
-    {icon:'🛑', sign:'STOP', meaning:'Stop your body and look before moving.', tip:'A stop sign means stop first, then check if it is safe.'},
-    {icon:'🚶', sign:'WALK', meaning:'It is your turn to walk carefully.', tip:'Walk signals tell pedestrians when to cross.'},
-    {icon:'🚫', sign:'DO NOT ENTER', meaning:'Do not go into that area.', tip:'This sign protects people from unsafe places.'},
-    {icon:'🔥', sign:'FIRE EXIT', meaning:'Use this way to leave during an emergency.', tip:'Exit signs help you find a safe way out.'},
-    {icon:'☣️', sign:'DANGER', meaning:'Stay away and ask an adult.', tip:'Danger signs mean the area or item could hurt someone.'}
-  ];
-  const target = signs[(session.round - 1) % signs.length];
-  const options = shuffle([target.meaning, ...shuffle(signs.filter(s => s.sign !== target.sign)).slice(0,3).map(s => s.meaning)]);
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message"><strong>What does this safety sign mean?</strong></div>
-    <div class="teaching-tip">${escapeHtml(target.tip)}</div>
-    <div class="sign-display"><div class="sign-icon">${target.icon}</div><div class="sign-word">${escapeHtml(target.sign)}</div></div>
-    <div class="choices">${options.map(o => `<button class="choice-btn" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.choice-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.answer === target.meaning) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Yes. <strong>${escapeHtml(target.sign)}</strong> means: ${escapeHtml(target.meaning)}`);
-      setTimeout(() => nextRoundOrFinish(renderSafetySigns, 'Safety Signs complete!', 'You practiced community safety meanings.', 4), 700);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. ${escapeHtml(target.tip)}`);
-    }
-  });
-}
-
-function renderTimeSchedule() {
-  const tasks = [
-    {schedule:['3:00 Homework','3:30 Snack','4:00 Outside'], q:'What happens after homework?', correct:'Snack', tip:'Look at the item that comes next on the schedule.'},
-    {schedule:['8:00 Breakfast','8:30 Brush teeth','9:00 School'], q:'What happens before school?', correct:'Brush teeth', tip:'Before means the step right above it.'},
-    {schedule:['1:00 Reading','1:30 Math','2:00 Art'], q:'What activity is at 1:30?', correct:'Math', tip:'Match the time to the activity.'},
-    {schedule:['6:00 Dinner','6:30 Shower','7:00 Quiet time'], q:'What happens after dinner?', correct:'Shower', tip:'After means the next step.'},
-    {schedule:['10:00 Chores','10:30 Break','11:00 Game'], q:'What is at 10:30?', correct:'Break', tip:'Find the time, then read the activity.'}
-  ];
-  const target = tasks[(session.round - 1) % tasks.length];
-  const all = ['Snack','Outside','Brush teeth','School','Math','Art','Shower','Quiet time','Break','Game','Reading','Dinner'];
-  const options = shuffle([target.correct, ...shuffle(all.filter(x => x !== target.correct)).slice(0,3)]);
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message"><strong>${escapeHtml(target.q)}</strong></div>
-    <div class="teaching-tip">${escapeHtml(target.tip)}</div>
-    <div class="schedule-card">${target.schedule.map(row => `<div>${escapeHtml(row)}</div>`).join('')}</div>
-    <div class="choices">${options.map(o => `<button class="choice-btn" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.choice-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.answer === target.correct) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Correct. The answer is <strong>${escapeHtml(target.correct)}</strong>.`);
-      setTimeout(() => nextRoundOrFinish(renderTimeSchedule, 'Time & Schedule complete!', 'You practiced reading schedules and next steps.', 4), 700);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. ${escapeHtml(target.tip)}`);
-    }
-  });
-}
-
-function renderHygieneHelper() {
-  const tasks = [
-    {task:'Brush teeth', icon:'🪥', correct:'Toothbrush and toothpaste', tip:'Teeth need a toothbrush and toothpaste.'},
-    {task:'Wash hands', icon:'🧼', correct:'Soap and water', tip:'Hands get clean with soap and water.'},
-    {task:'Comb hair', icon:'💇', correct:'Comb or brush', tip:'Hair tools help smooth hair.'},
-    {task:'Shower', icon:'🚿', correct:'Body wash, shampoo, and towel', tip:'A shower uses soap/shampoo and a towel after.'},
-    {task:'Put on deodorant', icon:'🧴', correct:'Deodorant', tip:'Deodorant goes under arms when appropriate.'}
-  ];
-  const target = tasks[(session.round - 1) % tasks.length];
-  const options = shuffle([target.correct, 'Fork and plate', 'Pencil and notebook', 'Toy blocks']);
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="game-message">What do you need for: <strong>${escapeHtml(target.task)}</strong>?</div>
-    <div class="teaching-tip">${escapeHtml(target.tip)}</div>
-    <div class="big-face">${target.icon}</div>
-    <div class="choices">${options.map(o => `<button class="choice-btn" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.choice-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.answer === target.correct) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Correct. Use <strong>${escapeHtml(target.correct)}</strong>.`);
-      setTimeout(() => nextRoundOrFinish(renderHygieneHelper, 'Hygiene Helper complete!', 'You practiced daily living tools.', 4), 700);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. ${escapeHtml(target.tip)}`);
-    }
-  });
-}
-
-function renderMoneyStore() {
-  const items = [
-    {item:'Sticker', price:1, options:['$1','$2','$5','$10'], correct:'$1', tip:'A $1 item can be bought with one dollar.'},
-    {item:'Juice', price:2, options:['$1','$2','$5','$10'], correct:'$2', tip:'Match the price on the tag.'},
-    {item:'Notebook', price:3, options:['$1','$3','$5','$10'], correct:'$3', tip:'Look for the same number as the price.'},
-    {item:'Small toy', price:5, options:['$1','$2','$5','$20'], correct:'$5', tip:'A five-dollar item needs $5.'},
-    {item:'Headphones', price:10, options:['$1','$5','$10','$20'], correct:'$10', tip:'Match the bill to the price.'}
-  ];
-  const target = items[(session.round - 1) % items.length];
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="store-card"><div class="store-item">🛍️ ${escapeHtml(target.item)}</div><div class="price-tag">Price: $${target.price}</div></div>
-    <div class="teaching-tip">${escapeHtml(target.tip)}</div>
-    <div class="choices">${shuffle(target.options).map(o => `<button class="choice-btn money-choice" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.choice-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.answer === target.correct) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Correct. ${escapeHtml(target.item)} costs <strong>${escapeHtml(target.correct)}</strong>.`);
-      setTimeout(() => nextRoundOrFinish(renderMoneyStore, 'Money Store complete!', 'You practiced matching money to prices.', 4), 700);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. The price tag says $${target.price}.`);
-    }
-  });
-}
-
-function renderGoalPlanner() {
-  const goals = [
-    {goal:'Get ready for school', steps:['Pack backpack','Put on shoes','Walk to the car'], correct:'Pack backpack', tip:'Start with the first small step.'},
-    {goal:'Finish homework', steps:['Read directions','Do one problem','Check work'], correct:'Read directions', tip:'Begin by understanding the directions.'},
-    {goal:'Clean bedroom', steps:['Pick up clothes','Put toys away','Make bed'], correct:'Pick up clothes', tip:'Choose one concrete first step.'},
-    {goal:'Make a snack', steps:['Wash hands','Get ingredients','Clean up'], correct:'Wash hands', tip:'Food routines usually start with clean hands.'}
-  ];
-  const target = goals[(session.round - 1) % goals.length];
-  const options = shuffle([...target.steps, 'Quit before starting']);
-  $('#gameArea').innerHTML = `
-    ${roundHeader()}
-    <div class="scenario-card"><div class="scenario-label">Goal</div><h3>${escapeHtml(target.goal)}</h3><p>What should be the first small step?</p></div>
-    <div class="teaching-tip">${escapeHtml(target.tip)}</div>
-    <div class="choices">${options.map(o => `<button class="choice-btn" data-answer="${escapeHtml(o)}">${escapeHtml(o)}</button>`).join('')}</div>
-    <div id="gameFeedback" class="game-feedback"></div>
-  `;
-  $$('.choice-btn').forEach(btn => btn.onclick = () => {
-    if (btn.dataset.answer === target.correct) {
-      btn.classList.add('correct');
-      showFeedback('correct', `Great first step: <strong>${escapeHtml(target.correct)}</strong>.`);
-      setTimeout(() => nextRoundOrFinish(renderGoalPlanner, 'Goal Planner complete!', 'You practiced breaking goals into small steps.', 4), 700);
-    } else {
-      btn.classList.add('wrong');
-      showFeedback('wrong', `Try again. ${escapeHtml(target.tip)}`);
-    }
-  });
-}
-
-document.addEventListener('click', e => {
-  const card = e.target.closest('.game-card');
-  if (card) openGame(card.dataset.game);
-});
-$('#closeGameBtn')?.addEventListener('click', closeGame);
-$('#playPanel')?.addEventListener('click', e => { if (e.target.id === 'playPanel') closeGame(); });
-$('#resetProgressBtn')?.addEventListener('click', () => {
-  if (confirm('Reset stars and games played on this device?')) {
-    progress.stars = 0; progress.played = 0; saveProgress(); toast('Progress reset.');
+function checkShape(btn){
+  const trial = current.availableTrials[current.round];
+  const picked = `${btn.dataset.color} ${btn.dataset.shape}`;
+  const fb = $("#feedback");
+  if(normalize(btn.dataset.color) === normalize(trial.color) && normalize(btn.dataset.shape) === normalize(trial.shape)){
+    playTone("correct");
+    current.score++;
+    fb.className = "feedback correct";
+    fb.innerHTML = `<strong>Correct!</strong> You found the ${escapeHtml(trial.color)} ${escapeHtml(trial.shape)}. ${escapeHtml(trial.generalize || "")}`;
+    setTimeout(nextRound, 950);
+  } else {
+    playTone("wrong");
+    fb.className = "feedback wrong";
+    fb.innerHTML = `<strong>Try again.</strong> You touched the ${escapeHtml(picked)}. ${escapeHtml(trial.teach)} Look for the ${escapeHtml(trial.color)} ${escapeHtml(trial.shape)}.`;
   }
+}
+
+function renderAACGame(trial){
+  renderGameShell(`
+    ${teachingPanel(trial)}
+    <div class="message-builder" id="messageBuilder">Tap words below to build the message.</div>
+    <div class="aac-grid">
+      ${(trial.words || []).map(word => `<button class="aac-tile" type="button" data-word="${escapeHtml(word)}">${aacIcon(word)}<span>${escapeHtml(word)}</span></button>`).join("")}
+    </div>
+    <div class="action-row">
+      <button class="primary-action" type="button" data-action="check-aac">Check message</button>
+      <button class="secondary-action" type="button" data-action="clear-aac">Clear</button>
+    </div>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  `);
+}
+function aacIcon(word){
+  const map = {"I want":"🙋","play":"🎮","help":"🆘","please":"🙏","more":"➕","bubbles":"🫧","all done":"✅","yes":"👍","no":"👎","break":"🌈","my turn":"🔄","thank you":"💛"};
+  return `<strong>${map[word] || "💬"}</strong>`;
+}
+function addAAC(word){
+  current.selected.push(word);
+  $("#messageBuilder").textContent = current.selected.join(" ");
+}
+function checkAAC(){
+  const trial = current.availableTrials[current.round];
+  const fb = $("#feedback");
+  if(JSON.stringify(current.selected.map(normalize)) === JSON.stringify(trial.target.map(normalize))){
+    playTone("correct");
+    current.score++;
+    fb.className = "feedback correct";
+    fb.innerHTML = `<strong>Nice message!</strong> ${escapeHtml(trial.generalize || "Use this message with a person.")}`;
+    setTimeout(nextRound, 1000);
+  } else {
+    playTone("wrong");
+    fb.className = "feedback wrong";
+    fb.innerHTML = `<strong>Try again.</strong> You built “${escapeHtml(current.selected.join(" ") || "nothing yet")}.” Model: ${escapeHtml(trial.show)}.`;
+  }
+}
+function clearAAC(){ current.selected=[]; $("#messageBuilder").textContent = "Tap words below to build the message."; }
+
+function renderSequenceGame(trial){
+  renderGameShell(`
+    ${teachingPanel(trial)}
+    <div class="sequence-target" id="sequenceTarget">Tap steps in order.</div>
+    <div class="answer-grid compact">
+      ${shuffle(trial.steps || []).map(step => `<button class="answer-card" type="button" data-step="${escapeHtml(step)}">${stepEmoji(step)} ${escapeHtml(step)}</button>`).join("")}
+    </div>
+    <div class="action-row">
+      <button class="primary-action" type="button" data-action="check-sequence">Check order</button>
+      <button class="secondary-action" type="button" data-action="clear-sequence">Clear</button>
+    </div>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  `);
+}
+function stepEmoji(step){
+  const s = String(step).toLowerCase();
+  if(s.includes("brush")) return "🪥"; if(s.includes("wash") || s.includes("soap")) return "🧼"; if(s.includes("snack") || s.includes("breakfast")) return "🍎"; if(s.includes("clean")) return "🧺"; if(s.includes("bubbles")) return "🫧"; if(s.includes("shoes")) return "👟"; if(s.includes("sleep") || s.includes("lights")) return "🌙"; return "➡️";
+}
+function addSequence(step){
+  current.selected.push(step);
+  $(`[data-step="${CSS.escape(step)}"]`)?.setAttribute("disabled","true");
+  $("#sequenceTarget").textContent = current.selected.join(" → ");
+}
+function checkSequence(){
+  const trial = current.availableTrials[current.round];
+  const fb = $("#feedback");
+  const correct = JSON.stringify(current.selected.map(normalize)) === JSON.stringify((trial.answer || []).map(normalize));
+  if(correct){
+    playTone("correct"); current.score++; fb.className="feedback correct";
+    fb.innerHTML=`<strong>Correct order!</strong> ${escapeHtml(trial.generalize || "")}`;
+    setTimeout(nextRound, 1000);
+  } else {
+    playTone("wrong"); fb.className="feedback wrong";
+    fb.innerHTML=`<strong>Try again.</strong> You made: ${escapeHtml(current.selected.join(" → ") || "nothing yet")}. Model: ${escapeHtml(trial.show)}.`;
+  }
+}
+function clearSequence(){ current.selected=[]; $("#sequenceTarget").textContent = "Tap steps in order."; $$("[data-step]").forEach(b=>b.disabled=false); }
+
+function renderTokenGame(trial){
+  current.completedTokens = 0;
+  renderGameShell(`
+    ${teachingPanel(trial)}
+    <div class="token-board-large" id="tokenBoard">${[1,2,3,4,5].map(()=>`<span>☆</span>`).join("")}</div>
+    <div class="answer-grid compact">
+      ${(trial.tasks || []).map(task => `<button class="answer-card" type="button" data-task>${escapeHtml(task)}</button>`).join("")}
+    </div>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  `);
+}
+function tokenTask(btn){
+  if(btn.disabled) return;
+  btn.disabled = true;
+  current.completedTokens++;
+  const stars = $$("#tokenBoard span");
+  if(stars[current.completedTokens-1]) stars[current.completedTokens-1].textContent = "⭐";
+  if(current.completedTokens >= 5){
+    playTone("correct"); current.score = 1;
+    $("#feedback").className = "feedback correct";
+    $("#feedback").innerHTML = `<strong>Board full!</strong> You earned the celebration.`;
+    setTimeout(nextRound, 900);
+  }
+}
+function renderBreathingGame(trial){
+  renderGameShell(`
+    ${teachingPanel(trial)}
+    <div class="breathing-wrap">
+      <div class="breathing-bubble" id="breathingBubble">Breathe</div>
+      <p id="breathingText">Press start and follow the bubble.</p>
+    </div>
+    <button class="primary-action" type="button" data-action="start-breathing">Start breathing</button>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  `);
+}
+function startBreathing(){
+  let count = 0;
+  const total = (current.availableTrials[current.round].cycles || 4) * 2;
+  const text = $("#breathingText");
+  const bubble = $("#breathingBubble");
+  const interval = setInterval(()=>{
+    const inPhase = count % 2 === 0;
+    bubble.classList.toggle("grow", inPhase);
+    text.textContent = inPhase ? "Breathe in..." : "Breathe out...";
+    speak(inPhase ? "Breathe in" : "Breathe out");
+    count++;
+    if(count > total){
+      clearInterval(interval);
+      current.score = 1;
+      $("#feedback").className = "feedback correct";
+      $("#feedback").innerHTML = `<strong>Calm practice complete!</strong> Try one slow breath before a hard task.`;
+      setTimeout(nextRound, 1300);
+    }
+  }, 2100);
+}
+function renderImitationGame(trial){
+  renderGameShell(`
+    ${teachingPanel(trial)}
+    ${visualBlock(trial)}
+    <div class="model-card">
+      <strong>Model:</strong> ${escapeHtml(trial.show || trial.action)}
+      <br><span>Watch, copy, then tap “I did it.”</span>
+    </div>
+    <button class="primary-action" type="button" data-action="done-imitation">I did it</button>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+  `);
+}
+function doneImitation(){
+  current.score++;
+  $("#feedback").className = "feedback correct";
+  $("#feedback").innerHTML = `<strong>Great copying!</strong> ${escapeHtml(current.availableTrials[current.round].generalize || "")}`;
+  setTimeout(nextRound, 900);
+}
+
+function finishGame(){
+  const earned = Math.max(1, Math.min(5, current.score));
+  const existing = progress[current.game.id] || {stars:0, completed:0};
+  progress[current.game.id] = {stars:(existing.stars||0)+earned, completed:(existing.completed||0)+1, last:new Date().toISOString()};
+  saveJSON("learnPlayV14Progress", progress);
+  applySettings();
+  gameArea.innerHTML = `
+    <div class="finish-screen">
+      <div class="confetti" aria-hidden="true">🎉 ⭐ 🎈 🌟 🎊</div>
+      <h1>You finished ${escapeHtml(current.game.title)}!</h1>
+      <p>You earned <strong>${earned} stars</strong>.</p>
+      <div class="reward-center">
+        <div class="badge">🏅 Skill practiced: ${escapeHtml(current.data.skill || current.game.category)}</div>
+        <div class="badge">🌎 Try it in real life with a grown-up.</div>
+      </div>
+      <div class="action-row center">
+        <button class="primary-action" type="button" data-action="play-again">Play again</button>
+        <button class="secondary-action" type="button" data-action="close">Back to games</button>
+      </div>
+    </div>`;
+  renderGameGrid();
+}
+
+document.addEventListener("click", (e) => {
+  const card = e.target.closest(".game-card");
+  if(card && e.target.closest(".play-btn")) openGame(card.dataset.game);
+  if(e.target.closest("#closeGame")) closeGame();
+  const ageBtn = e.target.closest(".age-tab");
+  if(ageBtn){
+    $$(".age-tab").forEach(b=>b.classList.remove("active"));
+    ageBtn.classList.add("active");
+    activeAge = ageBtn.dataset.age || "ALL";
+    renderGameGrid();
+  }
+  const mode = e.target.closest("[data-mode]");
+  if(mode && current){ current.mode = mode.dataset.mode; renderCurrentRound(); }
+  const action = e.target.closest("[data-action]")?.dataset.action;
+  if(action === "read" && current){
+    const trial = current.availableTrials[current.round];
+    speak(`${current.game.title}. ${trial.prompt || ""}. ${current.mode === "test" ? "" : trial.teach || ""}`);
+  }
+  if(action === "show" && current){
+    const trial = current.availableTrials[current.round];
+    setToast(trial.show || trial.teach || "Look for the best answer.");
+    speak(trial.show || trial.teach || "Look for the best answer.");
+  }
+  if(action === "check-aac") checkAAC();
+  if(action === "clear-aac") clearAAC();
+  if(action === "check-sequence") checkSequence();
+  if(action === "clear-sequence") clearSequence();
+  if(action === "start-breathing") startBreathing();
+  if(action === "done-imitation") doneImitation();
+  if(action === "play-again" && current) openGame(current.game.id);
+  if(action === "close") closeGame();
+
+  const ans = e.target.closest(".answer-card[data-answer]");
+  if(ans && current) checkChoice(ans.dataset.answer);
+  const shape = e.target.closest(".shape-card");
+  if(shape && current) checkShape(shape);
+  const aac = e.target.closest(".aac-tile");
+  if(aac && current) addAAC(aac.dataset.word);
+  const seq = e.target.closest(".answer-card[data-step]");
+  if(seq && current) addSequence(seq.dataset.step);
+  const token = e.target.closest("[data-task]");
+  if(token && current) tokenTask(token);
 });
 
-saveProgress();
+$("#settingsBtn")?.addEventListener("click", () => $("#settingsDialog").showModal());
+$("#grownupBtn")?.addEventListener("click", () => $("#grownupDialog").showModal());
+$("#resetProgress")?.addEventListener("click", () => {
+  if(confirm("Reset local stars on this browser?")){
+    progress = {};
+    saveJSON("learnPlayV14Progress", progress);
+    renderGameGrid(); applySettings(); setToast("Local stars reset.");
+  }
+});
+$("#bigTextToggle")?.addEventListener("change", e => { settings.bigText = e.target.checked; saveJSON("learnPlayV14Settings", settings); applySettings(); });
+$("#reduceMotionToggle")?.addEventListener("change", e => { settings.reduceMotion = e.target.checked; saveJSON("learnPlayV14Settings", settings); applySettings(); });
+$("#soundToggle")?.addEventListener("change", e => { settings.sound = e.target.checked; saveJSON("learnPlayV14Settings", settings); applySettings(); });
+
 loadGames();
+applySettings();

@@ -4,7 +4,9 @@
     "title": "Emotion Match",
     "category": "Social Skills",
     "age": "3+",
-    "goal": "Identify emotions and match facial expressions to feeling words.",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Identify common feelings from faces and situations.",
     "enabled": true
   },
   {
@@ -12,7 +14,9 @@
     "title": "Follow Directions",
     "category": "Listening",
     "age": "3+",
-    "goal": "Practice one-step directions with color, shape, and position words.",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Follow one-step directions using color, shape, and position words.",
     "enabled": true
   },
   {
@@ -20,7 +24,9 @@
     "title": "Token Board",
     "category": "Reinforcement",
     "age": "2+",
-    "goal": "Earn five tokens and celebrate a completed task.",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice completing steps and earning tokens toward a celebration.",
     "enabled": true
   },
   {
@@ -28,7 +34,9 @@
     "title": "Category Sort",
     "category": "Language",
     "age": "4+",
-    "goal": "Sort items into animals, foods, toys, and clothes.",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Sort items into groups such as animals, food, toys, and clothes.",
     "enabled": true
   },
   {
@@ -36,6 +44,8 @@
     "title": "First / Then Builder",
     "category": "Routine",
     "age": "2+",
+    "ageBand": "3-5",
+    "level": "Beginner",
     "goal": "Practice first/then language and transitions.",
     "enabled": true
   },
@@ -44,23 +54,29 @@
     "title": "Calm Breathing Bubble",
     "category": "Regulation",
     "age": "3+",
-    "goal": "Follow a visual breathing cue to calm the body.",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Use a visual breathing cue to practice calming the body.",
     "enabled": true
   },
   {
     "id": "aac-board",
     "title": "AAC Choice Board",
     "category": "Communication",
-    "age": "2+",
-    "goal": "Practice functional phrases like I want, help, more, and all done.",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice functional communication phrases like help, more, all done, and break.",
     "enabled": true
   },
   {
     "id": "routine-sequence",
     "title": "Routine Sequence",
     "category": "Daily Living",
-    "age": "4+",
-    "goal": "Put everyday routine steps in order.",
+    "age": "5+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Put daily routine steps in the correct order.",
     "enabled": true
   },
   {
@@ -68,103 +84,169 @@
     "title": "Social Choices",
     "category": "Social Skills",
     "age": "5+",
-    "goal": "Choose friendly responses in common social situations.",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Choose safe and friendly responses in simple social situations.",
     "enabled": true
   },
   {
     "id": "imitation-cards",
     "title": "Imitation Cards",
     "category": "Motor Imitation",
-    "age": "2+",
-    "goal": "Practice simple gross-motor imitation actions.",
+    "age": "3+",
+    "ageBand": "3-5",
+    "level": "Beginner",
+    "goal": "Practice copying simple actions with visual cards.",
     "enabled": true
   },
   {
     "id": "conversation-builder",
     "title": "Conversation Builder",
-    "category": "Communication",
-    "age": "5+",
-    "goal": "Practice greetings, questions, comments, and ending conversations politely.",
+    "category": "Social Language",
+    "age": "6+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Choose replies that keep a conversation going.",
     "enabled": true
   },
   {
     "id": "expected-unexpected",
     "title": "Expected / Unexpected",
     "category": "Social Skills",
-    "age": "6+",
-    "goal": "Learn which behaviors fit different places and situations.",
+    "age": "7+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Identify expected and unexpected behaviors in common situations.",
     "enabled": true
   },
   {
     "id": "safety-signs",
     "title": "Safety Signs",
     "category": "Safety",
-    "age": "6+",
-    "goal": "Recognize common community safety signs and what they mean.",
+    "age": "7+",
+    "ageBand": "6-9",
+    "level": "Growing",
+    "goal": "Recognize common safety signs and what to do.",
     "enabled": true
   },
   {
-    "id": "coping-match",
+    "id": "coping-strategy",
     "title": "Coping Strategy Match",
     "category": "Regulation",
-    "age": "6+",
-    "goal": "Choose a helpful coping strategy for common feelings and problems.",
+    "age": "8+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Match feelings or problems to helpful coping strategies.",
     "enabled": true
   },
   {
     "id": "time-schedule",
     "title": "Time & Schedule",
     "category": "Executive Function",
-    "age": "7+",
-    "goal": "Practice reading simple schedules and choosing what happens next.",
+    "age": "8+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Practice reading simple schedules and choosing what comes next.",
     "enabled": true
   },
   {
     "id": "hygiene-helper",
     "title": "Hygiene Helper",
     "category": "Daily Living",
-    "age": "6+",
-    "goal": "Match daily hygiene tasks with the right tools and steps.",
+    "age": "8+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Choose hygiene steps for school, home, and community routines.",
     "enabled": true
   },
   {
     "id": "problem-solving",
     "title": "Problem Solving Steps",
     "category": "Executive Function",
-    "age": "8+",
-    "goal": "Practice stop-think-choose skills for everyday problems.",
+    "age": "9+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Practice stop-think-choose-check problem solving.",
     "enabled": true
   },
   {
     "id": "money-store",
     "title": "Money Store",
     "category": "Life Skills",
-    "age": "8+",
-    "goal": "Practice paying for small items and comparing prices.",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Practice simple purchasing choices and money awareness.",
     "enabled": true
   },
   {
     "id": "perspective-detective",
     "title": "Perspective Detective",
-    "category": "Social Skills",
-    "age": "9+",
-    "goal": "Think about what another person may feel, think, or need.",
+    "category": "Social Thinking",
+    "age": "10+",
+    "ageBand": "10-13",
+    "level": "Preteen",
+    "goal": "Guess what another person may think or feel from context clues.",
     "enabled": true
   },
   {
     "id": "goal-planner",
     "title": "Goal Planner",
-    "category": "Executive Function",
-    "age": "10+",
-    "goal": "Break a bigger goal into small action steps.",
+    "category": "Self Management",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Break a goal into small, doable steps.",
     "enabled": true
   },
   {
     "id": "workplace-choices",
     "title": "Workplace Choices",
     "category": "Vocational",
-    "age": "12-21",
-    "goal": "Practice safe, respectful choices for jobs, volunteering, and community work.",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose appropriate workplace behaviors and responses.",
+    "enabled": true
+  },
+  {
+    "id": "text-smart",
+    "title": "Text Smart",
+    "category": "Digital Safety",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose safe and appropriate text message replies.",
+    "enabled": true
+  },
+  {
+    "id": "self-advocacy",
+    "title": "Self-Advocacy Coach",
+    "category": "Communication",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice asking for help, breaks, clarification, or accommodations.",
+    "enabled": true
+  },
+  {
+    "id": "community-safety",
+    "title": "Community Safety",
+    "category": "Safety",
+    "age": "12+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Choose safe responses in stores, streets, and public places.",
+    "enabled": true
+  },
+  {
+    "id": "job-interview",
+    "title": "Job Interview Practice",
+    "category": "Vocational",
+    "age": "14+",
+    "ageBand": "14-21",
+    "level": "Teen / Young Adult",
+    "goal": "Practice professional answers to common interview situations.",
     "enabled": true
   }
 ]

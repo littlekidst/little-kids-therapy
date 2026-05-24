@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Learn & Play — Little Kids Therapy</title>
-  <meta name="description" content="A free kid-friendly Learn & Play arcade with ABA-inspired games. No login, no names, no private information.">
+  <title>Learn & Play Arcade — Little Kids Therapy</title>
+  <meta name="description" content="A privacy-friendly Learn & Play arcade with ABA-inspired teaching games. No login, no names, no private information.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,117 +21,105 @@
           <path d="M24 52c2 22 43 22 47 0" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/>
           <circle cx="35" cy="39" r="5" fill="#132a4e"/>
           <circle cx="60" cy="39" r="5" fill="#132a4e"/>
-          <path d="M27 25l-6-13M42 20l-1-14M58 21l5-14M72 27l11-9" stroke-linecap="round" stroke-width="8"/>
-          <path d="M27 25l-6-13" stroke="#6bd68b"/>
-          <path d="M42 20l-1-14" stroke="#ff6b6b"/>
-          <path d="M58 21l5-14" stroke="#4dabf7"/>
-          <path d="M72 27l11-9" stroke="#ffd43b"/>
+          <path d="M20 58c0 20 55 23 59 0" fill="none" stroke="#132a4e" stroke-width="8" stroke-linecap="round"/>
+          <path d="M23 21l-9-8" stroke="#48c774" stroke-width="7" stroke-linecap="round"/>
+          <path d="M39 13l-4-11" stroke="#ff6b6b" stroke-width="7" stroke-linecap="round"/>
+          <path d="M56 12l3-11" stroke="#4dabf7" stroke-width="7" stroke-linecap="round"/>
+          <path d="M72 20l9-8" stroke="#ffd43b" stroke-width="7" stroke-linecap="round"/>
         </svg>
       </span>
       <span>
         <strong>Little Kids</strong>
-        <em>Learn & Play</em>
+        <small>Learn & Play</small>
       </span>
     </a>
-    <nav class="top-nav" aria-label="Learn and Play navigation">
-      <a href="#games">Games</a>
-      <a href="#progress">Stars</a>
-      <a href="#safety">Safety</a>
-      <a class="home-link" href="../">Main site</a>
+
+    <nav class="top-actions" aria-label="Learn and Play actions">
+      <button class="pill-btn" id="grownupBtn" type="button">Grown-up Mode</button>
+      <button class="pill-btn" id="settingsBtn" type="button">Settings</button>
+      <a class="pill-btn" href="../">Main Website</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <div class="pill"><span></span> No login · No names · Just play</div>
-        <h1>ABA-inspired games for kids, teens, and young adults.</h1>
-        <p>Practice emotions, directions, routines, communication, coping, safety, life skills, schedules, money, and workplace readiness with simple browser games. Built to run fully on GitHub Pages.</p>
+        <span class="eyebrow">ABA-inspired · no login · no private data</span>
+        <h1>Learn through play, practice, and positive feedback.</h1>
+        <p>Choose an age group, pick a skill, and play short teaching rounds with prompts, correction, stars, and celebration.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="#games">Start playing</a>
-          <button class="btn soft" id="resetProgressBtn" type="button">Reset stars</button>
+          <a href="#skillMap" class="primary-action">Start playing</a>
+          <button type="button" class="secondary-action" id="resetProgress">Reset local stars</button>
         </div>
       </div>
-      <div class="hero-stage" aria-hidden="true">
-        <div class="kid-orbit">
-          <div class="sun-face">
-            <span class="eye left"></span>
-            <span class="eye right"></span>
-            <span class="smile"></span>
-          </div>
-          <span class="planet p1">⭐</span>
-          <span class="planet p2">🧩</span>
-          <span class="planet p3">💬</span>
-          <span class="planet p4">🎈</span>
+      <div class="hero-panel" aria-label="Privacy friendly progress">
+        <div class="star-ring">
+          <span id="totalStars">0</span>
+          <small>local stars</small>
         </div>
+        <p>No names. No login. Progress stays only on this browser/device.</p>
       </div>
     </section>
 
-    <section class="stats-strip" id="progress" aria-label="Progress on this device">
+    <section class="controls-card" aria-label="Age and skill controls">
       <div>
-        <span class="stat-num" id="totalStars">0</span>
-        <span class="stat-label">stars earned on this device</span>
+        <h2>Choose a learning level</h2>
+        <p>Older learners can jump to teen and young adult skills. Younger learners can start with simple visual practice.</p>
       </div>
-      <div>
-        <span class="stat-num" id="gamesPlayed">0</span>
-        <span class="stat-label">games played</span>
-      </div>
-      <div>
-        <span class="stat-num">21</span>
-        <span class="stat-label">teaching games available</span>
+      <div class="age-tabs" role="tablist" aria-label="Age groups">
+        <button class="age-tab active" data-age="ALL" type="button">All</button>
+        <button class="age-tab" data-age="3-5" type="button">3–5</button>
+        <button class="age-tab" data-age="6-9" type="button">6–9</button>
+        <button class="age-tab" data-age="10-13" type="button">10–13</button>
+        <button class="age-tab" data-age="14-21" type="button">14–21</button>
       </div>
     </section>
 
-    <section class="section" id="games">
+    <section class="skill-map" id="skillMap">
       <div class="section-head">
-        <span class="kicker">Choose a game</span>
-        <h2>Simple, visual, and kid-friendly.</h2>
-        <p>Pick a skill area. Now includes early learning games plus older learner games for ages 5+ through young adult practice. Stars save only on this browser/device.</p>
+        <span class="eyebrow">Skill islands</span>
+        <h2>Pick a game to practice</h2>
+        <p>Each activity includes teaching, hints, error correction, and a finish screen.</p>
       </div>
-
-      <div class="filters" role="tablist" aria-label="Game filters">
-        <button class="filter active" data-filter="All" type="button">All</button>
-        
-      </div>
-
-      <div class="game-grid" id="gameGrid"></div>
-    </section>
-
-    <section class="play-panel" id="playPanel" hidden>
-      <div class="play-shell">
-        <div class="play-top">
-          <div>
-            <span class="kicker" id="gameCategory">Game</span>
-            <h2 id="gameTitle">Game title</h2>
-            <p id="gameGoal">Goal</p>
-          </div>
-          <button class="icon-btn" id="closeGameBtn" type="button" aria-label="Close game">×</button>
-        </div>
-        <div class="game-area" id="gameArea"></div>
-      </div>
-    </section>
-
-    <section class="section safety" id="safety">
-      <div class="safety-card">
-        <div>
-          <span class="kicker">Privacy-first</span>
-          <h2>Built for public play, not private records.</h2>
-          <p>This page does not use Supabase, login, passwords, chat, uploads, microphone, camera, location, or child profiles. Keep it as a public game area only.</p>
-        </div>
-        <ul>
-          <li>No full names</li>
-          <li>No DOB</li>
-          <li>No diagnosis</li>
-          <li>No insurance</li>
-          <li>No medical notes</li>
-          <li>No account needed</li>
-        </ul>
-      </div>
+      <div class="game-grid" id="gameGrid" aria-live="polite"></div>
     </section>
   </main>
 
+  <dialog class="game-modal" id="gameModal" aria-label="Game window">
+    <div class="modal-body">
+      <button class="close-btn" id="closeGame" type="button" aria-label="Close game">×</button>
+      <div id="gameArea"></div>
+    </div>
+  </dialog>
+
+  <dialog class="side-dialog" id="settingsDialog" aria-label="Settings">
+    <form method="dialog" class="dialog-panel">
+      <button class="close-small" aria-label="Close settings">×</button>
+      <h2>Accessibility Settings</h2>
+      <label class="toggle-row"><input type="checkbox" id="bigTextToggle"> Bigger text</label>
+      <label class="toggle-row"><input type="checkbox" id="reduceMotionToggle"> Reduce motion</label>
+      <label class="toggle-row"><input type="checkbox" id="soundToggle"> Sound effects</label>
+      <p class="small-note">Settings are saved only on this browser/device.</p>
+      <button class="primary-action full" value="close">Done</button>
+    </form>
+  </dialog>
+
+  <dialog class="side-dialog" id="grownupDialog" aria-label="Grown-up mode">
+    <form method="dialog" class="dialog-panel wide">
+      <button class="close-small" aria-label="Close grown-up mode">×</button>
+      <h2>Grown-up Mode</h2>
+      <p>This page is a no-login practice arcade. It uses ABA-inspired teaching pieces: clear instruction, visual prompt, guided practice, error correction, reinforcement, and generalization tips.</p>
+      <div class="grownup-grid">
+        <div><strong>Prompt hierarchy</strong><span>Teach Me → Help Me → Test Me</span></div>
+        <div><strong>Correction style</strong><span>Tell what was selected, teach the difference, then try again.</span></div>
+        <div><strong>Reinforcement</strong><span>Stars, tokens, praise, and short celebrations.</span></div>
+        <div><strong>Privacy</strong><span>No names, no login, no diagnosis, no private child information.</span></div>
+      </div>
+      <button class="primary-action full" value="close">Close</button>
+    </form>
+  </dialog>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <div class="confetti" id="confetti" aria-hidden="true"></div>
 
   <script src="games.js"></script>
 </body>
