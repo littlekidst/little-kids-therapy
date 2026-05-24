@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Learn & Play Arcade — Little Kids Therapy</title>
-  <meta name="description" content="A privacy-friendly Learn & Play arcade with ABA-inspired teaching games. No login, no names, no private information.">
+  <meta name="description" content="A privacy-friendly daily Learn & Play arcade with ABA-inspired teaching games, local check-in, prompts, and rewards.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,6 +35,7 @@
     </a>
 
     <nav class="top-actions" aria-label="Learn and Play actions">
+      <button class="pill-btn daily-pill" id="dailyCheckinBtn" type="button">Daily Check-In</button>
       <button class="pill-btn" id="grownupBtn" type="button">Grown-up Mode</button>
       <button class="pill-btn" id="settingsBtn" type="button">Settings</button>
       <a class="pill-btn" href="../">Main Website</a>
@@ -44,9 +45,9 @@
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <span class="eyebrow">ABA-inspired · no login · no private data</span>
-        <h1>Learn through play, practice, and positive feedback.</h1>
-        <p>Choose an age group, pick a skill, and play short teaching rounds with prompts, correction, stars, and celebration.</p>
+        <span class="eyebrow">ABA-inspired · daily check-in · local progress only</span>
+        <h1>Check in daily, learn through play, and earn stars.</h1>
+        <p>Each day, learners complete a quick local check-in, choose a skill island, and practice short lessons with prompts, correction, stars, and celebration.</p>
         <div class="hero-actions">
           <a href="#skillMap" class="primary-action">Start playing</a>
           <button type="button" class="secondary-action" id="resetProgress">Reset local stars</button>
@@ -57,7 +58,7 @@
           <span id="totalStars">0</span>
           <small>local stars</small>
         </div>
-        <p>No names. No login. Progress stays only on this browser/device.</p>
+        <p><strong id="dailyGreeting">Daily check-in needed</strong><br><span id="dailyStatusText">Progress stays only on this browser/device.</span></p>
       </div>
     </section>
 
@@ -92,6 +93,44 @@
     </div>
   </dialog>
 
+
+  <dialog class="side-dialog daily-dialog" id="dailyCheckinDialog" aria-label="Daily check-in">
+    <form class="dialog-panel daily-panel" id="dailyCheckinForm">
+      <div class="checkin-hero">
+        <span class="checkin-badge">Daily Learn & Play</span>
+        <h2>Check in for today</h2>
+        <p>Use a nickname or initials only. This stays on this browser/device and is not sent anywhere.</p>
+      </div>
+
+      <label class="field-label" for="dailyNickname">Nickname or initials</label>
+      <input class="checkin-input" id="dailyNickname" name="dailyNickname" maxlength="18" placeholder="Example: J.T. or Star Learner" autocomplete="off">
+
+      <label class="field-label" for="dailyAgeBand">Learning level for today</label>
+      <select class="checkin-input" id="dailyAgeBand" name="dailyAgeBand">
+        <option value="ALL">All games</option>
+        <option value="3-5">Ages 3–5</option>
+        <option value="6-9">Ages 6–9</option>
+        <option value="10-13">Ages 10–13</option>
+        <option value="14-21">Ages 14–21</option>
+      </select>
+
+      <div class="field-label">Pick an avatar</div>
+      <div class="avatar-picker" role="radiogroup" aria-label="Pick an avatar">
+        <button type="button" class="avatar-choice active" data-avatar="😊" aria-label="smile avatar">😊</button>
+        <button type="button" class="avatar-choice" data-avatar="⭐" aria-label="star avatar">⭐</button>
+        <button type="button" class="avatar-choice" data-avatar="🦋" aria-label="butterfly avatar">🦋</button>
+        <button type="button" class="avatar-choice" data-avatar="🚀" aria-label="rocket avatar">🚀</button>
+        <button type="button" class="avatar-choice" data-avatar="🌈" aria-label="rainbow avatar">🌈</button>
+      </div>
+
+      <div class="daily-privacy-note">
+        <strong>Privacy-safe:</strong> no full name, no diagnosis, no DOB, no chat, no uploads, no account. This is a local daily check-in only.
+      </div>
+
+      <button class="primary-action full" type="submit">Start today’s practice →</button>
+    </form>
+  </dialog>
+
   <dialog class="side-dialog" id="settingsDialog" aria-label="Settings">
     <form method="dialog" class="dialog-panel">
       <button class="close-small" aria-label="Close settings">×</button>
@@ -108,12 +147,12 @@
     <form method="dialog" class="dialog-panel wide">
       <button class="close-small" aria-label="Close grown-up mode">×</button>
       <h2>Grown-up Mode</h2>
-      <p>This page is a no-login practice arcade. It uses ABA-inspired teaching pieces: clear instruction, visual prompt, guided practice, error correction, reinforcement, and generalization tips.</p>
+      <p>This page is a static daily check-in practice arcade with no internet account. It uses ABA-inspired teaching pieces: clear instruction, visual prompt, guided practice, error correction, reinforcement, and generalization tips.</p>
       <div class="grownup-grid">
         <div><strong>Prompt hierarchy</strong><span>Teach Me → Help Me → Test Me</span></div>
         <div><strong>Correction style</strong><span>Tell what was selected, teach the difference, then try again.</span></div>
         <div><strong>Reinforcement</strong><span>Stars, tokens, praise, and short celebrations.</span></div>
-        <div><strong>Privacy</strong><span>No names, no login, no diagnosis, no private child information.</span></div>
+        <div><strong>Privacy</strong><span>Nickname/initials only, no internet account, no diagnosis, no private child information.</span></div>
       </div>
       <button class="primary-action full" value="close">Close</button>
     </form>

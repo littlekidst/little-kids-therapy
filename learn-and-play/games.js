@@ -325,9 +325,71 @@ let activeAge = "ALL";
 let settings = loadJSON("learnPlayV14Settings", { bigText:false, reduceMotion:false, sound:false });
 let progress = loadJSON("learnPlayV14Progress", {});
 let current = null;
+let dailyProfile = loadJSON("learnPlayDailyCheckinV16", { nickname:"", avatar:"😊", ageBand:"ALL", lastCheckin:"", streak:0 });
 
 function loadJSON(key, fallback){ try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } }
 function saveJSON(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
+
+function todayKey(){ return new Date().toISOString().slice(0,10); }
+function yesterdayKey(){ const d = new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); }
+function checkedInToday(){ return dailyProfile && dailyProfile.lastCheckin === todayKey(); }
+function safeNickname(){ return (dailyProfile.nickname || "Learner").slice(0, 18); }
+function renderDailyStatus(){
+  const greet = $("#dailyGreeting");
+  const text = $("#dailyStatusText");
+  const checked = checkedInToday();
+  if(greet){
+    greet.innerHTML = checked
+      ? `<span class="daily-avatar">${escapeHtml(dailyProfile.avatar || "😊")}</span> Hi, ${escapeHtml(safeNickname())}!`
+      : `Daily check-in needed`;
+  }
+  if(text){
+    text.textContent = checked
+      ? `Day streak: ${dailyProfile.streak || 1}. Learning level: ${dailyProfile.ageBand || "ALL"}.`
+      : `Check in to start today’s practice. Progress stays only on this browser/device.`;
+  }
+}
+function openDailyCheckin(force=false){
+  const dialog = $("#dailyCheckinDialog");
+  if(!dialog) return;
+  const nick = $("#dailyNickname");
+  const age = $("#dailyAgeBand");
+  if(nick) nick.value = dailyProfile.nickname || "";
+  if(age) age.value = dailyProfile.ageBand || activeAge || "ALL";
+  $$(".avatar-choice").forEach(btn => btn.classList.toggle("active", btn.dataset.avatar === (dailyProfile.avatar || "😊")));
+  dialog.dataset.force = force ? "1" : "0";
+  if(!dialog.open) dialog.showModal();
+}
+function completeDailyCheckin(){
+  const nickRaw = ($("#dailyNickname")?.value || "Learner").trim();
+  const nickname = nickRaw || "Learner";
+  const avatar = $(".avatar-choice.active")?.dataset.avatar || dailyProfile.avatar || "😊";
+  const ageBand = $("#dailyAgeBand")?.value || "ALL";
+  const last = dailyProfile.lastCheckin;
+  let streak = 1;
+  if(last === todayKey()) streak = dailyProfile.streak || 1;
+  else if(last === yesterdayKey()) streak = (dailyProfile.streak || 0) + 1;
+  dailyProfile = { nickname, avatar, ageBand, lastCheckin: todayKey(), streak };
+  saveJSON("learnPlayDailyCheckinV16", dailyProfile);
+  activeAge = ageBand;
+  $$(".age-tab").forEach(btn => btn.classList.toggle("active", (btn.dataset.age || "ALL") === activeAge));
+  renderDailyStatus();
+  renderGameGrid();
+  $("#dailyCheckinDialog")?.close();
+  setToast(`Welcome back, ${nickname}! Day ${streak} streak.`);
+}
+function requireDailyCheckin(){
+  renderDailyStatus();
+  if(checkedInToday()){
+    if(dailyProfile.ageBand && dailyProfile.ageBand !== activeAge){
+      activeAge = dailyProfile.ageBand;
+      $$(".age-tab").forEach(btn => btn.classList.toggle("active", (btn.dataset.age || "ALL") === activeAge));
+    }
+    return;
+  }
+  setTimeout(()=>openDailyCheckin(true), 350);
+}
+
 function escapeHtml(value){ return String(value ?? "").replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch])); }
 function shuffle(arr){ const a=[...arr]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function normalize(value){ return String(value ?? "").trim().toLowerCase(); }
@@ -360,6 +422,7 @@ function applySettings(){
   $("#reduceMotionToggle") && ($("#reduceMotionToggle").checked = !!settings.reduceMotion);
   $("#soundToggle") && ($("#soundToggle").checked = !!settings.sound);
   $("#totalStars") && ($("#totalStars").textContent = totalStars());
+  renderDailyStatus();
 }
 function gameIcon(game){ return iconMap[game.title] || "🎮"; }
 function getGameData(id){
@@ -384,6 +447,7 @@ async function loadGames(){
   allGames = allGames.filter(g => g.enabled !== false);
   renderGameGrid();
   applySettings();
+  requireDailyCheckin();
 }
 function renderGameGrid(){
   const filtered = allGames.filter(g => activeAge === "ALL" || g.ageBand === activeAge);
@@ -808,6 +872,20 @@ document.addEventListener("click", (e) => {
   const token = e.target.closest("[data-task]");
   if(token && current) tokenTask(token);
 });
+
+
+$("#dailyCheckinBtn")?.addEventListener("click", () => openDailyCheckin(false));
+$("#dailyCheckinDialog")?.addEventListener("cancel", (e) => {
+  if(!checkedInToday()) e.preventDefault();
+});
+$("#dailyCheckinForm")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+  completeDailyCheckin();
+});
+$$('.avatar-choice').forEach(btn => btn.addEventListener('click', () => {
+  $$('.avatar-choice').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}));
 
 $("#settingsBtn")?.addEventListener("click", () => $("#settingsDialog").showModal());
 $("#grownupBtn")?.addEventListener("click", () => $("#grownupDialog").showModal());
