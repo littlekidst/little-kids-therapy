@@ -76,12 +76,29 @@
       </div>
     </section>
 
-    <section class="skill-map" id="skillMap">
-      <div class="section-head">
-        <span class="eyebrow">Skill islands</span>
-        <h2>Pick a game to practice</h2>
-        <p>Each activity includes teaching, hints, error correction, and a finish screen.</p>
+    <section class="skill-map adventure-map" id="skillMap">
+      <div class="section-head adventure-head">
+        <div>
+          <span class="eyebrow">Skill islands</span>
+          <h2>Choose your learning adventure</h2>
+          <p>Pick an island, then practice the games inside that skill area. Each island shows stars, completed lessons, and the next skill to try.</p>
+        </div>
+        <button class="map-reset" id="clearIslandFilter" type="button">Show all islands</button>
       </div>
+
+      <div class="island-map-wrap" aria-label="Skill Islands Adventure Map">
+        <div class="map-water" aria-hidden="true"></div>
+        <div class="island-path path-one" aria-hidden="true"></div>
+        <div class="island-path path-two" aria-hidden="true"></div>
+        <div class="islands-grid" id="islandsGrid" aria-live="polite"></div>
+      </div>
+
+      <div class="selected-island-panel" id="selectedIslandPanel">
+        <span class="eyebrow">Now practicing</span>
+        <h3 id="selectedIslandTitle">All Skill Islands</h3>
+        <p id="selectedIslandText">Choose any game below, or tap an island to narrow the list.</p>
+      </div>
+
       <div class="game-grid" id="gameGrid" aria-live="polite"></div>
     </section>
   </main>

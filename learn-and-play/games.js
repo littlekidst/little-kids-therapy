@@ -322,8 +322,9 @@ const gameModal = $("#gameModal");
 const gameArea = $("#gameArea");
 let allGames = [];
 let activeAge = "ALL";
-let settings = loadJSON("learnPlayV14Settings", { bigText:false, reduceMotion:false, sound:false });
-let progress = loadJSON("learnPlayV14Progress", {});
+let activeIsland = "ALL";
+let settings = loadJSON("learnPlayV17Settings", { bigText:false, reduceMotion:false, sound:false });
+let progress = loadJSON("learnPlayV17Progress", {});
 let current = null;
 let dailyProfile = loadJSON("learnPlayDailyCheckinV16", { nickname:"", avatar:"😊", ageBand:"ALL", lastCheckin:"", streak:0 });
 
@@ -438,6 +439,56 @@ function getGameData(id){
   };
 }
 
+
+const skillIslands = [
+  {id:"ALL", title:"All Skill Islands", icon:"🗺️", color:"#4dabf7", text:"See every game across every skill island.", match:[]},
+  {id:"social", title:"Social Skills Island", icon:"🤝", color:"#ff6b9d", text:"Emotions, conversation, perspective, and expected behavior.", match:["Social Skills","Social","Conversation","Perspective"]},
+  {id:"communication", title:"Communication Cove", icon:"💬", color:"#35c2d3", text:"AAC, self-advocacy, asking for help, and clear messages.", match:["Communication","AAC","Self-advocacy"]},
+  {id:"calm", title:"Calm Body Bay", icon:"🫧", color:"#845ef7", text:"Breathing, coping choices, regulation, and calm routines.", match:["Calming","Coping","Self Management"]},
+  {id:"daily", title:"Daily Living Lagoon", icon:"🧼", color:"#63d98a", text:"Hygiene, routines, first/then, schedules, and independence.", match:["Daily Living","Routine","Transitions","Time"]},
+  {id:"safety", title:"Safety Harbor", icon:"🛟", color:"#ffd43b", text:"Safety signs, community safety, digital safety, and safe choices.", match:["Safety","Digital Safety"]},
+  {id:"money", title:"Money & Community Island", icon:"💵", color:"#ff9f43", text:"Store practice, money skills, community decisions, and planning.", match:["Money","Community","Problem Solving","Self Management"]},
+  {id:"jobs", title:"Job Skills Mountain", icon:"💼", color:"#4dabf7", text:"Workplace choices, interviews, job readiness, and teen life skills.", match:["Vocational"]}
+];
+function gameBelongsToIsland(game, island){
+  if(!island || island.id === "ALL") return true;
+  const hay = `${game.category || ""} ${game.title || ""} ${game.goal || ""} ${game.ageBand || ""}`.toLowerCase();
+  return island.match.some(term => hay.includes(String(term).toLowerCase()));
+}
+function getIslandForGame(game){
+  return skillIslands.find(island => island.id !== "ALL" && gameBelongsToIsland(game, island)) || skillIslands[0];
+}
+function renderIslands(){
+  const grid = document.getElementById("islandsGrid");
+  if(!grid) return;
+  const ageGames = allGames.filter(g => activeAge === "ALL" || g.ageBand === activeAge);
+  const cards = skillIslands.map(island => {
+    const islandGames = island.id === "ALL" ? ageGames : ageGames.filter(g => gameBelongsToIsland(g, island));
+    if(island.id !== "ALL" && !islandGames.length) return "";
+    const completed = islandGames.reduce((sum,g)=>sum + (Number((progress[g.id]||{}).completed)||0),0);
+    const stars = islandGames.reduce((sum,g)=>sum + (Number((progress[g.id]||{}).stars)||0),0);
+    const possible = Math.max(1, islandGames.length);
+    const pct = Math.min(100, Math.round((completed / possible) * 100));
+    return `
+      <button class="island-card ${activeIsland===island.id?'active':''}" data-island="${escapeHtml(island.id)}" type="button" style="--island-color:${escapeHtml(island.color)}; --pct:${pct}%">
+        <div class="island-icon" aria-hidden="true">${escapeHtml(island.icon)}</div>
+        <h3>${escapeHtml(island.title)}</h3>
+        <p>${escapeHtml(island.text)}</p>
+        <div class="island-stats"><span>${islandGames.length} lessons</span><span>⭐ ${stars}</span><span>${completed} done</span></div>
+        <div class="island-progress-mini" aria-hidden="true"><i></i></div>
+      </button>`;
+  }).join("");
+  grid.innerHTML = cards;
+  updateSelectedIslandPanel();
+}
+function updateSelectedIslandPanel(){
+  const island = skillIslands.find(i => i.id === activeIsland) || skillIslands[0];
+  const title = document.getElementById("selectedIslandTitle");
+  const text = document.getElementById("selectedIslandText");
+  if(title) title.textContent = island.title;
+  if(text) text.textContent = island.id === "ALL" ? "Choose any game below, or tap an island to narrow the list." : island.text;
+}
+
 async function loadGames(){
   try{
     const res = await fetch("games.json?v=" + Date.now(), {cache:"no-store"});
@@ -450,14 +501,16 @@ async function loadGames(){
   requireDailyCheckin();
 }
 function renderGameGrid(){
-  const filtered = allGames.filter(g => activeAge === "ALL" || g.ageBand === activeAge);
+  const island = skillIslands.find(i => i.id === activeIsland) || skillIslands[0];
+  const filtered = allGames.filter(g => (activeAge === "ALL" || g.ageBand === activeAge) && gameBelongsToIsland(g, island));
+  renderIslands();
   gameGrid.innerHTML = filtered.map(game => {
     const p = progress[game.id] || {stars:0, completed:0};
     return `
       <article class="game-card" data-game="${escapeHtml(game.id)}">
         <div class="game-icon">${gameIcon(game)}</div>
         <div class="game-card-top">
-          <span class="category-pill">${escapeHtml(game.category || "Skill")}</span>
+          <span class="category-pill">${escapeHtml(getIslandForGame(game).icon)} ${escapeHtml(game.category || "Skill")}</span>
           <span class="age-pill">${escapeHtml(game.ageBand || game.age || "All")}</span>
         </div>
         <h3>${escapeHtml(game.title)}</h3>
@@ -809,7 +862,7 @@ function finishGame(){
   const earned = Math.max(1, Math.min(5, current.score));
   const existing = progress[current.game.id] || {stars:0, completed:0};
   progress[current.game.id] = {stars:(existing.stars||0)+earned, completed:(existing.completed||0)+1, last:new Date().toISOString()};
-  saveJSON("learnPlayV14Progress", progress);
+  saveJSON("learnPlayV17Progress", progress);
   applySettings();
   gameArea.innerHTML = `
     <div class="finish-screen">
@@ -837,6 +890,7 @@ document.addEventListener("click", (e) => {
     $$(".age-tab").forEach(b=>b.classList.remove("active"));
     ageBtn.classList.add("active");
     activeAge = ageBtn.dataset.age || "ALL";
+    activeIsland = "ALL";
     renderGameGrid();
   }
   const mode = e.target.closest("[data-mode]");
@@ -892,13 +946,29 @@ $("#grownupBtn")?.addEventListener("click", () => $("#grownupDialog").showModal(
 $("#resetProgress")?.addEventListener("click", () => {
   if(confirm("Reset local stars on this browser?")){
     progress = {};
-    saveJSON("learnPlayV14Progress", progress);
+    saveJSON("learnPlayV17Progress", progress);
     renderGameGrid(); applySettings(); setToast("Local stars reset.");
   }
 });
-$("#bigTextToggle")?.addEventListener("change", e => { settings.bigText = e.target.checked; saveJSON("learnPlayV14Settings", settings); applySettings(); });
-$("#reduceMotionToggle")?.addEventListener("change", e => { settings.reduceMotion = e.target.checked; saveJSON("learnPlayV14Settings", settings); applySettings(); });
-$("#soundToggle")?.addEventListener("change", e => { settings.sound = e.target.checked; saveJSON("learnPlayV14Settings", settings); applySettings(); });
+$("#bigTextToggle")?.addEventListener("change", e => { settings.bigText = e.target.checked; saveJSON("learnPlayV17Settings", settings); applySettings(); });
+$("#reduceMotionToggle")?.addEventListener("change", e => { settings.reduceMotion = e.target.checked; saveJSON("learnPlayV17Settings", settings); applySettings(); });
+$("#soundToggle")?.addEventListener("change", e => { settings.sound = e.target.checked; saveJSON("learnPlayV17Settings", settings); applySettings(); });
+
+
+document.addEventListener("click", (event) => {
+  const islandBtn = event.target.closest(".island-card");
+  if(islandBtn){
+    activeIsland = islandBtn.dataset.island || "ALL";
+    renderGameGrid();
+    document.getElementById("selectedIslandPanel")?.scrollIntoView({behavior:"smooth", block:"nearest"});
+    setToast(activeIsland === "ALL" ? "Showing all Skill Islands." : "Island selected. Choose a lesson below.");
+  }
+});
+document.getElementById("clearIslandFilter")?.addEventListener("click", () => {
+  activeIsland = "ALL";
+  renderGameGrid();
+  setToast("Showing all Skill Islands.");
+});
 
 loadGames();
 applySettings();
